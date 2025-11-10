@@ -1,10 +1,11 @@
 package Entity;
 
-import java.util.ArrayList;
-
 public class Client {
     private final String userName;
     private final String passWord;
+
+    private Profile profile;
+    private MatchingPreferences preferences;
 //    private final ArrayList<String> classes;
 //    private final ArrayList<String> hobbies;
 
@@ -31,6 +32,11 @@ public class Client {
 //    public ArrayList<String> getHobbies(){
 //        return hobbies;
 //    }
+    public Profile getProfile() { return profile; }
+    public void setProfile(Profile profile) { this.profile = profile; }
+
+    public MatchingPreferences getPreferences() { return preferences; }
+    public void setPreferences(MatchingPreferences preferences) { this.preferences = preferences; }
 
 
 }
