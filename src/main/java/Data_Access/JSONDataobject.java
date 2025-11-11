@@ -42,9 +42,9 @@ public class JSONDataobject implements SignupDataAcessObject, LoginDataAcessObje
             PrettyJSON.createNewFile();
         }
 
-        Client user = new Client("Ahmed","123456");
+        Client user = new Client("User1","123456");
         save(user);
-        Client user2 = new Client("Marwa","abcdef");
+        Client user2 = new Client("User2","abcdef");
         save(user2);
     }
 
@@ -83,7 +83,7 @@ public class JSONDataobject implements SignupDataAcessObject, LoginDataAcessObje
             newUser.put("password", client.getPassword());
             newUser.put("classes", client.getClasses());
             newUser.put("hobbies", client.getHobbies());
-            client.getMessages().put("Ahmed","Hello user, hope you are doing well!");
+            client.getMessages().put("User1","Hello user X, hope you are doing well!");
             newUser.put("messages",client.getMessages());
             usersy.add(newUser);
 
