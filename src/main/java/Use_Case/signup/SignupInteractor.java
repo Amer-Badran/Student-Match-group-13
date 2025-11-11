@@ -6,7 +6,12 @@ package Use_Case.signup;
 // 3 ) A view switching method ( from signup window to login window )
 //     -that will be called by the Controller ( Why do we need it here then ?! )
 
+import Entity.Client;
 import Entity.ClientFactory;
+import org.json.simple.parser.ParseException;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class SignupInteractor implements SignupInputBoundary {
     private SignupDataAcessObject DAO;
@@ -21,9 +26,24 @@ public class SignupInteractor implements SignupInputBoundary {
 
 
     @Override
-    public void execute() {
+    public void execute(SignupInputData input) throws IOException, ParseException {
+        String name= input.getUserName();
+        String pass = input.getPassWord();
+        if(DAO.alreadyExists(name)){
+            presenter.prepareFailView("This User name is taken !");}
+        else if(pass.length() < 4){
+             presenter.prepareFailView("The password is not strong enough!");}
+        else{
+            Client theClient = clientFactory.create(name,pass);
+            DAO.save(theClient);
+            ArrayList<String> things = DAO.getClasses(name);
+            presenter.prepareSuccessView();
+        }
+        }
 
-    }
+
+
+
 
     @Override
     public void switchToLoginView() {
