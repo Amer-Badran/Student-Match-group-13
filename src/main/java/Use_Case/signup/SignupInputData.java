@@ -9,16 +9,16 @@ public class SignupInputData {
     private final String userName;
     private final String passWord;
     private final String repeatPassWord;
-//    private final ArrayList<String> classes;
-//    private final ArrayList<String> hobbies;
+    private final ArrayList<String> classes;
+    private final ArrayList<String> hobbies;
 
 
     public SignupInputData(String userName, String passWord,
-                           ArrayList<String> classes, ArrayList<String> hobbies, String repeatPassWord) {
+                           ArrayList<String> classes, ArrayList<String> hobbies, String repeatPassWord){
         this.userName = userName;
         this.passWord = passWord;
-        // this.hobbies = hobbies;
-        // this.classes = classes;
+        this.hobbies = hobbies;
+        this.classes = classes;
         this.repeatPassWord = repeatPassWord;
 
     }
@@ -35,9 +35,11 @@ public class SignupInputData {
         return repeatPassWord;
     }
 
-//    public ArrayList<String> getClasses() {return classes; }
+    public ArrayList<String> getClasses() {
+        return classes;
+    }
 
-
-//    public ArrayList<String> getHobbies() { return hobbies; }
-
+    public ArrayList<String> getHobbies() {
+        return hobbies;
+    }
 }

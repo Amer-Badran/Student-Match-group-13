@@ -3,8 +3,10 @@ package Data_Access;
 import Entity.User;
 import Entity.UserFactory;
 import Use_Case.signup.SignupDataAcessObject;
+import org.json.simple.parser.ParseException;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -83,7 +85,12 @@ public void save(User client) {
     this.save();
 }
 
-@Override
+    @Override
+    public ArrayList<String> getClasses(String name) throws IOException, ParseException {
+        return null;
+    }
+
+    @Override
 public boolean alreadyExists(String identifier) {
     return accounts.containsKey(identifier);
 }
