@@ -1,11 +1,26 @@
 package app;
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
+import Data_Access.JSONDataobject;
+import Entity.ClientFactory;
 import Interface_Adapter.ViewManagerModel;
+import Interface_Adapter.login.LoginController;
+import Interface_Adapter.login.LoginPresenter;
+import Interface_Adapter.login.LoginViewModel;
+import Interface_Adapter.signup.SignupController;
+import Interface_Adapter.signup.SignupPresenter;
 import Interface_Adapter.signup.SignupViewModel;
 import Interface_Adapter.welcome.WelcomPresenter;
 import Interface_Adapter.welcome.WelcomeController;
+import Use_Case.login.LoginDataAcessObject;
+import Use_Case.login.LoginInputBoundary;
+import Use_Case.login.LoginInteractor;
+import Use_Case.login.LoginOutputBoundary;
+import Use_Case.signup.SignupInputBoundary;
+import Use_Case.signup.SignupInteractor;
+import Use_Case.signup.SignupOutputBoundary;
 import View.*;
 import Use_Case.welcome.WelcomInteractor;
 import Use_Case.welcome.welcomeInputBoundary;
@@ -21,10 +36,13 @@ public class AppBuilder {
 
     private SignupView signupView;
     private WelcomeView welcomeView;
+    private LoginView loginView;
     private SignupViewModel signupViewModel = new SignupViewModel();
+    private LoginViewModel loginViewModels = new LoginViewModel();
+    private JSONDataobject DAO = new JSONDataobject();
+    private ClientFactory clientFactory = new ClientFactory();
 
-
-    public AppBuilder() {
+    public AppBuilder() throws IOException {
         cardPanel.setLayout(cardLayout);
     }
 
@@ -48,6 +66,12 @@ public AppBuilder addSignupView(){
         return this;
 
 }
+public AppBuilder addSignupUseCase(){
+        final SignupOutputBoundary SignupPresenter = new SignupPresenter(viewManagerModel,signupViewModel,loginViewModels);
+        final SignupInputBoundary signupInteractor = new SignupInteractor(DAO,SignupPresenter,clientFactory);
+        signupView.setSignupController(new SignupController(signupInteractor));
+        return this;
+}
 
 public AppBuilder addWelcomeUseCase(){
     final welcomeOutputBoundary welcomePresenter = new WelcomPresenter(viewManagerModel,signupViewModel);
@@ -56,6 +80,17 @@ public AppBuilder addWelcomeUseCase(){
     return this;
 }
 
+public AppBuilder addLoginView(){
+        loginView = new LoginView(loginViewModels);
+        cardPanel.add(loginView,loginView.getViewName());
+        return this;
+}
+public AppBuilder addLoginUseCase() throws IOException {
+        final LoginOutputBoundary loginPresenter = new LoginPresenter(viewManagerModel,loginViewModels);
+        final LoginInputBoundary loginInteractor = new LoginInteractor(DAO,loginPresenter);
+        loginView.setLoginController(new LoginController(loginInteractor));
+        return this;
+}
 
     public JFrame build() {
         final JFrame application = new JFrame("Team 13 prototype");
