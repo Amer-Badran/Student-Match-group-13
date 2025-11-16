@@ -1,11 +1,12 @@
 package Entity;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class MatchingPreferences {
     private List<String> courses;
-    private Map<String, String> programs;
+    private Map<String, String> programs = new HashMap<>();
     private int yearOfStudy;
     private List<String> hobbies;
     private List<String>  languages;
@@ -19,7 +20,7 @@ public class MatchingPreferences {
             throw new IllegalArgumentException("Cannot select more than 3 programs");
         }
         this.courses = courses;
-        this.programs = programs;
+        //this.programs = programs;
         this.yearOfStudy = yearOfStudy;
         this.hobbies = hobbies;
         this.languages = languages;
