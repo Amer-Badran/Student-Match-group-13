@@ -1,6 +1,6 @@
 package Entity;
 
-public class Client {
+public class User {
     private final String userName;
     private final String passWord;
 
@@ -11,7 +11,7 @@ public class Client {
 
 
 
-    public Client(String userName, String passWord /*,ArrayList<String> classes,ArrayList<String> hobbies*/) {
+    public User(String userName, String passWord /*,ArrayList<String> classes,ArrayList<String> hobbies*/) {
         this.userName = userName;
         this.passWord = passWord;
 //        this.classes = classes;

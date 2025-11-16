@@ -6,14 +6,14 @@ package Use_Case.signup;
 // 3 ) A view switching method ( from signup window to login window )
 //     -that will be called by the Controller ( Why do we need it here then ?! )
 
-import Entity.ClientFactory;
+import Entity.UserFactory;
 
 public class SignupInteractor implements SignupInputBoundary {
     private SignupDataAcessObject DAO;
     private SignupOutputBoundary presenter;
-    private ClientFactory clientFactory;
+    private UserFactory clientFactory;
 
-    public SignupInteractor(SignupDataAcessObject DAO, SignupOutputBoundary presenter, ClientFactory clientFactory) {
+    public SignupInteractor(SignupDataAcessObject DAO, SignupOutputBoundary presenter, UserFactory clientFactory) {
         this.DAO = DAO;
         this.presenter = presenter;
         this.clientFactory = clientFactory;
