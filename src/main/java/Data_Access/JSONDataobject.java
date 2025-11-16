@@ -1,5 +1,6 @@
 package Data_Access;
 import Entity.Client;
+import Entity.MatchingPreferences;
 import Use_Case.login.LoginDataAcessObject;
 import Use_Case.signup.SignupDataAcessObject;
 import org.json.simple.JSONValue;
@@ -78,16 +79,36 @@ public class JSONDataobject implements SignupDataAcessObject, LoginDataAcessObje
         try {
             JSONArray usersy = readAll();
 
+            // this is for adding matching preferences to file and later updating
+            findAndRemoveUser(usersy, client.getUserName());
+
             JSONObject newUser = new JSONObject();
             newUser.put("username", client.getUserName());
             newUser.put("password", client.getPassword());
             newUser.put("classes", client.getClasses());
             newUser.put("hobbies", client.getHobbies());
-            client.getMessages().put("User1","Hello user X, hope you are doing well!");
+            client.getMessages().put("User1","Hello user X, hope you are doing well!"); // This line seems to be for testing
             newUser.put("messages",client.getMessages());
+
+            //
+            MatchingPreferences prefs = client.getMatchPref();
+
+            // Only add preferences if they exist (are not null)
+            if (prefs != null) {
+                // Creates a new JSON object just for the preferences
+                JSONObject matchPrefJson = new JSONObject();
+
+                matchPrefJson.put("courses", prefs.getCourseCodes());
+                matchPrefJson.put("programs", prefs.getProgramNames());
+                matchPrefJson.put("year", prefs.getYearOfStudy());
+
+                // Add that new JSON object to the main user
+                newUser.put("matchingPreferences", matchPrefJson);
+            }
+
+            // Adds the new/updated user to the array (because now can update)
             usersy.add(newUser);
 
-            // rewrite file
 
             try (FileWriter writer = new FileWriter(fileJSON);
                  FileWriter pretty =new FileWriter(PrettyJSON);
@@ -95,7 +116,7 @@ public class JSONDataobject implements SignupDataAcessObject, LoginDataAcessObje
                 writer.write(usersy.toJSONString());
                 writer.flush();
 
-// making it readable to us humans :
+                // making it readable to us humans :
                 JSONArray checks = new JSONArray();
                 pretty.write('[');
                 for(Object obj:usersy){
@@ -107,24 +128,37 @@ public class JSONDataobject implements SignupDataAcessObject, LoginDataAcessObje
                         pretty.write(JsonObj.toJSONString());
                         pretty.write(',');
                         pretty.write('\n');
-                    checks.add(JsonObj);}
+                        checks.add(JsonObj);}
 
                 } pretty.write(']');
 
-// Cleaning up the Data for use later
+                // Cleaning up the Data for use later
                 clean.write(checks.toJSONString());
                 clean.flush();
-
-
-
             }
 
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
-
     }
 
+    /**
+     * Helper method to find and remove a user from a JSONArray by username.
+     * @param users The JSONArray to search.
+     * @param username The username to find and remove.
+     */
+    private void findAndRemoveUser(JSONArray users, String username) {
+        for (int i = 0; i < users.size(); i++) {
+            JSONObject oldUser = (JSONObject) users.get(i);
+            String oldUsername = (String) oldUser.get("username");
+
+            // If user is found it is removed and replaces with new user.
+            if (oldUsername.equals(username)) {
+                users.remove(i);
+                break;
+            }
+        }
+    }
 
     //testing formating stuff
 
