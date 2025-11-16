@@ -1,4 +1,4 @@
-package Use_Case.findmatches;
+package Use_Case.matchingstrategy;
 
 import Entity.MatchingPreferences;
 import Entity.User;
@@ -12,7 +12,7 @@ import java.util.Map;
  * programs, languages spoken, year of study and hobbies, applying the weights specified by the
  * current user.
  */
-public class WeightedMatchingAlgorithm {
+public class WeightedMatchingAlgorithm implements MatchingStrategy {
 
     static final double FIRST = 0.35;
     static final double SECOND = 0.25;
@@ -20,6 +20,7 @@ public class WeightedMatchingAlgorithm {
     static final double FOURTH = 0.12;
     static final double FIFTH = 0.08;
 
+    @Override
     public double calculateScore(User currentUser, User otherUser) {
         MatchingPreferences currentUserPrefs = currentUser.getPreferences();
         MatchingPreferences otherUserPrefs = otherUser.getPreferences();

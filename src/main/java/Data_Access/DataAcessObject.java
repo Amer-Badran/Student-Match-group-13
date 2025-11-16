@@ -64,9 +64,9 @@ private void save() {
         writer.write(String.join(",", headers.keySet()));
         writer.newLine();
 
-        for (User client : accounts.values()) {
+        for (User user : accounts.values()) {
             final String line = String.format("%s,%s",
-                    client.getUserName(), client.getPassword());
+                    user.getUsername(), user.getPassword());
             writer.write(line);
             writer.newLine();
         }
@@ -81,7 +81,7 @@ private void save() {
 
 @Override
 public void save(User client) {
-    accounts.put(client.getUserName(), client);
+    accounts.put(client.getUsername(), client);
     this.save();
 }
 

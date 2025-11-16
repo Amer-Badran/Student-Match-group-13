@@ -1,42 +1,31 @@
 package Entity;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+public class User {
+    private String username;
+    private String password;
+    private Profile profile;
+    private MatchingPreferences preferences;
 
-public class Client {
-    private final String userName;
-    private final String passWord;
-    private final ArrayList<String> classes = new ArrayList<>();
-    private final ArrayList<String> hobbies = new ArrayList<>();
-    private final Map<String,String> messages = new HashMap<>();
-
-
-    public Client(String userName, String passWord /*,ArrayList<String> classes,ArrayList<String> hobbies*/) {
-        this.userName = userName;
-        this.passWord = passWord;
-//        this.classes = classes;
-//        this.hobbies = hobbies;
+    // Constructor
+    public User(String username, String password, Profile profile, MatchingPreferences preferences) {
+        this.username = username;
+        this.password = password;
+        this.profile = profile;
+        this.preferences = preferences;
     }
 
+    // Username and password getters/setters
+    public String getUsername() { return username; }
+    public void setUsername(String username) { this.username = username; }
 
-    public String getUserName(){
-        return userName ;
-    }
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
 
-    public String getPassword() {
-        return passWord;
-    }
-    public ArrayList<String> getClasses(){
-        return classes;
-    }
-    public ArrayList<String> getHobbies(){
-        return hobbies;
-    }
+    // Access Profile and Preferences
+    public Profile getProfile() { return profile; }
+    public void setProfile(Profile profile) { this.profile = profile; }
 
-    public Map<String,String> getMessages(){
-        return messages;
-    }
-
+    public MatchingPreferences getPreferences() { return preferences; }
+    public void setPreferences(MatchingPreferences preferences) { this.preferences = preferences; }
 }
 

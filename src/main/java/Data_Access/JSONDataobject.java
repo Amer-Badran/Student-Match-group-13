@@ -74,12 +74,12 @@ public class JSONDataobject implements SignupDataAcessObject, LoginDataAcessObje
         return false;
     }
 
-    public void save(Client client) {
+    public void save(User user) {
         try {
             JSONArray usersy = readAll();
 
             JSONObject newUser = new JSONObject();
-            newUser.put("username", client.getUserName());
+            newUser.put("username", client.getUsername());
             newUser.put("password", client.getPassword());
             newUser.put("classes", client.getClasses());
             newUser.put("hobbies", client.getHobbies());
