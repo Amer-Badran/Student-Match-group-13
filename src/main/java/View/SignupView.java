@@ -1,12 +1,17 @@
 package View;
 
+import Interface_Adapter.signup.SignupController;
+import Interface_Adapter.signup.SignupState;
 import Interface_Adapter.signup.SignupViewModel;
+import org.json.simple.parser.ParseException;
+
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.io.IOException;
 
 public class SignupView extends JPanel implements ActionListener,PropertyChangeListener {
     private final String viewName = "Sign up";
@@ -14,6 +19,7 @@ public class SignupView extends JPanel implements ActionListener,PropertyChangeL
 
     private final JButton signUp;
     private final JButton cancel;
+    private SignupController signupControllers = null;
     private final JTextField usernameInputField = new JTextField(15);
     private final JPasswordField passwordInputField = new JPasswordField(15);
 
@@ -37,6 +43,29 @@ public class SignupView extends JPanel implements ActionListener,PropertyChangeL
         buttons.add(signUp);
         cancel = new JButton("cancel");
         buttons.add(cancel);
+        signUp.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        final SignupState currentState = signupViewModel.getState();
+                        currentState.setUsername(usernameInputField.getText());
+                        currentState.setPassword(new String(passwordInputField.getPassword()));;
+                        signupViewModel.setState(currentState);
+
+                        try {
+                            signupControllers.execute(
+                                    currentState.getUsername(),
+                                    currentState.getPassword());
+                        } catch (IOException ex) {
+                            throw new RuntimeException(ex);
+                        } catch (ParseException ex) {
+                            throw new RuntimeException(ex);
+                        }
+
+
+                    }
+                }
+        );
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
@@ -50,9 +79,11 @@ public class SignupView extends JPanel implements ActionListener,PropertyChangeL
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
+        final SignupState state = (SignupState) evt.getNewValue();
+        if (state.getError() != null) {
+            JOptionPane.showMessageDialog(this, state.getError());
 
-
-    }
+    }}
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -60,6 +91,9 @@ public class SignupView extends JPanel implements ActionListener,PropertyChangeL
     }
     public String getViewName() {
         return viewName;
+    }
+    public void setSignupController(SignupController controller) {
+        this.signupControllers = controller;
     }
 
 }

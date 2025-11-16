@@ -1,10 +1,12 @@
 package Data_Access;
 
-import Entity.Client;
-import Entity.ClientFactory;
+import Entity.User;
+import Entity.UserFactory;
 import Use_Case.signup.SignupDataAcessObject;
+import org.json.simple.parser.ParseException;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -15,12 +17,12 @@ public class DataAcessObject implements SignupDataAcessObject {
 
     private final File csvFile;
     private final Map<String, Integer> headers = new LinkedHashMap<>();
-    private final Map<String, Client> accounts = new HashMap<>();
+    private final Map<String, User> accounts = new HashMap<>();
 
     private String currentUsername;
 
 
-    public DataAcessObject(String csvPath, ClientFactory clientFactory) {
+    public DataAcessObject(String csvPath, UserFactory clientFactory) {
 
     csvFile = new File(csvPath);
         headers.put("username", 0);
@@ -45,7 +47,7 @@ public class DataAcessObject implements SignupDataAcessObject {
                 final String password = String.valueOf(col[headers.get("password")]);
 
                 // modify this method later on
-                final Client user = clientFactory.create(username, password);
+                final User user = clientFactory.create(username, password);
                 accounts.put(username, user);
             }
         }
@@ -62,7 +64,7 @@ private void save() {
         writer.write(String.join(",", headers.keySet()));
         writer.newLine();
 
-        for (Client client : accounts.values()) {
+        for (User client : accounts.values()) {
             final String line = String.format("%s,%s",
                     client.getUserName(), client.getPassword());
             writer.write(line);
@@ -78,12 +80,17 @@ private void save() {
 }
 
 @Override
-public void save(Client client) {
+public void save(User client) {
     accounts.put(client.getUserName(), client);
     this.save();
 }
 
-@Override
+    @Override
+    public ArrayList<String> getClasses(String name) throws IOException, ParseException {
+        return null;
+    }
+
+    @Override
 public boolean alreadyExists(String identifier) {
     return accounts.containsKey(identifier);
 }
