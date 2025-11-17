@@ -2,7 +2,6 @@ package Data_Access;
 import Entity.Client;
 import Use_Case.login.LoginDataAcessObject;
 import Use_Case.signup.SignupDataAcessObject;
-import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -11,13 +10,13 @@ import org.json.simple.parser.ParseException;
 import java.io.*;
 import java.util.ArrayList;
 
-public class JSONDataobject implements SignupDataAcessObject, LoginDataAcessObject {
+public class JSONDataObject implements SignupDataAcessObject, LoginDataAcessObject {
     private final File fileJSON;
     private final File PrettyJSON;
     private final File CleanData;
     private final JSONParser parser = new JSONParser();
 
-    public JSONDataobject() throws IOException {
+    public JSONDataObject() throws IOException {
         fileJSON = new File("ProjectData.json");
         PrettyJSON = new File("PrettyJSON.json");
         CleanData = new File("CleanData.json");

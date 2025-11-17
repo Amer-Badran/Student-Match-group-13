@@ -3,7 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
-import Data_Access.JSONDataobject;
+import Data_Access.JSONDataObject;
 import Entity.ClientFactory;
 import Interface_Adapter.ViewManagerModel;
 import Interface_Adapter.login.LoginController;
@@ -39,7 +39,7 @@ public class AppBuilder {
     private LoginView loginView;
     private SignupViewModel signupViewModel = new SignupViewModel();
     private LoginViewModel loginViewModels = new LoginViewModel();
-    private JSONDataobject DAO = new JSONDataobject();
+    private JSONDataObject DAO = new JSONDataObject();
     private ClientFactory clientFactory = new ClientFactory();
 
     public AppBuilder() throws IOException {

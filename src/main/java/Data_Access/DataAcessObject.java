@@ -25,8 +25,8 @@ public class DataAcessObject implements SignupDataAcessObject {
     public DataAcessObject(String csvPath, ClientFactory clientFactory) {
 
     csvFile = new File(csvPath);
-        headers.put("username", 0);
-        headers.put("password", 1);
+        headers.put("username", Integer.valueOf(0));
+        headers.put("password", Integer.valueOf(1));
 
         if (csvFile.length() == 0) {
         save();
