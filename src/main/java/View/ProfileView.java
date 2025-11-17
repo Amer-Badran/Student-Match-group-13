@@ -16,7 +16,6 @@ public class ProfileView extends JPanel implements ActionListener, PropertyChang
     private final ProfileController controller;
     private final ProfileViewModel viewModel;
 
-    // fields
     private final JTextField nameField = new JTextField(20);
     private final JTextField nationalityField = new JTextField(20);
     private final JTextField languagesField = new JTextField(20);
@@ -34,10 +33,9 @@ public class ProfileView extends JPanel implements ActionListener, PropertyChang
         this.controller = controller;
         this.viewModel = viewModel;
 
-        // listen for updates from ViewModel
         this.viewModel.addPropertyChangeListener(this);
 
-        setLayout(new GridLayout(0, 2)); // simple, you can style later
+        setLayout(new GridLayout(0, 2));
 
         add(new JLabel("Name:"));
         add(nameField);
@@ -69,7 +67,6 @@ public class ProfileView extends JPanel implements ActionListener, PropertyChang
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO: replace hard-coded userId with whatever your app uses
         String userId = viewModel.getState().userId;
 
         controller.execute(
@@ -91,7 +88,6 @@ public class ProfileView extends JPanel implements ActionListener, PropertyChang
         errorLabel.setText(state.errorMessage);
         infoLabel.setText(state.infoMessage);
 
-        // if you want fields to auto-update when state changes:
         nameField.setText(state.name);
         nationalityField.setText(state.nationality);
         languagesField.setText(state.languages);
