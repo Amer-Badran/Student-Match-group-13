@@ -1,50 +1,67 @@
 package Use_Case.findmatches;
 
 import Entity.User;
-import Entity.MatchingPreferences;
 import Use_Case.matchingstrategy.MatchingStrategy;
+import Use_Case.matchingstrategy.WeightedMatchingAlgorithm;
 
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class FindMatchesInteractor implements FindMatchesInputBoundary {
 
-    private final FindMatchesDataAccessObject userDataAccessObject;
+    private final FindMatchesDataAccessObject userDAO;
+    private final WeightedMatchingAlgorithm matchingAlgorithm;
     private final FindMatchesOutputBoundary presenter;
-    private final MatchingStrategy matchingStrategy;
 
-    public FindMatchesInteractor(FindMatchesDataAccessObject userDataAccessObject,
-                                 FindMatchesOutputBoundary presenter,
-                                 MatchingStrategy matchingStrategy) {
-        this.userDataAccessObject = userDataAccessObject;
+    public FindMatchesInteractor(FindMatchesDataAccessObject userDAO,
+                                 WeightedMatchingAlgorithm matchingAlgorithm,
+                                 FindMatchesOutputBoundary presenter) {
+        this.userDAO = userDAO;
+        this.matchingAlgorithm = matchingAlgorithm;
         this.presenter = presenter;
-        this.matchingStrategy = matchingStrategy;
     }
 
     @Override
     public void execute(FindMatchesInputData inputData) {
 
-       User currentUser = userDataAccessObject.findByUsername(inputData.getCurrentUsername());
-        MatchingPreferences currentPrefs = currentUser.getPreferences();
-
-        List<User> allUsers = userDataAccessObject.getAllUsers();
-        List<User> candidates = new ArrayList<>();
-
-        for (User u : allUsers) {
-            if (!u.getUsername().equals(currentUser.getUsername())) {
-                candidates.add(u);
-            }
+        // 1. Get current user
+        User currentUser = userDAO.findByUsername(inputData.getCurrentUsername());
+        if (currentUser == null) {
+            presenter.prepareFailView("User not found.");
+            return;
         }
 
-        // Sort by compatibility score (highest first)
-        candidates.sort(Comparator.comparingDouble(
-                u -> -matchingStrategy.calculateScore(currentPrefs, u.getPreferences()))
-        );
+        // 2. Load all users
+        List<User> allUsers = userDAO.getAllUsers();
 
-        FindMatchesOutputData outputData =
-                new FindMatchesOutputData(currentUser, candidates);
+        // 3. Build score list for all candidates except current user
+        List<Map.Entry<String, Double>> scored = new ArrayList<>();
 
-        presenter.present(outputData);
+        for (User candidate : allUsers) {
+            if (candidate.getUsername().equals(currentUser.getUsername())) continue;
+
+            double score = matchingAlgorithm.calculateScore(currentUser, candidate);
+            scored.add(Map.entry(candidate.getUsername(), score));
+        }
+
+        // 4. Sort by score DESCENDING
+        scored.sort((a, b) -> Double.compare(b.getValue(), a.getValue()));
+
+        // 5. Keep top 10
+        if (scored.size() > 10) {
+            scored = scored.subList(0, 10);
+        }
+
+        // 6. Move into LinkedHashMap for ordered output
+        Map<String, Double> resultMap = new LinkedHashMap<>();
+        for (Map.Entry<String, Double> entry : scored) {
+            resultMap.put(entry.getKey(), entry.getValue());
+        }
+
+        // 7. Send to presenter
+        FindMatchesOutputData outputData = new FindMatchesOutputData(resultMap);
+        presenter.prepareSuccessView(outputData);
     }
 }
