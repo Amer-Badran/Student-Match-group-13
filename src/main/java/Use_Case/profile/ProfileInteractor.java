@@ -1,31 +1,32 @@
 package Use_Case.profile;
 
 import Entity.Profile;
+import org.json.simple.parser.ParseException;
+
+import java.io.IOException;
 
 public class ProfileInteractor implements ProfileInputBoundary {
 
-    private final ProfileDataAccessInterface profileDAO;
+    private final ProfileDataAcessObject profileDAO;
     private final ProfileOutputBoundary presenter;
 
-    public ProfileInteractor(ProfileDataAccessInterface profileDAO,
+    public ProfileInteractor(ProfileDataAcessObject profileDAO,
                              ProfileOutputBoundary presenter) {
         this.profileDAO = profileDAO;
         this.presenter = presenter;
     }
 
     @Override
-    public void execute(ProfileInputData input) {
-        // Basic validation
+    public void execute(ProfileInputData input) throws IOException, ParseException {
         if (input.getName() == null || input.getName().isBlank()) {
             presenter.prepareFailView("Name is required.");
             return;
         }
-        if (input.getBio() != null && input.getBio().length() > 200) {
-            presenter.prepareFailView("Bio must be at most 200 characters.");
+        if (input.getBio() != null && input.getBio().length() > 20) {
+            presenter.prepareFailView("Bio must be at most 20 characters.");
             return;
         }
 
-        // Load existing or create new
         Profile profile = profileDAO.getProfileByUserId(input.getUserId());
         if (profile == null) {
             profile = new Profile(
@@ -49,10 +50,8 @@ public class ProfileInteractor implements ProfileInputBoundary {
             profile.setPhone(input.getPhone());
         }
 
-        // Save to DB (JSON later)
-        profileDAO.saveProfile(profile);
+        profileDAO.save(profile);
 
-        // Tell presenter
         ProfileOutputData output =
                 new ProfileOutputData(profile.getUserId(), profile.getName(), "Profile saved.");
         presenter.prepareSuccessView(output);
