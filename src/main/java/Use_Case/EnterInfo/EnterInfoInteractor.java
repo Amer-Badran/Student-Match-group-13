@@ -9,7 +9,7 @@ import Interface_Adapter.EnterInfo.EnterInfoPresenter;
 import java.util.Map;
 import java.util.List;
 
-public class EnterInfoInteractor {
+public class EnterInfoInteractor implements EnterInfoInputBoundary{
 
     private final FileCourseDAO courseDAO;
     private final FileProgramDAO programDAO;
@@ -51,10 +51,9 @@ public class EnterInfoInteractor {
 
     /**
      * Saves the user's matching preferences.
-     * @param username The user who is logged in.
-     * @param inputData The data object containing the user's selections.
      */
-    public void saveInfo(String username, EnterInfoInputData inputData) {
+    @Override
+    public void execute(String username, EnterInfoInputData inputData) {
         try {
 
             Client client = jsonDataobject.getClient(username);
