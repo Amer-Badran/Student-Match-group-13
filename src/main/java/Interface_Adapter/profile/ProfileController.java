@@ -2,6 +2,9 @@ package Interface_Adapter.profile;
 
 import Use_Case.profile.ProfileInputBoundary;
 import Use_Case.profile.ProfileInputData;
+import org.json.simple.parser.ParseException;
+
+import java.io.IOException;
 
 public class ProfileController {
 
@@ -18,7 +21,7 @@ public class ProfileController {
                         String languages,
                         String email,
                         String instagram,
-                        String phone) {
+                        String phone) throws IOException, ParseException {
 
         ProfileInputData inputData = new ProfileInputData(
                 userId, name, nationality, bio, languages, email, instagram, phone
