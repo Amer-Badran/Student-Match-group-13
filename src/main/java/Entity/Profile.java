@@ -42,7 +42,7 @@ public class Profile {
     public String getPhone() { return phone; }
 
     public void setName(String name) {
-        if (name == null || name.isBlank()) {
+        if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException("Name is required.");
         }
         this.name = name;

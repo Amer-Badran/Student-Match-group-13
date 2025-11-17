@@ -1,6 +1,6 @@
 package Use_Case.login;
 
-import Data_Access.JSONDataobject;
+import Data_Access.JSONDataObject;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;

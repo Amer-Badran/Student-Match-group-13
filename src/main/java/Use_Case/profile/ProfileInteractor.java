@@ -18,7 +18,7 @@ public class ProfileInteractor implements ProfileInputBoundary {
 
     @Override
     public void execute(ProfileInputData input) throws IOException, ParseException {
-        if (input.getName() == null || input.getName().isBlank()) {
+        if (input.getName() == null || input.getName().isEmpty()) {
             presenter.prepareFailView("Name is required.");
             return;
         }
