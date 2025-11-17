@@ -3,6 +3,7 @@ package View;
 import Interface_Adapter.profile.ProfileController;
 import Interface_Adapter.profile.ProfileViewModel;
 import Interface_Adapter.profile.ProfileState;
+import org.json.simple.parser.ParseException;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.io.IOException;
 
 public class ProfileView extends JPanel implements ActionListener, PropertyChangeListener {
 
@@ -69,16 +71,22 @@ public class ProfileView extends JPanel implements ActionListener, PropertyChang
     public void actionPerformed(ActionEvent e) {
         String userId = viewModel.getState().userId;
 
-        controller.execute(
-                userId,
-                nameField.getText(),
-                nationalityField.getText(),
-                bioArea.getText(),
-                languagesField.getText(),
-                emailField.getText(),
-                instagramField.getText(),
-                phoneField.getText()
-        );
+        try {
+            controller.execute(
+                    userId,
+                    nameField.getText(),
+                    nationalityField.getText(),
+                    bioArea.getText(),
+                    languagesField.getText(),
+                    emailField.getText(),
+                    instagramField.getText(),
+                    phoneField.getText()
+            );
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        } catch (ParseException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 
     @Override
