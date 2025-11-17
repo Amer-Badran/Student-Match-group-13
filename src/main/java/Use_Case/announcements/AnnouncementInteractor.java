@@ -13,6 +13,7 @@ public class AnnouncementInteractor implements AnnouncementInputBoundary {
         this.presenter = presenter;
     }
 
+
     @Override
     public void execute(AnnouncementInputData inputData) {
         Announcement announcement = dataAccess.load(inputData.announcementId());
