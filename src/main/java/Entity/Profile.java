@@ -2,17 +2,22 @@ package Entity;
 
 public class Profile {
 
-    private final String userId;
+    // BEFORE:
+    // private final String userId;
+    // public String getUserId() { return userId; }
+
+    // AFTER:
+    private final String username;
 
     private String name;
     private String nationality;
     private String bio;
-    private String languages;  // “languages spoken”
+    private String languages;
     private String email;
     private String instagram;
     private String phone;
 
-    public Profile(String userId,
+    public Profile(String username,
                    String name,
                    String nationality,
                    String bio,
@@ -21,7 +26,7 @@ public class Profile {
                    String instagram,
                    String phone) {
 
-        this.userId = userId;
+        this.username = username;
         setName(name);
         setNationality(nationality);
         setBio(bio);
@@ -31,7 +36,9 @@ public class Profile {
         setPhone(phone);
     }
 
-    public String getUserId() { return userId; }
+    public String getUsername() {   // ✅ instead of getUserId()
+        return username;
+    }
 
     public String getName() { return name; }
     public String getNationality() { return nationality; }

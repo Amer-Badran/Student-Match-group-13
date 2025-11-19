@@ -1,7 +1,7 @@
 package Use_Case.profile;
 
 public class ProfileInputData {
-    private final String userId;
+    private final String username;   // instead of userId
     private final String name;
     private final String nationality;
     private final String bio;
@@ -10,7 +10,7 @@ public class ProfileInputData {
     private final String instagram;
     private final String phone;
 
-    public ProfileInputData(String userId,
+    public ProfileInputData(String username,
                             String name,
                             String nationality,
                             String bio,
@@ -18,7 +18,7 @@ public class ProfileInputData {
                             String email,
                             String instagram,
                             String phone) {
-        this.userId = userId;
+        this.username = username;
         this.name = name;
         this.nationality = nationality;
         this.bio = bio;
@@ -28,7 +28,9 @@ public class ProfileInputData {
         this.phone = phone;
     }
 
-    public String getUserId() { return userId; }
+    public String getUsername() {
+        return username;
+    }
     public String getName() { return name; }
     public String getNationality() { return nationality; }
     public String getBio() { return bio; }

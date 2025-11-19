@@ -69,11 +69,12 @@ public class ProfileView extends JPanel implements ActionListener, PropertyChang
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String userId = viewModel.getState().userId;
+        String userId = viewModel.getState().username;
 
         try {
+            String username = viewModel.getState().username;
             controller.execute(
-                    userId,
+                    username,
                     nameField.getText(),
                     nationalityField.getText(),
                     bioArea.getText(),
@@ -82,9 +83,9 @@ public class ProfileView extends JPanel implements ActionListener, PropertyChang
                     instagramField.getText(),
                     phoneField.getText()
             );
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
         } catch (ParseException ex) {
+            throw new RuntimeException(ex);
+        } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
     }

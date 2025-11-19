@@ -1,7 +1,7 @@
 package Interface_Adapter.profile;
 
 public class ProfileState {
-    public String userId = "";
+    public String username = "";
     public String name = "";
     public String nationality = "";
     public String bio = "";

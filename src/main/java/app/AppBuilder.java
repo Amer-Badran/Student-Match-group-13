@@ -38,7 +38,7 @@ public class AppBuilder {
     private WelcomeView welcomeView;
     private LoginView loginView;
     private SignupViewModel signupViewModel = new SignupViewModel();
-    private LoginViewModel loginViewModels = new LoginViewModel();
+//    private LoginViewModel loginViewModels = new LoginViewModel();
     private JSONDataObject DAO = new JSONDataObject();
     private ClientFactory clientFactory = new ClientFactory();
 
