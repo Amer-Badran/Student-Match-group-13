@@ -27,6 +27,7 @@ public class EnterInfoState {
     private Map<String, Double> selectedWeights =  new HashMap<>();
 
     private String saveMessage = "";
+    private String failedSaveMessage = "";
 
     /**
      * Copy constructor: Creates a new state by copying an old one.
@@ -46,6 +47,7 @@ public class EnterInfoState {
         this.selectedLanguages = copy.selectedLanguages;
         this.selectedWeights = copy.selectedWeights;
         this.saveMessage = copy.saveMessage;
+        this.failedSaveMessage = copy.failedSaveMessage;
     }
 
     /**
@@ -68,6 +70,7 @@ public class EnterInfoState {
     public List<String> getSelectedLanguages() { return selectedLanguages; }
     public Map<String, Double> getSelectedWeights() { return selectedWeights; }
     public String getSaveMessage() { return saveMessage; }
+    public String getFailedSaveMessage() { return failedSaveMessage; }
 
     // Setter functions.
     // Used by Presenter to update the state.
@@ -85,4 +88,5 @@ public class EnterInfoState {
     public void setSelectedLanguages(List<String> selectedLanguages) { this.selectedLanguages = selectedLanguages; }
     public void setSelectedWeights(Map<String, Double> selectedWeights) { this.selectedWeights = selectedWeights; }
     public void setSaveMessage(String saveMessage) { this.saveMessage = saveMessage; }
+    public void setFailedSaveMessage(String failedSaveMessage) { this.failedSaveMessage = failedSaveMessage; }
 }

@@ -1,16 +1,23 @@
 package Interface_Adapter.EnterInfo;
 
+import Interface_Adapter.ViewManagerModel;
+import Use_Case.EnterInfo.EnterInfoOutputBoundary;
 import Use_Case.EnterInfo.EnterInfoOutputData;
 import java.util.List;
 import java.util.Map;
 
-public class EnterInfoPresenter {
+public class EnterInfoPresenter implements EnterInfoOutputBoundary {
 
-    public final EnterInfoViewModel viewModel;
-    public EnterInfoPresenter(EnterInfoViewModel viewModel) {
+    private final EnterInfoViewModel viewModel;
+    private final ViewManagerModel viewManagerModel;
+
+    public EnterInfoPresenter(EnterInfoViewModel viewModel,
+                              ViewManagerModel viewManagerModel) {
         this.viewModel = viewModel;
+        this.viewManagerModel = viewManagerModel;
     }
 
+    @Override
     public void prepSuccessView(EnterInfoOutputData outputData) {
         EnterInfoState currentState = viewModel.getState();
 
@@ -29,8 +36,10 @@ public class EnterInfoPresenter {
         currentState.setAllWeights(weights);
 
         viewModel.setState(currentState);
-
         viewModel.firePropertyChange();
+
+        viewManagerModel.setState(viewModel.getViewName());
+        viewManagerModel.firePropertyChange();
     }
 
     public void prepFailView(String error) {
@@ -40,6 +49,13 @@ public class EnterInfoPresenter {
     public void prepSaveSuccessView(String message) {
         EnterInfoState currentState = viewModel.getState();
         currentState.setSaveMessage(message);
+        viewModel.setState(currentState);
+        viewModel.firePropertyChange();
+    }
+
+    public void prepFailedSaveView(String message) {
+        EnterInfoState currentState = viewModel.getState();
+        currentState.setFailedSaveMessage(message);
         viewModel.setState(currentState);
         viewModel.firePropertyChange();
     }

@@ -1,5 +1,8 @@
 package Use_Case.EnterInfo;
 
-public class EnterInfoOutputBoundary {
-
+public interface EnterInfoOutputBoundary {
+    void prepSuccessView(EnterInfoOutputData outputData);
+    void prepFailView(String error);
+    void prepSaveSuccessView(String message);
+    void prepFailedSaveView(String message);
 }
