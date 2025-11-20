@@ -1,6 +1,8 @@
 package Data_Access;
 import Entity.Client;
+import Entity.Profile;
 import Use_Case.login.LoginDataAcessObject;
+import Use_Case.profile.ProfileDataAcessObject;
 import Use_Case.signup.SignupDataAcessObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.JSONArray;
@@ -10,7 +12,7 @@ import org.json.simple.parser.ParseException;
 import java.io.*;
 import java.util.ArrayList;
 
-public class JSONDataObject implements SignupDataAcessObject, LoginDataAcessObject {
+public class JSONDataObject implements SignupDataAcessObject, LoginDataAcessObject, ProfileDataAcessObject {
     private final File fileJSON;
     private final File PrettyJSON;
     private final File CleanData;
@@ -80,8 +82,12 @@ public class JSONDataObject implements SignupDataAcessObject, LoginDataAcessObje
             JSONObject newUser = new JSONObject();
             newUser.put("username", client.getUserName());
             newUser.put("password", client.getPassword());
-            newUser.put("classes", client.getClasses());
-            newUser.put("hobbies", client.getHobbies());
+            newUser.put("classes",client.getClasses());
+            newUser.put("Bio","");
+            newUser.put("nationality","");
+            newUser.put("email","");
+            newUser.put("phone","");
+            newUser.put("instagram","");
             client.getMessages().put("User1","Hello user X, hope you are doing well!");
             newUser.put("messages",client.getMessages());
             usersy.add(newUser);
@@ -190,10 +196,64 @@ public class JSONDataObject implements SignupDataAcessObject, LoginDataAcessObje
         }
         return false;
     }
+
+    @Override
+    public Profile getProfileByUserId(String userId) throws IOException, ParseException {
+        return null;
+    }
+
+    @Override
+    public void save(Profile profile) throws IOException, ParseException {
+        JSONArray users = readAll();
+        if(!users.isEmpty()){
+            for (Object obj : users) {
+                JSONObject user = (JSONObject) obj;
+                if (profile.getUserName().equals(user.get("username"))) {
+                    user.put("Bio",profile.getBio());
+                    user.put("nationality",profile.getNationality());
+                    user.put("email",profile.getEmail());
+                    user.put("phone",profile.getPhone());
+                    user.put("instagram",profile.getInstagram());
+
+
+                    // rewrite file
+
+                    try (FileWriter writer = new FileWriter(fileJSON);
+                         FileWriter pretty =new FileWriter(PrettyJSON);
+                         FileWriter clean =new FileWriter(CleanData)) {
+                        writer.write(users.toJSONString());
+                        writer.flush();
+
+// making it readable to us humans :
+                        JSONArray checks = new JSONArray();
+                        pretty.write('[');
+                        for(Object objs:users){
+                            JSONObject JsonObj = (JSONObject) objs;
+                            if(alreadyExists(checks,(String)JsonObj.get("username"))){
+                                continue;
+                            }
+                            else{
+                                pretty.write(JsonObj.toJSONString());
+                                pretty.write(',');
+                                pretty.write('\n');
+                                checks.add(JsonObj);}
+
+                        } pretty.write(']');
+
+// Cleaning up the Data for use later
+                        clean.write(checks.toJSONString());
+                        clean.flush();
+
+
+
+                    }
+                }
+            }
+        }
 //
 
 
-    }
+    }}
 
 
 

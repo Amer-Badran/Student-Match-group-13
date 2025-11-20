@@ -9,6 +9,9 @@ import Interface_Adapter.ViewManagerModel;
 import Interface_Adapter.login.LoginController;
 import Interface_Adapter.login.LoginPresenter;
 import Interface_Adapter.login.LoginViewModel;
+import Interface_Adapter.profile.ProfileController;
+import Interface_Adapter.profile.ProfilePresenter;
+import Interface_Adapter.profile.ProfileViewModel;
 import Interface_Adapter.signup.SignupController;
 import Interface_Adapter.signup.SignupPresenter;
 import Interface_Adapter.signup.SignupViewModel;
@@ -18,6 +21,9 @@ import Use_Case.login.LoginDataAcessObject;
 import Use_Case.login.LoginInputBoundary;
 import Use_Case.login.LoginInteractor;
 import Use_Case.login.LoginOutputBoundary;
+import Use_Case.profile.ProfileInputBoundary;
+import Use_Case.profile.ProfileInteractor;
+import Use_Case.profile.ProfileOutputBoundary;
 import Use_Case.signup.SignupInputBoundary;
 import Use_Case.signup.SignupInteractor;
 import Use_Case.signup.SignupOutputBoundary;
@@ -37,8 +43,10 @@ public class AppBuilder {
     private SignupView signupView;
     private WelcomeView welcomeView;
     private LoginView loginView;
+    private ProfileView profileView;
     private SignupViewModel signupViewModel = new SignupViewModel();
     private LoginViewModel loginViewModels = new LoginViewModel();
+    private ProfileViewModel profileViewModels = new ProfileViewModel();
     private JSONDataObject DAO = new JSONDataObject();
     private ClientFactory clientFactory = new ClientFactory();
 
@@ -86,11 +94,23 @@ public AppBuilder addLoginView(){
         return this;
 }
 public AppBuilder addLoginUseCase() throws IOException {
-        final LoginOutputBoundary loginPresenter = new LoginPresenter(viewManagerModel,loginViewModels);
+        final LoginOutputBoundary loginPresenter = new LoginPresenter(viewManagerModel,loginViewModels,profileViewModels);
         final LoginInputBoundary loginInteractor = new LoginInteractor(DAO,loginPresenter);
         loginView.setLoginController(new LoginController(loginInteractor));
         return this;
 }
+public AppBuilder addProfileView(){
+        profileView = new ProfileView(profileViewModels);
+        cardPanel.add(profileView,profileViewModels.getViewName());
+        return this;
+}
+public AppBuilder addProfileUseCase(){
+        final ProfileOutputBoundary profilePresenter = new ProfilePresenter(viewManagerModel,profileViewModels);
+        final ProfileInputBoundary profileInteractor = new ProfileInteractor(DAO,profilePresenter);
+        profileView.setProfileController(new ProfileController(profileInteractor));
+        return this;
+}
+
 
     public JFrame build() {
         final JFrame application = new JFrame("Team 13 prototype");

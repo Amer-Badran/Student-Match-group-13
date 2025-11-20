@@ -2,36 +2,21 @@ package Entity;
 
 public class Profile {
 
-    private final String userId;
+    private  String userName;
 
-    private String name;
-    private String nationality;
-    private String bio;
-    private String languages;  // “languages spoken”
-    private String email;
-    private String instagram;
-    private String phone;
+    private String name = new String();
+    private String nationality= new String();
+    private String bio= new String();
+    private String languages= new String();  // “languages spoken”
+    private String email= new String();
+    private String instagram= new String();
+    private String phone= new String();
 
-    public Profile(String userId,
-                   String name,
-                   String nationality,
-                   String bio,
-                   String languages,
-                   String email,
-                   String instagram,
-                   String phone) {
+    public Profile() {
 
-        this.userId = userId;
-        setName(name);
-        setNationality(nationality);
-        setBio(bio);
-        setLanguages(languages);
-        setEmail(email);
-        setInstagram(instagram);
-        setPhone(phone);
     }
 
-    public String getUserId() { return userId; }
+    public String getUserName() { return userName; }
 
     public String getName() { return name; }
     public String getNationality() { return nationality; }
@@ -74,4 +59,5 @@ public class Profile {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+    public void setUserName(String userName){this.userName = userName;};
 }

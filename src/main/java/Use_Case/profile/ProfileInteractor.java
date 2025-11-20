@@ -27,33 +27,36 @@ public class ProfileInteractor implements ProfileInputBoundary {
             return;
         }
 
-        Profile profile = profileDAO.getProfileByUserId(input.getUserId());
+        Profile profile = new Profile();
         if (profile == null) {
-            profile = new Profile(
-                    input.getUserId(),
-                    input.getName(),
-                    input.getNationality(),
-                    input.getBio(),
-                    input.getLanguages(),
-                    input.getEmail(),
-                    input.getInstagram(),
-                    input.getPhone()
-            );
+            profile = new Profile();
+            profile.setUserName(input.getUserId());
+            profile.setBio(input.getBio());
+            profile.setName(input.getName());
+            profile.setEmail(input.getEmail());
+            profile.setNationality(input.getNationality());
+            profile.setLanguages(input.getLanguages());
+            profile.setPhone(input.getPhone());
+            profile.setInstagram(input.getInstagram());
+            profileDAO.save(profile);
+
         } else {
             // update fields
-            profile.setName(input.getName());
-            profile.setNationality(input.getNationality());
+            profile.setUserName(input.getUserId());
             profile.setBio(input.getBio());
-            profile.setLanguages(input.getLanguages());
+            profile.setName(input.getName());
             profile.setEmail(input.getEmail());
-            profile.setInstagram(input.getInstagram());
+            profile.setNationality(input.getNationality());
+            profile.setLanguages(input.getLanguages());
             profile.setPhone(input.getPhone());
+            profile.setInstagram(input.getInstagram());
+            profileDAO.save(profile);
         }
 
         profileDAO.save(profile);
 
         ProfileOutputData output =
-                new ProfileOutputData(profile.getUserId(), profile.getName(), "Profile saved.");
+                new ProfileOutputData(profile.getUserName(), profile.getName(), "Profile saved.");
         presenter.prepareSuccessView(output);
     }
 }

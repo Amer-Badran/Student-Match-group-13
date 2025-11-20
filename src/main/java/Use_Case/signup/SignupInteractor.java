@@ -17,6 +17,7 @@ public class SignupInteractor implements SignupInputBoundary {
     private SignupDataAcessObject DAO;
     private SignupOutputBoundary presenter;
     private ClientFactory clientFactory;
+    private SignupOutputData outputData;
 
     public SignupInteractor(SignupDataAcessObject DAO, SignupOutputBoundary presenter, ClientFactory clientFactory) {
         this.DAO = DAO;
@@ -37,7 +38,9 @@ public class SignupInteractor implements SignupInputBoundary {
             Client theClient = clientFactory.create(name,pass);
             DAO.save(theClient);
             ArrayList<String> things = DAO.getClasses(name);
-            presenter.prepareSuccessView();
+            outputData = new SignupOutputData(theClient);
+
+            presenter.prepareSuccessView(outputData);
         }
         }
 

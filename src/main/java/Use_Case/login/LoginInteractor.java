@@ -8,6 +8,7 @@ import java.io.IOException;
 public class LoginInteractor implements LoginInputBoundary{
     private final LoginDataAcessObject DAO;
     private LoginOutputBoundary loginPresenter;
+    private LoginOutputData outputData;
 
 
     public LoginInteractor(LoginDataAcessObject dataobject,LoginOutputBoundary pres) throws IOException {
@@ -26,7 +27,8 @@ public class LoginInteractor implements LoginInputBoundary{
             loginPresenter.prepareFailView("Wrong Password ! try again");
         }
         else if(DAO.checkNewUser(name)){
-            loginPresenter.prepareProfileView();
+            outputData = new LoginOutputData(name);
+            loginPresenter.prepareProfileView(outputData);
         }
         else{
             loginPresenter.prepareHomeView();
