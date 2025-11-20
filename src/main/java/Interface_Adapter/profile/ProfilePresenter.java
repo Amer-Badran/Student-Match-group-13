@@ -21,11 +21,12 @@ public class ProfilePresenter implements ProfileOutputBoundary {
         state.errorMessage = "";
         state.infoMessage = outputData.getMessage();
         state.name = outputData.getName();
-        state.userName = outputData.getUserId();
+
+        state.username = outputData.getUsername();
+
         profileViewModel.setState(state);
         profileViewModel.firePropertyChange();
 
-        // if you want to stay on the profile screen:
         viewManagerModel.setState(profileViewModel.getViewName());
         viewManagerModel.firePropertyChange();
     }

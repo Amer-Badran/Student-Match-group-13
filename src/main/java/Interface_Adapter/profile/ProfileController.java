@@ -14,7 +14,7 @@ public class ProfileController {
         this.interactor = interactor;
     }
 
-    public void execute(String userId,
+    public void execute(String username,
                         String name,
                         String nationality,
                         String bio,
@@ -24,7 +24,7 @@ public class ProfileController {
                         String phone) throws IOException, ParseException {
 
         ProfileInputData inputData = new ProfileInputData(
-                userId, name, nationality, bio, languages, email, instagram, phone
+                username, name, nationality, bio, languages, email, instagram, phone
         );
         interactor.execute(inputData);
     }

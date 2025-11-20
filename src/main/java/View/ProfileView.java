@@ -3,7 +3,6 @@ package View;
 import Interface_Adapter.profile.ProfileController;
 import Interface_Adapter.profile.ProfileViewModel;
 import Interface_Adapter.profile.ProfileState;
-import Interface_Adapter.signup.SignupController;
 import org.json.simple.parser.ParseException;
 
 import javax.swing.*;
@@ -16,7 +15,7 @@ import java.io.IOException;
 
 public class ProfileView extends JPanel implements ActionListener, PropertyChangeListener {
 
-    private ProfileController controller;
+    private final ProfileController controller;
     private final ProfileViewModel viewModel;
 
     private final JTextField nameField = new JTextField(20);
@@ -32,8 +31,8 @@ public class ProfileView extends JPanel implements ActionListener, PropertyChang
 
     private final JButton saveButton = new JButton("Save profile");
 
-    public ProfileView(ProfileViewModel viewModel) {
-        this.controller = null;
+    public ProfileView(ProfileController controller, ProfileViewModel viewModel) {
+        this.controller = controller;
         this.viewModel = viewModel;
 
         this.viewModel.addPropertyChangeListener(this);
@@ -70,11 +69,12 @@ public class ProfileView extends JPanel implements ActionListener, PropertyChang
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String userId = viewModel.getState().userName;
+        String userId = viewModel.getState().username;
 
         try {
+            String username = viewModel.getState().username;
             controller.execute(
-                    userId,
+                    username,
                     nameField.getText(),
                     nationalityField.getText(),
                     bioArea.getText(),
@@ -83,9 +83,9 @@ public class ProfileView extends JPanel implements ActionListener, PropertyChang
                     instagramField.getText(),
                     phoneField.getText()
             );
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
         } catch (ParseException ex) {
+            throw new RuntimeException(ex);
+        } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
     }
@@ -105,8 +105,4 @@ public class ProfileView extends JPanel implements ActionListener, PropertyChang
         phoneField.setText(state.phone);
         bioArea.setText(state.bio);
     }
-    public void setProfileController(ProfileController controller) {
-        this.controller = controller;
-    }
-
 }
