@@ -30,6 +30,6 @@ public class EnterInfoController {
 
         );
 
-        enterInfoInteractor.saveInfo(username, inputData);
+        //enterInfoInteractor.saveInfo(username, inputData);
     }
 }

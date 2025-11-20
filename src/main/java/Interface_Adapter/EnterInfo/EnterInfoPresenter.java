@@ -24,16 +24,16 @@ public class EnterInfoPresenter implements EnterInfoOutputBoundary {
         Map<String, String> courses = outputData.getCourses();
         List<String> programs = outputData.getPrograms();
         List<Integer> years = outputData.getYearsStudy();
-        List<String> hobbies = outputData.getHobbies();
-        List<String> languages = outputData.getLanguages();
-        Map<String, Double> weights = outputData.getWeights();
+//        List<String> hobbies = outputData.getHobbies();
+//        List<String> languages = outputData.getLanguages();
+//        Map<String, Double> weights = outputData.getWeights();
 
         currentState.setAllCourses(courses);
         currentState.setAllPrograms(programs);
         currentState.setAllYears(years);
-        currentState.setAllHobbies(hobbies);
-        currentState.setAllLanguages(languages);
-        currentState.setAllWeights(weights);
+//        currentState.setAllHobbies(hobbies);
+//        currentState.setAllLanguages(languages);
+//        currentState.setAllWeights(weights);
 
         viewModel.setState(currentState);
         viewModel.firePropertyChange();

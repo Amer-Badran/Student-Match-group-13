@@ -2,10 +2,11 @@ package Use_Case.EnterInfo;
 
 import Data_Access.FileCourseDAO;
 import Data_Access.FileProgramDAO;
-import Data_Access.JSONDataobject;
 import Entity.Client;
 import Entity.MatchingPreferences;
 import Interface_Adapter.EnterInfo.EnterInfoPresenter;
+
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.List;
 
@@ -13,7 +14,7 @@ public class EnterInfoInteractor implements EnterInfoInputBoundary{
 
     private final FileCourseDAO courseDAO;
     private final FileProgramDAO programDAO;
-    private final JSONDataobject jsonDataobject;
+    private final MatchingPreferencesDataAccessObject DAO;
     private final EnterInfoPresenter presenter;
 
     /**
@@ -25,11 +26,11 @@ public class EnterInfoInteractor implements EnterInfoInputBoundary{
      */
     public EnterInfoInteractor(FileCourseDAO courseDAO,
                                FileProgramDAO programDAO,
-                               JSONDataobject jsonDataobject,
+                               MatchingPreferencesDataAccessObject jsonDataobject,
                                EnterInfoPresenter presenter) {
         this.courseDAO = courseDAO;
         this.programDAO = programDAO;
-        this.jsonDataobject = jsonDataobject;
+        this.DAO = jsonDataobject;
         this.presenter = presenter;
     }
 
@@ -41,7 +42,13 @@ public class EnterInfoInteractor implements EnterInfoInputBoundary{
         try {
             Map<String, String> courses = courseDAO.getCourses();
             List<String> programs = programDAO.getPrograms();
-            List<Integer> yearsStudy = List.of(1, 2, 3, 4, 5, 6, 7);
+            // another way to create the list, instead of the list.of() method which does not work on all
+            // versions of Java
+            ArrayList<Integer> yearsStudy = new ArrayList<Integer>();
+            yearsStudy.add(1);yearsStudy.add(2);yearsStudy.add(3);yearsStudy.add(4);
+            yearsStudy.add(5);yearsStudy.add(6);yearsStudy.add(7);
+            // End of list creation
+
             EnterInfoOutputData outputData = new EnterInfoOutputData(courses, programs, yearsStudy);
             presenter.prepSuccessView(outputData);
         } catch (Exception e) {
@@ -56,25 +63,33 @@ public class EnterInfoInteractor implements EnterInfoInputBoundary{
     public void execute(String username, EnterInfoInputData inputData) {
         try {
 
-            Client client = jsonDataobject.getClient(username);
+            Client client = DAO.getClient(username);
 
             // Get the user's selections from the inputData object
             List<String> selectedCourses = inputData.getCourses();
             List<String> selectedPrograms = inputData.getPrograms();
             int yearOfStudy = inputData.getSelectYear();
+            List<String> hobbies = inputData.getSelectedHobbies();
+            List<String>  languages = inputData.getSelectedLanguages();
+            Map<String, Double> weights = inputData.getSelectedWeights();
+
+
 
             // Create new MatchingPreferences entity
             MatchingPreferences preferences = new MatchingPreferences(
                     selectedCourses,
                     selectedPrograms,
-                    yearOfStudy
+                    yearOfStudy,
+                    hobbies,
+                    languages,
+                    weights
             );
 
             // Update the Client object with the new preferences
             client.setMatchPref(preferences);
 
             // Save the updated Client object back to the file
-            jsonDataobject.save(client);
+            DAO.save(preferences);
             presenter.prepSaveSuccessView("Preferences For Matching Saved!");
 
 

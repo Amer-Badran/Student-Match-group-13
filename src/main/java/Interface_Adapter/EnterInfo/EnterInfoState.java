@@ -25,7 +25,7 @@ public class EnterInfoState {
     private List<String> selectedHobbies = new ArrayList<>();
     private List<String> selectedLanguages = new ArrayList<>();
     private Map<String, Double> selectedWeights =  new HashMap<>();
-
+    private String username = "";
     private String saveMessage = "";
     private String failedSaveMessage = "";
 
@@ -55,6 +55,13 @@ public class EnterInfoState {
      */
     public EnterInfoState() {}
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getUsername() {
+        return username;
+    }
     // Getters functions.
 
     public Map<String, String> getAllCourses() { return allCourses; }

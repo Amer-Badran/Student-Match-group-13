@@ -4,16 +4,15 @@ import java.util.*;
 
 public class MatchingPreferences {
     private List<String> courses;
-    private Map<String, String> programs;
+    private List<String> programs;
     private int yearOfStudy;
     private List<String> hobbies;
     private List<String>  languages;
     private Map<String, Double> weights;
 
-    public MatchingPreferences(List<String> courses, Map<String, String> programs, int yearOfStudy, List<String> hobbies, List<String>  languages, Map<String, Double> weights) {
+    public MatchingPreferences(List<String> courses, List<String> programs, int yearOfStudy, List<String> hobbies, List<String>  languages, Map<String, Double> weights) {
 
         validateCourses(courses);
-        validatePrograms(programs);
         validateYearOfStudy(yearOfStudy);
         validateHobbies(hobbies);
         validateLanguages(languages);
@@ -28,8 +27,8 @@ public class MatchingPreferences {
     }
 
 
-    public List<String> getCourses() { return new ArrayList<>(courses); }
-    public Map<String, String> getPrograms() { return new HashMap<>(programs); }
+    public List<String> getCourses() { return courses; }
+    public List<String> getPrograms() { return programs; }
     public int getYearOfStudy() { return yearOfStudy; }
     public List<String> getHobbies() { return hobbies; }
     public List<String> getLanguages() { return languages; }
@@ -40,8 +39,8 @@ public class MatchingPreferences {
         this.courses = courses;
     }
 
-    public void setPrograms(Map<String, String> programs) {
-        validatePrograms(programs);
+    public void setPrograms(List<String> programs) {
+//        validatePrograms(programs);
         this.programs = programs;
     }
 

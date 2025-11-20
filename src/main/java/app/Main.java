@@ -16,6 +16,7 @@ public class Main {
                 .addLoginUseCase()
                 .addProfileView()
                 .addProfileUseCase()
+                .addEnterInfoView()
                 .build();
         application.pack();
         application.setLocationRelativeTo(null);

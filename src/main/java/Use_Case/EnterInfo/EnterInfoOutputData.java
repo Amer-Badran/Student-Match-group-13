@@ -12,17 +12,18 @@ public class EnterInfoOutputData {
     private final Map<String, String> courses;
     private final List<String> programs;
     private final List<Integer> yearsStudy;
-
     /**
      * Constructor for new data object.
      * @param courses Map of all available courses (code to title).
      * @param programs List of all available program user-friendly IDs (combines name and type).
      * @param yearsStudy List of all available year of Study options.
      */
-    public EnterInfoOutputData(Map<String, String> courses, List<String> programs, List<Integer> yearsStudy) {
+    public EnterInfoOutputData(Map<String, String> courses, List<String> programs,
+                               List<Integer> yearsStudy) {
         this.courses = courses;
         this.programs = programs;
         this.yearsStudy = yearsStudy;
+
     }
 
     public Map<String, String> getCourses() {
