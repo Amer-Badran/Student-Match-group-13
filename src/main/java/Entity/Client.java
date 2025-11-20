@@ -10,6 +10,7 @@ public class Client {
     private final ArrayList<String> classes = new ArrayList<>();
     private final ArrayList<String> hobbies = new ArrayList<>();
     private final Map<String,String> messages = new HashMap<>();
+    private MatchingPreferences matchPref;
 
 
     public Client(String userName, String passWord /*,ArrayList<String> classes,ArrayList<String> hobbies*/) {
@@ -33,9 +34,18 @@ public class Client {
     public ArrayList<String> getHobbies(){
         return hobbies;
     }
+    public MatchingPreferences getMatchPref() { return this.matchPref; }
 
     public Map<String,String> getMessages(){
         return messages;
+    }
+
+    /**
+     *  Setter method for the matchPref attribute
+     *  provides a secure way for the matchPref to be updated.
+     */
+    public void setMatchPref(MatchingPreferences matchPref) {
+        this.matchPref = matchPref;
     }
 
 }
