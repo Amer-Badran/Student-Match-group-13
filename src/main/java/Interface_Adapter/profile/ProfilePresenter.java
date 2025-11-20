@@ -21,7 +21,6 @@ public class ProfilePresenter implements ProfileOutputBoundary {
         state.errorMessage = "";
         state.infoMessage = outputData.getMessage();
         state.name = outputData.getName();
-
         state.username = outputData.getUsername();
 
         profileViewModel.setState(state);

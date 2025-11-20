@@ -1,7 +1,7 @@
 package Use_Case.profile;
 
 public class ProfileOutputData {
-    private final String username;  
+    private final String username;
     private final String name;
     private final String message;
 
@@ -11,10 +11,7 @@ public class ProfileOutputData {
         this.message = message;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
+    public String getUsername() { return username; }
     public String getName() { return name; }
     public String getMessage() { return message; }
 }

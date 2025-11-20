@@ -3,9 +3,8 @@ package Interface_Adapter.profile;
 public class ProfileState {
     public String username = "";
     public String name = "";
-    public String nationality = "";
+    public String countryOfOrigin = "";
     public String bio = "";
-    public String languages = "";
     public String email = "";
     public String instagram = "";
     public String phone = "";

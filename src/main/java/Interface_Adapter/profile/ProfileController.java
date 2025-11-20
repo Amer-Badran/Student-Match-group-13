@@ -2,9 +2,6 @@ package Interface_Adapter.profile;
 
 import Use_Case.profile.ProfileInputBoundary;
 import Use_Case.profile.ProfileInputData;
-import org.json.simple.parser.ParseException;
-
-import java.io.IOException;
 
 public class ProfileController {
 
@@ -16,15 +13,14 @@ public class ProfileController {
 
     public void execute(String username,
                         String name,
-                        String nationality,
+                        String countryOfOrigin,
                         String bio,
-                        String languages,
                         String email,
                         String instagram,
-                        String phone) throws IOException, ParseException {
+                        String phone) {
 
         ProfileInputData inputData = new ProfileInputData(
-                username, name, nationality, bio, languages, email, instagram, phone
+                username, name, countryOfOrigin, bio, email, instagram, phone
         );
         interactor.execute(inputData);
     }

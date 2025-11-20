@@ -15,9 +15,25 @@ public class ProfileInteractor implements ProfileInputBoundary {
 
     @Override
     public void execute(ProfileInputData input) {
+
+        if (isBlank(input.getName()) ||
+                isBlank(input.getCountryOfOrigin()) ||
+                isBlank(input.getBio()) ||
+                isBlank(input.getEmail()) ||
+                isBlank(input.getInstagram()) ||
+                isBlank(input.getPhone())) {
+
+            presenter.prepareFailView("All fields are required.");
+            return;
+        }
+
+        if (input.getBio().length() > 200) {
+            presenter.prepareFailView("Bio must be at most 200 characters.");
+            return;
+        }
+
         Profile profile;
         try {
-
             profile = profileDAO.getProfileByUsername(input.getUsername());
         } catch (Exception e) {
             presenter.prepareFailView("Failed to load profile: " + e.getMessage());
@@ -28,18 +44,16 @@ public class ProfileInteractor implements ProfileInputBoundary {
             profile = new Profile(
                     input.getUsername(),
                     input.getName(),
-                    input.getNationality(),
+                    input.getCountryOfOrigin(),
                     input.getBio(),
-                    input.getLanguages(),
                     input.getEmail(),
                     input.getInstagram(),
                     input.getPhone()
             );
         } else {
             profile.setName(input.getName());
-            profile.setNationality(input.getNationality());
+            profile.setCountryOfOrigin(input.getCountryOfOrigin());
             profile.setBio(input.getBio());
-            profile.setLanguages(input.getLanguages());
             profile.setEmail(input.getEmail());
             profile.setInstagram(input.getInstagram());
             profile.setPhone(input.getPhone());
@@ -55,5 +69,9 @@ public class ProfileInteractor implements ProfileInputBoundary {
         ProfileOutputData output =
                 new ProfileOutputData(profile.getUsername(), profile.getName(), "Profile saved.");
         presenter.prepareSuccessView(output);
+    }
+
+    private boolean isBlank(String s) {
+        return s == null || s.isEmpty();
     }
 }
