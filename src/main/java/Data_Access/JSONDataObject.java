@@ -2,7 +2,7 @@ package Data_Access;
 import Entity.Client;
 import Entity.Profile;
 import Use_Case.login.LoginDataAcessObject;
-import Use_Case.profile.ProfileDataAcessObject;
+import Use_Case.profile.ProfileDataAccessObject;
 import Use_Case.signup.SignupDataAcessObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.JSONArray;
@@ -12,7 +12,7 @@ import org.json.simple.parser.ParseException;
 import java.io.*;
 import java.util.ArrayList;
 
-public class JSONDataObject implements SignupDataAcessObject, LoginDataAcessObject, ProfileDataAcessObject {
+public class JSONDataObject implements SignupDataAcessObject, LoginDataAcessObject, ProfileDataAccessObject {
     private final File fileJSON;
     private final File PrettyJSON;
     private final File CleanData;
@@ -197,8 +197,9 @@ public class JSONDataObject implements SignupDataAcessObject, LoginDataAcessObje
         return false;
     }
 
+
     @Override
-    public Profile getProfileByUserId(String userId) throws IOException, ParseException {
+    public Profile getProfileByUsername(String username) throws IOException, ParseException {
         return null;
     }
 
@@ -208,9 +209,9 @@ public class JSONDataObject implements SignupDataAcessObject, LoginDataAcessObje
         if(!users.isEmpty()){
             for (Object obj : users) {
                 JSONObject user = (JSONObject) obj;
-                if (profile.getUserName().equals(user.get("username"))) {
+                if (profile.getUsername().equals(user.get("username"))) {
                     user.put("Bio",profile.getBio());
-                    user.put("nationality",profile.getNationality());
+                    user.put("nationality",profile.getCountryOfOrigin());
                     user.put("email",profile.getEmail());
                     user.put("phone",profile.getPhone());
                     user.put("instagram",profile.getInstagram());

@@ -10,4 +10,7 @@ public class ProfileState {
     public String phone = "";
     public String errorMessage = "";
     public String infoMessage = "";
-}
+
+public void setUsername(String name){
+    username = name;
+}}

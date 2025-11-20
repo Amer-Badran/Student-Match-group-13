@@ -10,7 +10,6 @@ public class Client {
     private final ArrayList<String> classes = new ArrayList<>();
     private final ArrayList<String> hobbies = new ArrayList<>();
     private final Map<String,String> messages = new HashMap<>();
-    private Profile profile = new Profile();
 
 
     public Client(String userName, String passWord /*,ArrayList<String> classes,ArrayList<String> hobbies*/) {

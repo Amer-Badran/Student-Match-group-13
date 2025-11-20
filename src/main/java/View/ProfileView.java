@@ -1,5 +1,7 @@
 package View;
 
+import Entity.Profile;
+import Interface_Adapter.login.LoginController;
 import Interface_Adapter.profile.ProfileController;
 import Interface_Adapter.profile.ProfileState;
 import Interface_Adapter.profile.ProfileViewModel;
@@ -13,7 +15,7 @@ import java.beans.PropertyChangeListener;
 
 public class ProfileView extends JPanel implements ActionListener, PropertyChangeListener {
 
-    private final ProfileController controller;
+    private ProfileController controller;
     private final ProfileViewModel viewModel;
 
     private final JTextField nameField = new JTextField(20);
@@ -28,8 +30,8 @@ public class ProfileView extends JPanel implements ActionListener, PropertyChang
 
     private final JButton saveButton = new JButton("Save profile");
 
-    public ProfileView(ProfileController controller, ProfileViewModel viewModel) {
-        this.controller = controller;
+    public ProfileView(ProfileViewModel viewModel) {
+        this.controller = null;
         this.viewModel = viewModel;
 
         this.viewModel.addPropertyChangeListener(this);
@@ -90,5 +92,8 @@ public class ProfileView extends JPanel implements ActionListener, PropertyChang
         instagramField.setText(state.instagram);
         phoneField.setText(state.phone);
         bioArea.setText(state.bio);
+    }
+    public void setProfileController(ProfileController controller) {
+        this.controller = controller;
     }
 }

@@ -20,7 +20,7 @@ public class LoginPresenter implements LoginOutputBoundary {
     @Override
     public void prepareProfileView(LoginOutputData outputData) {
         final ProfileState profileState = profileViewModels.getState();
-        profileState.setUserName(outputData.getUsername());
+        profileState.setUsername(outputData.getUsername());
         this.viewManagerModels.setState(profileViewModels.getViewName());
         this.viewManagerModels.firePropertyChange();
     }
