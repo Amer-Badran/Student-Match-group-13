@@ -15,8 +15,6 @@ public class ProfileInteractor implements ProfileInputBoundary {
 
     @Override
     public void execute(ProfileInputData input) {
-        // validation same as before…
-
         Profile profile;
         try {
 
