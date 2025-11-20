@@ -1,9 +1,8 @@
 package View;
 
 import Interface_Adapter.profile.ProfileController;
-import Interface_Adapter.profile.ProfileViewModel;
 import Interface_Adapter.profile.ProfileState;
-import org.json.simple.parser.ParseException;
+import Interface_Adapter.profile.ProfileViewModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +10,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.io.IOException;
 
 public class ProfileView extends JPanel implements ActionListener, PropertyChangeListener {
 
@@ -19,8 +17,7 @@ public class ProfileView extends JPanel implements ActionListener, PropertyChang
     private final ProfileViewModel viewModel;
 
     private final JTextField nameField = new JTextField(20);
-    private final JTextField nationalityField = new JTextField(20);
-    private final JTextField languagesField = new JTextField(20);
+    private final JTextField countryField = new JTextField(20);
     private final JTextField emailField = new JTextField(20);
     private final JTextField instagramField = new JTextField(20);
     private final JTextField phoneField = new JTextField(20);
@@ -39,14 +36,11 @@ public class ProfileView extends JPanel implements ActionListener, PropertyChang
 
         setLayout(new GridLayout(0, 2));
 
-        add(new JLabel("Name:"));
+        add(new JLabel("Full name:"));
         add(nameField);
 
-        add(new JLabel("Nationality:"));
-        add(nationalityField);
-
-        add(new JLabel("Languages:"));
-        add(languagesField);
+        add(new JLabel("Country of origin:"));
+        add(countryField);
 
         add(new JLabel("Email:"));
         add(emailField);
@@ -69,25 +63,18 @@ public class ProfileView extends JPanel implements ActionListener, PropertyChang
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String userId = viewModel.getState().username;
+        // username should be set in ProfileState after login
+        String username = viewModel.getState().username;
 
-        try {
-            String username = viewModel.getState().username;
-            controller.execute(
-                    username,
-                    nameField.getText(),
-                    nationalityField.getText(),
-                    bioArea.getText(),
-                    languagesField.getText(),
-                    emailField.getText(),
-                    instagramField.getText(),
-                    phoneField.getText()
-            );
-        } catch (ParseException ex) {
-            throw new RuntimeException(ex);
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
-        }
+        controller.execute(
+                username,
+                nameField.getText(),
+                countryField.getText(),
+                bioArea.getText(),
+                emailField.getText(),
+                instagramField.getText(),
+                phoneField.getText()
+        );
     }
 
     @Override
@@ -98,8 +85,7 @@ public class ProfileView extends JPanel implements ActionListener, PropertyChang
         infoLabel.setText(state.infoMessage);
 
         nameField.setText(state.name);
-        nationalityField.setText(state.nationality);
-        languagesField.setText(state.languages);
+        countryField.setText(state.countryOfOrigin);
         emailField.setText(state.email);
         instagramField.setText(state.instagram);
         phoneField.setText(state.phone);
