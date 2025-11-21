@@ -35,7 +35,7 @@ public class DashboardView {
         contentPanel.setBorder(BorderFactory.createEmptyBorder(16, 16, 16, 16));
 
         contentPanel.add(makeContentPanel("Profile", "View and edit your profile."), PROFILE_CARD);
-        contentPanel.add(makeContentPanel("Matches", "Search for new matches and manage current matches."), MATCHES_CARD);
+        contentPanel.add(makeContentPanel("Messages", "Send messages and see messages from matches."), MATCHES_CARD);
         contentPanel.add(makeContentPanel("Announcements", "Read the latest announcements."), ANNOUNCEMENTS_CARD);
         contentPanel.add(makeContentPanel("Logout", "(This would trigger logout in the full app.)"), LOGOUT_CARD);
 
@@ -44,7 +44,7 @@ public class DashboardView {
         navBar.setBorder(BorderFactory.createEmptyBorder(8, 12, 8, 12));
 
         JButton profileButton = new JButton("Profiles");
-        JButton matchesButton = new JButton("Matches");
+        JButton matchesButton = new JButton("Messages");
         JButton announcementsButton = new JButton("Announcements");
         JButton logoutButton = new JButton("Logout");
 
