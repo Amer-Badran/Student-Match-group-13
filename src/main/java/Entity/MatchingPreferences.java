@@ -11,7 +11,7 @@ public class MatchingPreferences {
     private List<String>  languages;
     private Map<String, Double> weights;
 
-    public MatchingPreferences(List<String> courses, List<String> programs, int yearOfStudy, List<String> hobbies, List<String>  languages, Map<String, Double> weights) {
+    public MatchingPreferences(List<String> courses, Map<String, String> programs, int yearOfStudy, List<String> hobbies, List<String>  languages, Map<String, Double> weights) {
         if (courses != null && courses.size() > 6) {
             throw new IllegalArgumentException("Cannot select more than 6 courses");
         }
@@ -47,6 +47,6 @@ public class MatchingPreferences {
     public void setHobbies(List<String> hobbies) { this.hobbies = hobbies; }
     public void setLanguages(List<String> hobbies) { this.languages = languages; }
     public void setWeights(Map<String, Double> weights) { this.weights = weights; }
-    // Default {Courses : FIRST, Programs : SECOND, Year of Study : THIRD, Languages Spoken FOURTH: ,Interests : FIFTH}
+    // Default {Courses: FIRST, Programs: SECOND, YearOfStudy: THIRD, Languages: FOURTH, Hobbies : FIFTH}
     // 0.35, 0.25, 0.2, 0.12, 0.08
 }

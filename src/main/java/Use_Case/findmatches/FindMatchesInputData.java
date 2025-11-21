@@ -7,7 +7,5 @@ public class FindMatchesInputData {
         this.currentUsername = currentUsername;
     }
 
-    public String getCurrentUsername() {
-        return currentUsername;
-    }
+    public String getCurrentUsername() { return currentUsername; }
 }

@@ -1,6 +1,7 @@
 package Interface_Adapter.findmatches;
 
-import Use_Case.findmatches.*;
+import Use_Case.findmatches.FindMatchesInputBoundary;
+import Use_Case.findmatches.FindMatchesInputData;
 
 public class FindMatchesController {
 

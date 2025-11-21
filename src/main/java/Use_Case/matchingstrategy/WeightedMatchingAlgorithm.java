@@ -1,16 +1,15 @@
 package Use_Case.matchingstrategy;
 
 import Entity.MatchingPreferences;
-import Entity.User;
+import Entity.Client;
 
 import java.util.List;
 import java.util.Map;
 
 /**
- *
- * This calculates a compatibility score based on common courses,
- * programs, languages spoken, year of study and hobbies, applying the weights specified by the
- * current user.
+ * Calculates a compatibility score based on common courses,
+ * programs, languages spoken, year of study, and hobbies,
+ * applying the weights specified by the current user.
  */
 public class WeightedMatchingAlgorithm implements MatchingStrategy {
 
@@ -21,103 +20,77 @@ public class WeightedMatchingAlgorithm implements MatchingStrategy {
     static final double FIFTH = 0.08;
 
     @Override
-    public double calculateScore(User currentUser, User otherUser) {
-        MatchingPreferences currentUserPrefs = currentUser.getPreferences();
-        MatchingPreferences otherUserPrefs = otherUser.getPreferences();
-        Map<String, Double> weights = currentUserPrefs.getWeights();
-
+    public double calculateScore(Client currentClient, Client otherClient) {
         double totalScore = 0.0;
-
-        // 1. Calculate Course Score
-        {
-            List<String> courses = currentUserPrefs.getCourses();
-            List<String> otherCourses = otherUserPrefs.getCourses();
-            double courseWeight = weights.getOrDefault("course", FIRST);
-            int numCourses = courses.size();
-            int numMatches = 0;
-
-            for (String course : courses) {
-                if (otherCourses.contains(course)) {
-                    numMatches++;
-                }
-            }
-
-            double courseScore = numCourses > 0 ? courseWeight * ((double) numMatches / numCourses) : 0.0;
-            totalScore += courseScore;
-        }
-
-        // 2. Calculate Hobbies Score
-        {
-            List<String> hobbies = currentUserPrefs.getHobbies();
-            List<String> otherHobbies = otherUserPrefs.getHobbies();
-            double hobbyWeight = weights.getOrDefault("hobbies", FIFTH);
-            int numHobbies = hobbies.size();
-            int numMatches = 0;
-
-            for (String hobby : hobbies) {
-                if (otherHobbies.contains(hobby)) {
-                    numMatches++;
-                }
-            }
-
-            double hobbiesScore = numHobbies > 0 ? hobbyWeight * ((double) numMatches / numHobbies) : 0.0;
-            totalScore += hobbiesScore;
-        }
-
-        // 3. Calculate Languages Spoken Score
-        {
-            List<String> languages = currentUserPrefs.getLanguages();
-            List<String> otherLanguages = otherUserPrefs.getLanguages();
-            double langWeight = weights.getOrDefault("languages", FOURTH);
-            int numLangs = languages.size();
-            int numMatches = 0;
-
-            for (String lang : languages) {
-                if (otherLanguages.contains(lang)) {
-                    numMatches++;
-                }
-            }
-
-            double languageScore = numLangs > 0 ? langWeight * ((double) numMatches / numLangs) : 0.0;
-            totalScore += languageScore;
-        }
-
-        // 4. Calculate Year of Study Score
-        {
-            int yearOfStudy = currentUserPrefs.getYearOfStudy();
-            int otherYearOfStudy = otherUserPrefs.getYearOfStudy();
-            int isMatch = (otherYearOfStudy == yearOfStudy) ? 1 : 0;
-            ;
-
-            double yearScore = isMatch * weights.getOrDefault("year", THIRD);
-            totalScore += yearScore;
-        }
-
-        // 5. Calculate Program Score
-        {
-            Map<String, String> programs = currentUserPrefs.getPrograms();
-            Map<String, String> otherPrograms = otherUserPrefs.getPrograms();
-            double programWeight = weights.getOrDefault("programs", SECOND);
-            int numPrograms = programs.size();
-            double numMatches = 0.0;
-
-            for (String program : programs.keySet()) {
-                // If the other user has the same program key (e.g., same faculty)
-                if (otherPrograms.containsKey(program)) {
-                    numMatches += 0.75; // partial match on key
-
-                    // If they also have the same program value (same specialization)
-                    if (otherPrograms.get(program).equals(programs.get(program))) {
-                        numMatches += 0.25; // extra match on exact program value
-                    }
-                }
-            }
-
-            double languageScore = numPrograms > 0 ? programWeight * ((double) numMatches / numPrograms) : 0.0;
-            totalScore += languageScore;
-        }
-
+        totalScore += calculateCourseScore(currentClient, otherClient);
+        totalScore += calculateHobbyScore(currentClient, otherClient);
+        totalScore += calculateLanguageScore(currentClient, otherClient);
+        totalScore += calculateYearScore(currentClient, otherClient);
+        totalScore += calculateProgramScore(currentClient, otherClient);
         return totalScore;
     }
 
+    private double calculateCourseScore(Client currentClient, Client otherClient) {
+        MatchingPreferences currentUserPrefs = currentClient.getPreferences();
+        MatchingPreferences otherUserPrefs = otherClient.getPreferences();
+        List<String> courses = currentUserPrefs.getCourses();
+        List<String> otherCourses = otherUserPrefs.getCourses();
+        double courseWeight = currentUserPrefs.getWeights().getOrDefault("Courses", FIRST);
+
+        long numMatches = courses.stream().filter(otherCourses::contains).count();
+        return courses.isEmpty() ? 0.0 : courseWeight * ((double) numMatches / courses.size());
+    }
+
+    private double calculateHobbyScore(Client currentClient, Client otherClient) {
+        MatchingPreferences currentUserPrefs = currentClient.getPreferences();
+        MatchingPreferences otherUserPrefs = otherClient.getPreferences();
+        List<String> hobbies = currentUserPrefs.getHobbies();
+        List<String> otherHobbies = otherUserPrefs.getHobbies();
+        double hobbyWeight = currentUserPrefs.getWeights().getOrDefault("Hobbies", FIFTH);
+
+        long numMatches = hobbies.stream().filter(otherHobbies::contains).count();
+        return hobbies.isEmpty() ? 0.0 : hobbyWeight * ((double) numMatches / hobbies.size());
+    }
+
+    private double calculateLanguageScore(Client currentClient, Client otherClient) {
+        MatchingPreferences currentUserPrefs = currentClient.getPreferences();
+        MatchingPreferences otherUserPrefs = otherClient.getPreferences();
+        List<String> languages = currentUserPrefs.getLanguages();
+        List<String> otherLanguages = otherUserPrefs.getLanguages();
+        double langWeight = currentUserPrefs.getWeights().getOrDefault("Languages", FOURTH);
+
+        long numMatches = languages.stream().filter(otherLanguages::contains).count();
+        return languages.isEmpty() ? 0.0 : langWeight * ((double) numMatches / languages.size());
+    }
+
+    private double calculateYearScore(Client currentClient, Client otherClient) {
+        MatchingPreferences currentUserPrefs = currentClient.getPreferences();
+        MatchingPreferences otherUserPrefs = otherClient.getPreferences();
+        int yearOfStudy = currentUserPrefs.getYearOfStudy();
+        int otherYear = otherUserPrefs.getYearOfStudy();
+        double yearWeight = currentUserPrefs.getWeights().getOrDefault("YearOfStudy", THIRD);
+        return yearOfStudy == otherYear ? yearWeight : 0.0;
+    }
+
+    private double calculateProgramScore(Client currentClient, Client otherClient) {
+        MatchingPreferences currentUserPrefs = currentClient.getPreferences();
+        MatchingPreferences otherUserPrefs = otherClient.getPreferences();
+        Map<String, String> programs = currentUserPrefs.getPrograms();
+        Map<String, String> otherPrograms = otherUserPrefs.getPrograms();
+        double programWeight = currentUserPrefs.getWeights().getOrDefault("Programs", SECOND);
+
+        double numMatches = 0.0;
+        for (Map.Entry<String, String> entry : programs.entrySet()) {
+            String programKey = entry.getKey();
+            String programValue = entry.getValue();
+
+            if (otherPrograms.containsKey(programKey)) {
+                numMatches += 0.75; // partial match on program key
+                if (programValue.equals(otherPrograms.get(programKey))) {
+                    numMatches += 0.25; // exact program match
+                }
+            }
+        }
+        return programs.isEmpty() ? 0.0 : programWeight * (numMatches / programs.size());
+    }
 }

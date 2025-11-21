@@ -1,7 +1,7 @@
 package Use_Case.matchingstrategy;
 
-import Entity.User;
+import Entity.Client;
 
 public interface MatchingStrategy {
-    double calculateScore(User currentUser, User otherUser);
+    double calculateScore(Client currentUser, Client otherUser);
 }

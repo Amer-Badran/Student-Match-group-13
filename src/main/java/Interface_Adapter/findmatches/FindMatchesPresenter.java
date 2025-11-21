@@ -1,25 +1,39 @@
 package Interface_Adapter.findmatches;
 
-import Use_Case.findmatches.*;
+import Interface_Adapter.ViewManagerModel;
+import Use_Case.findmatches.FindMatchesOutputBoundary;
+import Use_Case.findmatches.FindMatchesOutputData;
 
 public class FindMatchesPresenter implements FindMatchesOutputBoundary {
 
-    private final FindMatchesViewModel viewModel;
+    private final FindMatchesViewModel findMatchesViewModel;
+    private final ViewManagerModel viewManagerModel;
 
-    public FindMatchesPresenter(FindMatchesViewModel viewModel) {
-        this.viewModel = viewModel;
+    public FindMatchesPresenter(ViewManagerModel viewManagerModel,
+                                FindMatchesViewModel viewModel) {
+        this.viewManagerModel = viewManagerModel;
+        this.findMatchesViewModel = viewModel;
     }
 
     @Override
     public void prepareSuccessView(FindMatchesOutputData outputData) {
-        viewModel.setMatches(outputData.getMatches());
-        viewModel.setErrorMessage(null);
-        viewModel.firePropertyChanged(); // notify UI
+        FindMatchesState state = findMatchesViewModel.getState();
+        state.setMatches(outputData.getMatches());
+        state.setErrorMessage("");
+
+        findMatchesViewModel.setState(state);
+        findMatchesViewModel.firePropertyChange(); // notify UI
+
+        viewManagerModel.setState(findMatchesViewModel.getViewName());
+        viewManagerModel.firePropertyChange();
     }
 
     @Override
     public void prepareFailView(String errorMessage) {
-        viewModel.setErrorMessage(errorMessage);
-        viewModel.firePropertyChanged();
+        FindMatchesState state = findMatchesViewModel.getState();
+        state.setErrorMessage(errorMessage);
+
+        findMatchesViewModel.setState(state);
+        findMatchesViewModel.firePropertyChange();
     }
 }
