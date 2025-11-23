@@ -28,7 +28,7 @@ public class MatchingPreferences {
 
 
     public List<String> getCourses() { return courses; }
-    public List<String> getPrograms() { return programs; }
+    public  List<String> getPrograms() { return programs; }
     public int getYearOfStudy() { return yearOfStudy; }
     public List<String> getHobbies() { return hobbies; }
     public List<String> getLanguages() { return languages; }
