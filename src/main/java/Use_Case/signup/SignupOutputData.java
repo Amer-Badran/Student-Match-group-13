@@ -1,15 +1,15 @@
 package Use_Case.signup;
 
-import Entity.Client;
+import Entity.OldClient;
 
 public class SignupOutputData {
-    private Client client;
+    private OldClient oldClient;
 
-    public SignupOutputData(Client clients){
-        this.client = clients;
+    public SignupOutputData(OldClient clients){
+        this.oldClient = clients;
     }
-    public Client getClient(){
-        return this.client;
+    public OldClient getClient(){
+        return this.oldClient;
     }
 }
 

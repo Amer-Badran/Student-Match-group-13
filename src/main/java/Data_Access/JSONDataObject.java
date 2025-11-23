@@ -1,5 +1,5 @@
 package Data_Access;
-import Entity.Client;
+import Entity.OldClient;
 import Entity.Profile;
 import Use_Case.login.LoginDataAcessObject;
 import Use_Case.profile.ProfileDataAccessObject;
@@ -43,9 +43,9 @@ public class JSONDataObject implements SignupDataAcessObject, LoginDataAcessObje
             PrettyJSON.createNewFile();
         }
 
-        Client user = new Client("User1","123456");
+        OldClient user = new OldClient("User1","123456");
         save(user);
-        Client user2 = new Client("User2","abcdef");
+        OldClient user2 = new OldClient("User2","abcdef");
         save(user2);
     }
 
@@ -75,21 +75,21 @@ public class JSONDataObject implements SignupDataAcessObject, LoginDataAcessObje
         return false;
     }
 
-    public void save(Client client) {
+    public void save(OldClient oldClient) {
         try {
             JSONArray usersy = readAll();
 
             JSONObject newUser = new JSONObject();
-            newUser.put("username", client.getUserName());
-            newUser.put("password", client.getPassword());
-            newUser.put("classes",client.getClasses());
+            newUser.put("username", oldClient.getUserName());
+            newUser.put("password", oldClient.getPassword());
+            newUser.put("classes", oldClient.getClasses());
             newUser.put("Bio","");
             newUser.put("nationality","");
             newUser.put("email","");
             newUser.put("phone","");
             newUser.put("instagram","");
-            client.getMessages().put("User1","Hello user X, hope you are doing well!");
-            newUser.put("messages",client.getMessages());
+            oldClient.getMessages().put("User1","Hello user X, hope you are doing well!");
+            newUser.put("messages", oldClient.getMessages());
             usersy.add(newUser);
 
             // rewrite file

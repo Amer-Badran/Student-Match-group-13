@@ -2,7 +2,7 @@ package Use_Case.EnterInfo;
 
 import Data_Access.FileCourseDAO;
 import Data_Access.FileProgramDAO;
-import Entity.Client;
+import Entity.OldClient;
 import Entity.MatchingPreferences;
 import Interface_Adapter.EnterInfo.EnterInfoPresenter;
 
@@ -63,7 +63,7 @@ public class EnterInfoInteractor implements EnterInfoInputBoundary{
     public void execute(String username, EnterInfoInputData inputData) {
         try {
 
-            Client client = DAO.getClient(username);
+            OldClient oldClient = DAO.getClient(username);
 
             // Get the user's selections from the inputData object
             List<String> selectedCourses = inputData.getCourses();
@@ -86,7 +86,7 @@ public class EnterInfoInteractor implements EnterInfoInputBoundary{
             );
 
             // Update the Client object with the new preferences
-            client.setMatchPref(preferences);
+            oldClient.setMatchPref(preferences);
 
             // Save the updated Client object back to the file
             DAO.save(preferences);

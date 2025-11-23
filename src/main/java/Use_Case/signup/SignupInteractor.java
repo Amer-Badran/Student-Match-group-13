@@ -6,7 +6,7 @@ package Use_Case.signup;
 // 3 ) A view switching method ( from signup window to login window )
 //     -that will be called by the Controller ( Why do we need it here then ?! )
 
-import Entity.Client;
+import Entity.OldClient;
 import Entity.ClientFactory;
 import org.json.simple.parser.ParseException;
 
@@ -35,10 +35,10 @@ public class SignupInteractor implements SignupInputBoundary {
         else if(pass.length() < 4){
              presenter.prepareFailView("The password is not strong enough!");}
         else{
-            Client theClient = clientFactory.create(name,pass);
-            DAO.save(theClient);
+            OldClient theOldClient = clientFactory.create(name,pass);
+            DAO.save(theOldClient);
             ArrayList<String> things = DAO.getClasses(name);
-            outputData = new SignupOutputData(theClient);
+            outputData = new SignupOutputData(theOldClient);
 
             presenter.prepareSuccessView(outputData);
         }

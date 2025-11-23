@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Client {
+public class OldClient {
     private final String userName;
     private final String passWord;
     private final ArrayList<String> classes = new ArrayList<>();
@@ -13,7 +13,7 @@ public class Client {
     private MatchingPreferences matchPref;
 
 
-    public Client(String userName, String passWord /*,ArrayList<String> classes,ArrayList<String> hobbies*/) {
+    public OldClient(String userName, String passWord /*,ArrayList<String> classes,ArrayList<String> hobbies*/) {
         this.userName = userName;
         this.passWord = passWord;
 //        this.classes = classes;
