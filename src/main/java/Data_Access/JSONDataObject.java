@@ -216,7 +216,7 @@ public class JSONDataObject implements SignupDataAcessObject,
         return null;
     }
 
-    public Client getClientByUsername(String username) throws IOException, ParseException {
+    public Client getUserByUsername(String username) throws IOException, ParseException {
         JSONArray data = readAll();
         for (Object obj : data) {
             JSONObject user = (JSONObject) obj;
@@ -247,12 +247,12 @@ public class JSONDataObject implements SignupDataAcessObject,
         }return null;
     }
 
-    public ArrayList<Client> AllClients() throws IOException, ParseException {
+    public ArrayList<Client> getAllUsers() throws IOException, ParseException {
         ArrayList<Client> theUsers = new ArrayList<Client>();
         JSONArray data = readAll();
         for (Object obj : data) {
             JSONObject JSONuser = (JSONObject) obj;
-            Client currentUser = getClientByUsername((String) JSONuser.get("username"));
+            Client currentUser = getUserByUsername((String) JSONuser.get("username"));
             theUsers.add(currentUser);
         }
         return theUsers;
