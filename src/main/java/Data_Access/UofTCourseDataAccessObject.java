@@ -49,7 +49,7 @@ public class UofTCourseDataAccessObject {
                 }
 
                 // polite scraping: short pause between pages
-                Thread.sleep(300);
+                Thread.sleep(0);
             }
 
             // Write JSON to file

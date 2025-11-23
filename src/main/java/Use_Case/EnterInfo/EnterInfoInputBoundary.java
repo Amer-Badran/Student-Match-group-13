@@ -1,5 +1,8 @@
 package Use_Case.EnterInfo;
 
+import java.io.IOException;
+import java.text.ParseException;
+
 public interface EnterInfoInputBoundary {
-    void execute(String username, EnterInfoInputData inputData);
+    void execute(EnterInfoInputData inputData) throws IOException, ParseException, org.json.simple.parser.ParseException;
 }

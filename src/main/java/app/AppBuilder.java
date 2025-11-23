@@ -5,6 +5,8 @@ import java.io.IOException;
 
 import Data_Access.JSONDataObject;
 import Entity.ClientFactory;
+import Interface_Adapter.EnterInfo.EnterInfoController;
+import Interface_Adapter.EnterInfo.EnterInfoPresenter;
 import Interface_Adapter.EnterInfo.EnterInfoViewModel;
 import Interface_Adapter.ViewManagerModel;
 import Interface_Adapter.login.LoginController;
@@ -18,6 +20,9 @@ import Interface_Adapter.signup.SignupPresenter;
 import Interface_Adapter.signup.SignupViewModel;
 import Interface_Adapter.welcome.WelcomPresenter;
 import Interface_Adapter.welcome.WelcomeController;
+import Use_Case.EnterInfo.EnterInfoInputBoundary;
+import Use_Case.EnterInfo.EnterInfoInteractor;
+import Use_Case.EnterInfo.EnterInfoOutputBoundary;
 import Use_Case.login.LoginDataAcessObject;
 import Use_Case.login.LoginInputBoundary;
 import Use_Case.login.LoginInteractor;
@@ -52,6 +57,7 @@ public class AppBuilder {
     private LoginViewModel loginViewModels = new LoginViewModel();
     private ProfileViewModel profileViewModels = new ProfileViewModel();
     private EnterInfoViewModel enterInfoViewModel = new EnterInfoViewModel();
+
 
 
     private JSONDataObject DAO = new JSONDataObject();
@@ -120,6 +126,12 @@ public AppBuilder addProfileUseCase(){
 public AppBuilder addEnterInfoView(){
         enterInfoView = new EnterInfoView(enterInfoViewModel);
         cardPanel.add(enterInfoView,enterInfoViewModel.getViewName());
+        return this;
+}
+public AppBuilder addEnterInfoUseCase(){
+        final EnterInfoOutputBoundary enterInfoPresetner = new EnterInfoPresenter(enterInfoViewModel,viewManagerModel);
+        final EnterInfoInputBoundary enterinfoInteractor = new EnterInfoInteractor(DAO,enterInfoPresetner);
+        enterInfoView.setEnterInfoController(new EnterInfoController(enterinfoInteractor));
         return this;
 }
 

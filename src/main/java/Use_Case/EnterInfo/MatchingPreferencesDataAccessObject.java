@@ -7,5 +7,5 @@ import java.io.IOException;
 
 public interface MatchingPreferencesDataAccessObject {
     OldClient getClient(String username) throws IOException, ParseException;
-    void save(MatchingPreferences matchingPreferences) throws IOException, java.text.ParseException;
+    void save(String username, MatchingPreferences matchingPreferences) throws IOException, java.text.ParseException, ParseException;
 }

@@ -1,26 +1,30 @@
 package Interface_Adapter.EnterInfo;
 
+import Use_Case.EnterInfo.EnterInfoInputBoundary;
 import Use_Case.EnterInfo.EnterInfoInputData;
 import Use_Case.EnterInfo.EnterInfoInteractor;
+
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
 
 public class EnterInfoController {
-    private final EnterInfoInteractor enterInfoInteractor;
+    private final EnterInfoInputBoundary enterInfoInteractor;
 
-    public EnterInfoController(EnterInfoInteractor enterInfoInteractor) {
+    public EnterInfoController(EnterInfoInputBoundary enterInfoInteractor) {
         this.enterInfoInteractor = enterInfoInteractor;
     }
 
     public void execute(String username,
                         List<String> selectedCourses,
-                        List<String> selectedPrograms,
+                        Map<String,String> selectedPrograms,
                         int yearOfStudy,
                         List<String> selectedHobbies,
                         List<String> selectedLanguages,
-                        Map<String, Double> selectedWeights) {
+                        Map<String, Double> selectedWeights) throws IOException, ParseException, org.json.simple.parser.ParseException {
 
-        EnterInfoInputData inputData = new EnterInfoInputData(
+        EnterInfoInputData inputData = new EnterInfoInputData(username,
                 selectedCourses,
                 selectedPrograms,
                 yearOfStudy,
@@ -30,6 +34,6 @@ public class EnterInfoController {
 
         );
 
-        //enterInfoInteractor.saveInfo(username, inputData);
+        enterInfoInteractor.execute(inputData);
     }
 }

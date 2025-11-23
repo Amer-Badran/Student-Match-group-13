@@ -1,5 +1,6 @@
 package Interface_Adapter.profile;
 
+import Interface_Adapter.EnterInfo.EnterInfoState;
 import Interface_Adapter.EnterInfo.EnterInfoViewModel;
 import Interface_Adapter.ViewManagerModel;
 import Use_Case.profile.ProfileOutputBoundary;
@@ -26,8 +27,14 @@ public class ProfilePresenter implements ProfileOutputBoundary {
         state.name = outputData.getName();
         state.username = outputData.getUsername();
 
+
+
+
         profileViewModel.setState(state);
         profileViewModel.firePropertyChange();
+
+        final EnterInfoState enterInfoState = enterInfoViewModel.getState();
+        enterInfoState.setUsername(state.getUsername());
         this.viewManagerModel.setState(enterInfoViewModel.getViewName());
         this.viewManagerModel.firePropertyChange();
     }

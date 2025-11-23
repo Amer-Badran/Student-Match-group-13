@@ -10,21 +10,22 @@ import java.util.Map;
 public class EnterInfoInputData {
 
     private final List<String> selectCourses;
-    private final List<String> selectPrograms;
+    private final Map<String,String> selectPrograms;
     private final int selectYear;
     private final List<String> selectedHobbies;
     private final List<String> selectedLanguages;
     private final Map<String, Double> selectedWeights;
-
+    private final String username;
     /**
      * Constructor for new data object.
      * @param selectCourses List of all selected courses (code to title).
      * @param selectPrograms List of all selected program user-friendly IDs (combines name and type).
      * @param selectYear Integer year of study selected by the student.
      */
-    public EnterInfoInputData(List<String> selectCourses,List<String> selectPrograms, int selectYear,
+    public EnterInfoInputData(String username,List<String> selectCourses,Map<String,String> selectPrograms, int selectYear,
                               List<String> selectedHobbies, List<String> selectedLanguages,
                               Map<String, Double> selectedWeights) {
+        this.username = username;
         this.selectCourses =  selectCourses;
         this.selectPrograms = selectPrograms;
         this.selectYear = selectYear;
@@ -36,7 +37,7 @@ public class EnterInfoInputData {
     public List<String> getCourses() {
         return selectCourses;
     }
-    public List<String> getPrograms() {
+    public Map<String,String> getPrograms() {
         return selectPrograms;
     }
     public int getSelectYear() {return selectYear; }
@@ -52,4 +53,5 @@ public class EnterInfoInputData {
     public Map<String, Double> getSelectedWeights() {
         return selectedWeights;
     }
+    public String getUsername(){return username;}
 }
