@@ -1,8 +1,13 @@
 package Use_Case.announcements;
 
-public record AnnouncementOutputData(
-        String id,
-        String title,
-        String content,
-        String author
-) {}
+public class AnnouncementOutputData {
+    private final String resultMessage;
+
+    public AnnouncementOutputData(String resultMessage) {
+        this.resultMessage = resultMessage;
+    }
+
+    public String getResultMessage() {
+        return resultMessage;
+    }
+}

@@ -1,4 +1,22 @@
 package Use_Case.announcements;
 
-public record AnnouncementInputData(String announcementId) {
+public class AnnouncementInputData {
+    private final String user;
+    private final String message;
+
+    public AnnouncementInputData(String user, String message) {
+        this.user = user;
+        this.message = message;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public String getMessage() {
+        return message;
+    }
 }
+
+
+
