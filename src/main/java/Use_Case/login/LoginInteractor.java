@@ -4,6 +4,7 @@ import Data_Access.JSONDataObject;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class LoginInteractor implements LoginInputBoundary{
     private final LoginDataAcessObject DAO;
@@ -31,7 +32,8 @@ public class LoginInteractor implements LoginInputBoundary{
             loginPresenter.prepareProfileView(outputData);
         }
         else{
-            loginPresenter.prepareHomeView();
+            ArrayList<String> notification = DAO.getNotification(name);
+            loginPresenter.prepareHomeView(notification);
         }
     }
 

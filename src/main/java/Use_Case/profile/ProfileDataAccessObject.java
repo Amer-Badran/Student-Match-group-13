@@ -4,10 +4,10 @@ import Entity.Profile;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public interface ProfileDataAccessObject {
 
     Profile getProfileByUsername(String username) throws IOException, ParseException;
-
     void save(Profile profile) throws IOException, ParseException;
 }

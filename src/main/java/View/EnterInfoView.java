@@ -88,7 +88,7 @@ public class EnterInfoView extends JPanel implements ActionListener, PropertyCha
         // end of course data
 
 
-
+        // loading program data from Julia's JSON
         Programs = new File("uoft_programs_stgeorge.json");
         Object Pobj;
         try (FileReader reader = new FileReader(Programs)) {
@@ -108,6 +108,8 @@ public class EnterInfoView extends JPanel implements ActionListener, PropertyCha
         Program_drop = new JComboBox(Pcodes.toArray(new String[0]));
 
         // end of program data
+
+
         ArrayList<String> types = new ArrayList<>();
         types.add("Minor");
         types.add("Specialist");
@@ -286,6 +288,7 @@ public class EnterInfoView extends JPanel implements ActionListener, PropertyCha
 
         saveButton.addActionListener(this);
     }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {

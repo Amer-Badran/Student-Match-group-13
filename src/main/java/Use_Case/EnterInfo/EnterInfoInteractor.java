@@ -20,13 +20,13 @@ public class EnterInfoInteractor implements EnterInfoInputBoundary{
     /**
      * Constructor for the interactor.
      * @param dao The DAO for reading/writing client data.
-     * @param presenter to send results back to.
+     * @param presenters to send results back to.
      */
     public EnterInfoInteractor(
                                MatchingPreferencesDataAccessObject dao,
-                               EnterInfoOutputBoundary presenter) {
+                               EnterInfoOutputBoundary presenters) {
         this.DAO = dao;
-        this.presenter = presenter;
+        this.presenter = presenters;
     }
 
     /**
@@ -79,8 +79,10 @@ public class EnterInfoInteractor implements EnterInfoInputBoundary{
             // Update the Client object with the new preferences
 
             // Save the updated Client object back to the file
-            DAO.save(inputData.getUsername(),preferences);
-            presenter.prepSaveSuccessView("Preferences For Matching Saved!");
+        DAO.save(inputData.getUsername(),preferences);
+        ArrayList<String> notification = DAO.getNotification(inputData.getUsername());
+            presenter.prepSaveSuccessView(notification,"Preferences For Matching Saved!");
+//            presenter.prepSaveSuccessView("Preferences For Matching Saved!");
 
 
         }

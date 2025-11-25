@@ -5,9 +5,15 @@ import java.io.IOException;
 
 import Data_Access.JSONDataObject;
 import Entity.ClientFactory;
+import Interface_Adapter.Chat.ChatController;
+import Interface_Adapter.Chat.ChatPresenter;
+import Interface_Adapter.Chat.ChatViewModel;
 import Interface_Adapter.EnterInfo.EnterInfoController;
 import Interface_Adapter.EnterInfo.EnterInfoPresenter;
 import Interface_Adapter.EnterInfo.EnterInfoViewModel;
+import Interface_Adapter.Notification.NotificationController;
+import Interface_Adapter.Notification.NotificationPresenter;
+import Interface_Adapter.Notification.NotificationViewModel;
 import Interface_Adapter.ViewManagerModel;
 import Interface_Adapter.login.LoginController;
 import Interface_Adapter.login.LoginPresenter;
@@ -20,9 +26,15 @@ import Interface_Adapter.signup.SignupPresenter;
 import Interface_Adapter.signup.SignupViewModel;
 import Interface_Adapter.welcome.WelcomPresenter;
 import Interface_Adapter.welcome.WelcomeController;
+import Use_Case.Chat.ChatInputBoundary;
+import Use_Case.Chat.ChatInteractor;
+import Use_Case.Chat.ChatOutputBoundary;
 import Use_Case.EnterInfo.EnterInfoInputBoundary;
 import Use_Case.EnterInfo.EnterInfoInteractor;
 import Use_Case.EnterInfo.EnterInfoOutputBoundary;
+import Use_Case.Notification.NotificationInputBoundary;
+import Use_Case.Notification.NotificationInteractor;
+import Use_Case.Notification.NotificationOutputBoundary;
 import Use_Case.login.LoginDataAcessObject;
 import Use_Case.login.LoginInputBoundary;
 import Use_Case.login.LoginInteractor;
@@ -37,6 +49,7 @@ import View.*;
 import Use_Case.welcome.WelcomInteractor;
 import Use_Case.welcome.welcomeInputBoundary;
 import Use_Case.welcome.welcomeOutputBoundary;
+import org.json.simple.parser.ParseException;
 
 public class AppBuilder {
 
@@ -51,12 +64,16 @@ public class AppBuilder {
     private LoginView loginView;
     private ProfileView profileView;
     private EnterInfoView enterInfoView;
+    private NotificationView notificationView;
+    private ChatView chatView;
 
 
     private SignupViewModel signupViewModel = new SignupViewModel();
     private LoginViewModel loginViewModels = new LoginViewModel();
     private ProfileViewModel profileViewModels = new ProfileViewModel();
     private EnterInfoViewModel enterInfoViewModel = new EnterInfoViewModel();
+    private NotificationViewModel notificationViewModel = new NotificationViewModel();
+    private ChatViewModel chatViewModel = new ChatViewModel();
 
 
 
@@ -95,7 +112,7 @@ public AppBuilder addSignupUseCase(){
 }
 
 public AppBuilder addWelcomeUseCase(){
-    final welcomeOutputBoundary welcomePresenter = new WelcomPresenter(viewManagerModel,signupViewModel);
+    final welcomeOutputBoundary welcomePresenter = new WelcomPresenter(viewManagerModel,signupViewModel,loginViewModels);
     final welcomeInputBoundary welcomeInteractor = new WelcomInteractor(welcomePresenter);
     welcomeView.setWelcomeControllerController(new WelcomeController(welcomeInteractor));
     return this;
@@ -107,7 +124,7 @@ public AppBuilder addLoginView(){
         return this;
 }
 public AppBuilder addLoginUseCase() throws IOException {
-        final LoginOutputBoundary loginPresenter = new LoginPresenter(viewManagerModel,loginViewModels,profileViewModels);
+        final LoginOutputBoundary loginPresenter = new LoginPresenter(viewManagerModel,loginViewModels,profileViewModels,notificationViewModel);
         final LoginInputBoundary loginInteractor = new LoginInteractor(DAO,loginPresenter);
         loginView.setLoginController(new LoginController(loginInteractor));
         return this;
@@ -129,13 +146,36 @@ public AppBuilder addEnterInfoView(){
         return this;
 }
 public AppBuilder addEnterInfoUseCase(){
-        final EnterInfoOutputBoundary enterInfoPresetner = new EnterInfoPresenter(enterInfoViewModel,viewManagerModel);
+        final EnterInfoOutputBoundary enterInfoPresetner = new EnterInfoPresenter(enterInfoViewModel,viewManagerModel,notificationViewModel);
         final EnterInfoInputBoundary enterinfoInteractor = new EnterInfoInteractor(DAO,enterInfoPresetner);
         enterInfoView.setEnterInfoController(new EnterInfoController(enterinfoInteractor));
         return this;
 }
+public AppBuilder addNotificationView() throws IOException, ParseException {
+        notificationView = new NotificationView(notificationViewModel);
+        cardPanel.add(notificationView,"notification");
+        return this;
+}
+public AppBuilder addNotificationUseCase(){
+        final NotificationOutputBoundary notificationPresenter = new NotificationPresenter(notificationViewModel,chatViewModel,viewManagerModel);
+        final NotificationInputBoundary notificationInteractor = new NotificationInteractor(DAO,notificationPresenter);
+        notificationView.setNotificationController(new NotificationController(notificationInteractor));
+        return this;
+}
+
+public AppBuilder addChatView(){
+        chatView = new ChatView(chatViewModel);
+        cardPanel.add(chatView,chatViewModel.getViewName());
+        return this;
+}
+public AppBuilder addChatUseCase(){
+        final ChatOutputBoundary chatPresenter = new ChatPresenter(chatViewModel,viewManagerModel,notificationViewModel);
+        final ChatInputBoundary chatInteractor = new ChatInteractor(DAO,chatPresenter);
+        chatView.setChatController(new ChatController(chatInteractor));
+        return this;
 
 
+}
     public JFrame build() {
         final JFrame application = new JFrame("Team 13 prototype");
         application.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

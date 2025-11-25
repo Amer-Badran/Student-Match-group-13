@@ -1,5 +1,7 @@
 package Use_Case.EnterInfo;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +14,7 @@ public class EnterInfoOutputData {
     private final Map<String, String> courses;
     private final List<String> programs;
     private final List<Integer> yearsStudy;
+    private final ArrayList<String> notif;
     /**
      * Constructor for new data object.
      * @param courses Map of all available courses (code to title).
@@ -19,10 +22,11 @@ public class EnterInfoOutputData {
      * @param yearsStudy List of all available year of Study options.
      */
     public EnterInfoOutputData(Map<String, String> courses, List<String> programs,
-                               List<Integer> yearsStudy) {
+                               List<Integer> yearsStudy,ArrayList<String> noti) {
         this.courses = courses;
         this.programs = programs;
         this.yearsStudy = yearsStudy;
+        this.notif = noti;
 
     }
 
@@ -35,4 +39,5 @@ public class EnterInfoOutputData {
     public List<Integer> getYearsStudy() {
         return yearsStudy;
     }
+    public ArrayList<String> getNotif() {return notif;}
 }
