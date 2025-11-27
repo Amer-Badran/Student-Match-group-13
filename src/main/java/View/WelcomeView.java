@@ -11,9 +11,8 @@ import java.awt.event.ActionListener;
 public class WelcomeView extends JPanel {
     private final String viewName = "welcome";
     private WelcomeController welcomeController = null;
-    private final JButton TosignUp;
-    private final JButton cancel;
-    private final JButton ToLogin;
+    private final JButton signupButton;
+    private final JButton loginButton;
 
 
     public void setWelcomeControllerController(WelcomeController controller) {
@@ -26,37 +25,47 @@ public class WelcomeView extends JPanel {
 
     public WelcomeView(){
 
-        final JLabel title = new JLabel("Hello dear Student");
+        final JLabel title = new JLabel("UofT Matcher");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
-        final JPanel buttons = new JPanel();
-        buttons.setBackground(Color.CYAN);
-        ToLogin = new JButton("I have an account");
-        ToLogin.setForeground(Color.GREEN);
-        buttons.add(ToLogin);
-        TosignUp = new JButton("New Account");
-        TosignUp.setForeground(Color.RED);
-        buttons.add(TosignUp);
-        cancel = new JButton("Cancel now!");
-        cancel.setForeground(Color.BLACK);
-        buttons.add(cancel);
+        title.setFont(title.getFont().deriveFont(Font.BOLD, 40f));
 
-        ToLogin.addActionListener(
+        loginButton = new JButton("Login");
+        loginButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        loginButton.setFont(loginButton.getFont().deriveFont(Font.PLAIN, 26f));
+
+        signupButton = new JButton("Sign up");
+        signupButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        signupButton.setFont(signupButton.getFont().deriveFont(Font.PLAIN, 26f));
+
+        final Dimension buttonSize = new Dimension(360, 180);
+        loginButton.setPreferredSize(buttonSize);
+        loginButton.setMaximumSize(buttonSize);
+        signupButton.setPreferredSize(buttonSize);
+        signupButton.setMaximumSize(buttonSize);
+
+        loginButton.addActionListener(
                 new ActionListener() {
                     public void actionPerformed(ActionEvent evt) {
-                        welcomeController.switchToLoginView();}}  // to be implemented later
+                        welcomeController.switchToLoginView();}}
         );
-        TosignUp.addActionListener(
+
+        signupButton.addActionListener(
                 new ActionListener() {
                     public void actionPerformed(ActionEvent evt) {
                         welcomeController.switchToSignupView();}}
         );
 
-
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        this.setBackground(Color.CYAN);
+        this.setBackground(Color.WHITE);
+        this.setPreferredSize(new Dimension(500, 900));
+        this.setBorder(BorderFactory.createEmptyBorder(80, 60, 80, 60));
 
         this.add(title);
-        this.add(buttons);
+        this.add(Box.createVerticalStrut(80));
+        this.add(loginButton);
+        this.add(Box.createVerticalStrut(50));
+        this.add(signupButton);
+        this.add(Box.createVerticalGlue());
     }
 
 

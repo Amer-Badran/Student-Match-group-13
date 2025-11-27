@@ -1,14 +1,23 @@
 package app;
 
 import javax.swing.*;
+import java.io.IOException;
+
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         AppBuilder appBuilder = new AppBuilder();
         JFrame application = appBuilder
                 .addWelcomeView()
                 .addWelcomeUseCase()
                 .addSignupView()
+                .addSignupUseCase()
+                .addLoginView()
+                .addLoginUseCase()
+                .addProfileView()
+                .addProfileUseCase()
+                .addEnterInfoView()
+                .addEnterInfoUseCase()
                 .build();
         application.pack();
         application.setLocationRelativeTo(null);
