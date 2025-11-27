@@ -1,0 +1,1837 @@
+[
+  {
+    "name": "Accounting",
+    "degree": "Bachelor of Commerce",
+    "types": [
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Rotman-Commerce "
+  },
+  {
+    "name": "Actuarial Science",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Major",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Actuarial-Science "
+  },
+  {
+    "name": "African Studies",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/African-Studies "
+  },
+  {
+    "name": "American Studies",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/American-Studies "
+  },
+  {
+    "name": "Animal Physiology",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Major"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Cell-and-Systems-Biology "
+  },
+  {
+    "name": "Anthropology: Evolutionary",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Major"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Anthropology "
+  },
+  {
+    "name": "Anthropology: General (Arts)",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Anthropology "
+  },
+  {
+    "name": "Anthropology: Society, Culture and Language",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Anthropology "
+  },
+  {
+    "name": "Applied Data Science",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Data-Science "
+  },
+  {
+    "name": "Applied Mathematics",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Mathematics "
+  },
+  {
+    "name": "Archaeology",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Archaeology "
+  },
+  {
+    "name": "Architectural Studies",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://daniels.calendar.utoronto.ca/section/Architectural-Studies "
+  },
+  {
+    "name": "Art History",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Art-History "
+  },
+  {
+    "name": "Artist Diploma (Music)",
+    "degree": "Artist Diploma",
+    "types": [
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://music.calendar.utoronto.ca/section/Artist-Diploma "
+  },
+  {
+    "name": "Asian Canadian Studies",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/University-College "
+  },
+  {
+    "name": "Astronomy and Astrophysics",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Major",
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Astronomy-and-Astrophysics "
+  },
+  {
+    "name": "Astronomy and Physics",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Astronomy-and-Astrophysics "
+  },
+  {
+    "name": "Biochemistry",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Major",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Biochemistry "
+  },
+  {
+    "name": "Biodiversity and Conservation Biology",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Major"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Ecology-and-Evolutionary-Biology "
+  },
+  {
+    "name": "Bioethics",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Philosophy "
+  },
+  {
+    "name": "Bioinformatics and Computational Biology",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Cell-and-Systems-Biology "
+  },
+  {
+    "name": "Biological Chemistry",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Chemistry "
+  },
+  {
+    "name": "Biological Physics",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Physics "
+  },
+  {
+    "name": "Biology",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Biology "
+  },
+  {
+    "name": "Biomedical Toxicology",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Major",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Pharmacology-and-Toxicology "
+  },
+  {
+    "name": "Book and Media Studies",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/St.-Michael\u0027s-College "
+  },
+  {
+    "name": "Buddhist Studies",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Religion "
+  },
+  {
+    "name": "Business German",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/German "
+  },
+  {
+    "name": "Canadian Studies",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/University-College "
+  },
+  {
+    "name": "Caribbean Studies",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Centre-for-Caribbean-Studies "
+  },
+  {
+    "name": "Cell and Molecular Biology",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Major",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Cell-and-Systems-Biology "
+  },
+  {
+    "name": "Celtic Studies",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/St.-Michael\u0027s-College "
+  },
+  {
+    "name": "Chemical Engineering",
+    "degree": "Bachelor of Applied Science",
+    "types": [
+      "Major"
+    ],
+    "campus": "St. George campus",
+    "link": "https://engineering.calendar.utoronto.ca/section/Chemical-Engineering-and-Applied-Chemistry "
+  },
+  {
+    "name": "Chemical Physics",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Chemistry "
+  },
+  {
+    "name": "Chemistry",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Chemistry "
+  },
+  {
+    "name": "Christianity and Culture",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/St.-Michael\u0027s-College "
+  },
+  {
+    "name": "Christianity and Education",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/St.-Michael\u0027s-College "
+  },
+  {
+    "name": "Cinema Studies",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Cinema-Studies-Institute "
+  },
+  {
+    "name": "Civil Engineering",
+    "degree": "Bachelor of Applied Science",
+    "types": [
+      "Major"
+    ],
+    "campus": "St. George campus",
+    "link": "https://engineering.calendar.utoronto.ca/section/Civil-Engineering "
+  },
+  {
+    "name": "Classical Civilization",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Classics "
+  },
+  {
+    "name": "Classics (Greek and Latin)",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Classics "
+  },
+  {
+    "name": "Cognitive Science (Arts)",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/University-College "
+  },
+  {
+    "name": "Cognitive Science (Science)",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Major"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/University-College "
+  },
+  {
+    "name": "Composition (Music)",
+    "degree": "Bachelor of Music",
+    "types": [
+      "Major",
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://music.calendar.utoronto.ca/section/Bachelor-of-Music "
+  },
+  {
+    "name": "Computer Engineering",
+    "degree": "Bachelor of Applied Science",
+    "types": [
+      "Major"
+    ],
+    "campus": "St. George campus",
+    "link": "https://engineering.calendar.utoronto.ca/section/Electrical-and-Computer-Engineering "
+  },
+  {
+    "name": "Computer Science",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Computer-Science "
+  },
+  {
+    "name": "Contemporary Asian Studies, Dr. David Chu Program in",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Contemporary-Asian-Studies "
+  },
+  {
+    "name": "Creative Writing",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/English "
+  },
+  {
+    "name": "Creativity and Society",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Victoria-College "
+  },
+  {
+    "name": "Criminology and Sociolegal Studies",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Criminology-and-Sociolegal-Studies "
+  },
+  {
+    "name": "Critical Studies in Equity and Solidarity",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/New-College "
+  },
+  {
+    "name": "Data Science",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Data-Science "
+  },
+  {
+    "name": "Diaspora and Transnational Studies",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Diaspora-and-Transnational-Studies "
+  },
+  {
+    "name": "Digital Humanities",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Woodsworth-College "
+  },
+  {
+    "name": "Drama",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Drama,-Theatre-and-Performance-Studies "
+  },
+  {
+    "name": "Earth and Environmental Systems",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Major"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Earth-Sciences "
+  },
+  {
+    "name": "East Asian Studies",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/East-Asian-Studies "
+  },
+  {
+    "name": "Ecology and Evolutionary Biology",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Major",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Ecology-and-Evolutionary-Biology "
+  },
+  {
+    "name": "Economics (Arts)",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Economics "
+  },
+  {
+    "name": "Economics and Mathematics",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Economics "
+  },
+  {
+    "name": "Education and Society",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Victoria-College "
+  },
+  {
+    "name": "Electrical Engineering",
+    "degree": "Bachelor of Applied Science",
+    "types": [
+      "Major"
+    ],
+    "campus": "St. George campus",
+    "link": "https://engineering.calendar.utoronto.ca/section/Electrical-and-Computer-Engineering "
+  },
+  {
+    "name": "Engineering Science",
+    "degree": "Bachelor of Applied Science in Engineering Science",
+    "types": [
+      "Major"
+    ],
+    "campus": "St. George campus",
+    "link": "https://engineering.calendar.utoronto.ca/section/Engineering-Science "
+  },
+  {
+    "name": "English",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/English "
+  },
+  {
+    "name": "Environment and Behaviour",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/School-of-the-Environment "
+  },
+  {
+    "name": "Environment and Energy",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/School-of-the-Environment "
+  },
+  {
+    "name": "Environment and Health",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Major",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/School-of-the-Environment "
+  },
+  {
+    "name": "Environment and Toxicology",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/School-of-the-Environment "
+  },
+  {
+    "name": "Environmental Anthropology",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Anthropology "
+  },
+  {
+    "name": "Environmental Biology",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Major",
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Ecology-and-Evolutionary-Biology "
+  },
+  {
+    "name": "Environmental Chemistry",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Major",
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Chemistry "
+  },
+  {
+    "name": "Environmental Economics",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/School-of-the-Environment "
+  },
+  {
+    "name": "Environmental Ethics",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/School-of-the-Environment "
+  },
+  {
+    "name": "Environmental Geography",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/School-of-the-Environment "
+  },
+  {
+    "name": "Environmental Geosciences",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Earth-Sciences "
+  },
+  {
+    "name": "Environmental Science",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Major",
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/School-of-the-Environment "
+  },
+  {
+    "name": "Environmental Studies",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/School-of-the-Environment "
+  },
+  {
+    "name": "Ethics, Society and Law",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Trinity-College "
+  },
+  {
+    "name": "European Affairs",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/European-Affairs "
+  },
+  {
+    "name": "Finance and Economics",
+    "degree": "Bachelor of Commerce",
+    "types": [
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Rotman-Commerce "
+  },
+  {
+    "name": "Financial Economics",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Economics "
+  },
+  {
+    "name": "Forest Conservation",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Forest-Conservation-and-Forest-Biomaterials-Science "
+  },
+  {
+    "name": "Forest Conservation Science",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Forest-Conservation-and-Forest-Biomaterials-Science "
+  },
+  {
+    "name": "French Language",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/French "
+  },
+  {
+    "name": "French Language and French Linguistics",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/French "
+  },
+  {
+    "name": "French Language and Literature",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/French "
+  },
+  {
+    "name": "French Language Learning",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/French "
+  },
+  {
+    "name": "French Studies",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/French "
+  },
+  {
+    "name": "Genome Biology",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Major"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Biology "
+  },
+  {
+    "name": "Geology",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Earth-Sciences "
+  },
+  {
+    "name": "Geophysics",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Earth-Sciences "
+  },
+  {
+    "name": "Geoscience",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Major",
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Earth-Sciences "
+  },
+  {
+    "name": "German Studies",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/German "
+  },
+  {
+    "name": "German Studies in English",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/German "
+  },
+  {
+    "name": "Greek",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Classics "
+  },
+  {
+    "name": "History",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/History "
+  },
+  {
+    "name": "History and Philosophy of Science and Technology",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/History-and-Philosophy-of-Science-and-Technology "
+  },
+  {
+    "name": "History, Culture and Theory (Music)",
+    "degree": "Bachelor of Music",
+    "types": [
+      "Major",
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://music.calendar.utoronto.ca/section/Bachelor-of-Music "
+  },
+  {
+    "name": "Human Biology",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Major"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Human-Biology "
+  },
+  {
+    "name": "Human Biology: Fundamental Genetics and its Applications",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Major",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Human-Biology "
+  },
+  {
+    "name": "Human Biology: Global Health",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Major",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Human-Biology "
+  },
+  {
+    "name": "Human Biology: Health and Disease",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Major",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Human-Biology "
+  },
+  {
+    "name": "Human Biology: Neuroscience",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Major",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Human-Biology "
+  },
+  {
+    "name": "Human Geography",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Geography-and-Planning "
+  },
+  {
+    "name": "Immunology",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Immunology "
+  },
+  {
+    "name": "Indigenous Studies",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Indigenous-Studies "
+  },
+  {
+    "name": "Industrial Engineering",
+    "degree": "Bachelor of Applied Science",
+    "types": [
+      "Major"
+    ],
+    "campus": "St. George campus",
+    "link": "https://engineering.calendar.utoronto.ca/section/Industrial-Engineering "
+  },
+  {
+    "name": "Industrial Relations and Human Resources",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Industrial-Relations-and-Human-Resources "
+  },
+  {
+    "name": "Information",
+    "degree": "Bachelor of Information",
+    "types": [
+      "Professional"
+    ],
+    "campus": "St. George campus",
+    "link": "https://ischool.utoronto.ca/bachelor-of-information/ "
+  },
+  {
+    "name": "Interdisciplinary Music Studies: Classical or Jazz",
+    "degree": "Bachelor of Music",
+    "types": [
+      "Major",
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://music.calendar.utoronto.ca/section/Bachelor-of-Music "
+  },
+  {
+    "name": "International Relations",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Trinity-College "
+  },
+  {
+    "name": "Islamic Studies",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Religion "
+  },
+  {
+    "name": "Italian",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Italian "
+  },
+  {
+    "name": "Italian Culture and Communication Studies",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Italian "
+  },
+  {
+    "name": "Jewish Studies",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Centre-for-Jewish-Studies "
+  },
+  {
+    "name": "Kinesiology and Physical Education",
+    "degree": "Bachelor of Kinesiology",
+    "types": [
+      "Major"
+    ],
+    "campus": "St. George campus",
+    "link": "https://kpe.utoronto.ca/academics-researchfuture-students/bachelor-kinesiology-bkin "
+  },
+  {
+    "name": "Latin",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Classics "
+  },
+  {
+    "name": "Latin American Studies",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Latin-American-Studies "
+  },
+  {
+    "name": "Linguistics",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Linguistics "
+  },
+  {
+    "name": "Literature and Critical Theory",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Victoria-College "
+  },
+  {
+    "name": "Management (Commerce)",
+    "degree": "Bachelor of Commerce",
+    "types": [
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Rotman-Commerce "
+  },
+  {
+    "name": "Material Culture and Semiotics",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Victoria-College "
+  },
+  {
+    "name": "Materials Engineering",
+    "degree": "Bachelor of Applied Science",
+    "types": [
+      "Major"
+    ],
+    "campus": "St. George campus",
+    "link": "https://engineering.calendar.utoronto.ca/section/Materials-Science-and-Engineering "
+  },
+  {
+    "name": "Materials Science",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Materials-Science "
+  },
+  {
+    "name": "Mathematical Applications in Economics and Finance",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Mathematics "
+  },
+  {
+    "name": "Mathematics",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Mathematics "
+  },
+  {
+    "name": "Mathematics and its Applications: Physical Science",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Mathematics "
+  },
+  {
+    "name": "Mathematics and its Applications: Probability/Statistics",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Mathematics "
+  },
+  {
+    "name": "Mathematics and its Applications: Teaching",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Mathematics "
+  },
+  {
+    "name": "Mathematics and Philosophy",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Mathematics "
+  },
+  {
+    "name": "Mathematics and Physics",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Mathematics "
+  },
+  {
+    "name": "Mechanical Engineering",
+    "degree": "Bachelor of Applied Science",
+    "types": [
+      "Major"
+    ],
+    "campus": "St. George campus",
+    "link": "https://engineering.calendar.utoronto.ca/section/Mechanical-Engineering "
+  },
+  {
+    "name": "Mediaeval Studies",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/St.-Michael\u0027s-College "
+  },
+  {
+    "name": "Medical Anthropology",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Anthropology "
+  },
+  {
+    "name": "Medical Radiation Sciences",
+    "degree": "Bachelor of Science in Medical Radiation Science",
+    "types": [
+      "Professional"
+    ],
+    "campus": "St. George campus",
+    "link": "https://radonc.utoronto.ca/bachelor-science-medical-radiation-sciences "
+  },
+  {
+    "name": "Medicine",
+    "degree": "Doctor of Medicine",
+    "types": [
+      "Professional",
+      "Second-Entry"
+    ],
+    "campus": "St. George campus",
+    "link": "https://applymd.utoronto.ca "
+  },
+  {
+    "name": "Mineral Engineering",
+    "degree": "Bachelor of Applied Science",
+    "types": [
+      "Major"
+    ],
+    "campus": "St. George campus",
+    "link": "https://engineering.calendar.utoronto.ca/section/Mineral-Engineering "
+  },
+  {
+    "name": "Molecular Genetics and Microbiology",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Major",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Molecular-Genetics-and-Microbiology "
+  },
+  {
+    "name": "Music",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Music "
+  },
+  {
+    "name": "Music Education: Classical or Jazz",
+    "degree": "Bachelor of Music",
+    "types": [
+      "Major",
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://music.calendar.utoronto.ca/section/Bachelor-of-Music "
+  },
+  {
+    "name": "Music History and Culture",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Music "
+  },
+  {
+    "name": "Music with Ensemble Option",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Music "
+  },
+  {
+    "name": "Near and Middle Eastern Civilizations",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Near-and-Middle-Eastern-Civilizations "
+  },
+  {
+    "name": "Nursing",
+    "degree": "Bachelor of Science in Nursing",
+    "types": [
+      "Professional"
+    ],
+    "campus": "St. George campus",
+    "link": "https://bloomberg.nursing.utoronto.ca/learn-with-us/bachelor-of-science-in-nursing/ "
+  },
+  {
+    "name": "Nutritional Sciences",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Major"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Nutritional-Sciences "
+  },
+  {
+    "name": "Pathobiology",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Laboratory-Medicine-and-Pathobiology "
+  },
+  {
+    "name": "Peace, Conflict and Justice",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Peace,-Conflict-and-Justice "
+  },
+  {
+    "name": "Performance: Classical or Jazz",
+    "degree": "Bachelor of Music in Performance",
+    "types": [
+      "Major",
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://music.calendar.utoronto.ca/section/Bachelor-of-Music-in-Performance "
+  },
+  {
+    "name": "Pharmaceutical Chemistry",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Chemistry "
+  },
+  {
+    "name": "Pharmacology",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Major",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Pharmacology-and-Toxicology "
+  },
+  {
+    "name": "Pharmacology and Biomedical Toxicology",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Pharmacology-and-Toxicology "
+  },
+  {
+    "name": "Philosophy",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Philosophy "
+  },
+  {
+    "name": "Physical and Environmental Geography",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Geography-and-Planning "
+  },
+  {
+    "name": "Physician Assistant",
+    "degree": "Bachelor of Science Physician Assistant",
+    "types": [
+      "Professional"
+    ],
+    "campus": "St. George campus",
+    "link": "https://paconsortium.ca/overview-prospective-students "
+  },
+  {
+    "name": "Physics",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Physics "
+  },
+  {
+    "name": "Physics and Philosophy",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Physics "
+  },
+  {
+    "name": "Physiology",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Physiology "
+  },
+  {
+    "name": "Planetary Science",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Planetary-Science "
+  },
+  {
+    "name": "Political Science",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Political-Science "
+  },
+  {
+    "name": "Portuguese",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Portuguese "
+  },
+  {
+    "name": "Psychology",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Psychology "
+  },
+  {
+    "name": "Psychology Research",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Psychology "
+  },
+  {
+    "name": "Public Health",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/University-College "
+  },
+  {
+    "name": "Public Policy",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Public-Policy "
+  },
+  {
+    "name": "Quantitative Biology",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Major"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Biology "
+  },
+  {
+    "name": "Religion",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Religion "
+  },
+  {
+    "name": "Renaissance Studies",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Victoria-College "
+  },
+  {
+    "name": "Science, Technology and Society",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/History-and-Philosophy-of-Science-and-Technology "
+  },
+  {
+    "name": "Sexual Diversity Studies",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Sexual-Diversity-Studies "
+  },
+  {
+    "name": "Slavic and East European Languages and Cultures",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Slavic-and-East-European-Languages-and-Cultures "
+  },
+  {
+    "name": "Slavic and East European Literature in Translation",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Slavic-and-East-European-Languages-and-Cultures "
+  },
+  {
+    "name": "Sociology",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Sociology "
+  },
+  {
+    "name": "South Asian Studies",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/South-Asian-Studies "
+  },
+  {
+    "name": "Spanish",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Spanish "
+  },
+  {
+    "name": "Statistical Science: Methods and Practice",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Statistical-Sciences "
+  },
+  {
+    "name": "Statistical Science: Theory and Methods",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Statistical-Sciences "
+  },
+  {
+    "name": "Statistics",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Major",
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Statistical-Sciences "
+  },
+  {
+    "name": "Synthetic and Catalytic Chemistry",
+    "degree": "Honours Bachelor of Science",
+    "types": [
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Chemistry "
+  },
+  {
+    "name": "Track One: Undeclared Engineering",
+    "degree": "Bachelor of Applied Science",
+    "types": [
+      "Major"
+    ],
+    "campus": "St. George campus",
+    "link": "https://engineering.calendar.utoronto.ca/section/Track-One "
+  },
+  {
+    "name": "Urban Studies",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Innis-College "
+  },
+  {
+    "name": "Visual Studies (Arts)",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Architecture-and-Visual-Studies "
+  },
+  {
+    "name": "Visual Studies (Design)",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://daniels.calendar.utoronto.ca/section/Visual-Studies "
+  },
+  {
+    "name": "Women and Gender Studies",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major",
+      "Minor",
+      "Specialist"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Women-and-Gender-Studies "
+  },
+  {
+    "name": "Work and Organizations: Humanities Contexts",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Industrial-Relations-and-Human-Resources "
+  },
+  {
+    "name": "Work and Organizations: Sciences Contexts",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Industrial-Relations-and-Human-Resources "
+  },
+  {
+    "name": "Work and Organizations: Social Sciences Contexts",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Major"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Industrial-Relations-and-Human-Resources "
+  },
+  {
+    "name": "Writing and Rhetoric",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Innis-College "
+  },
+  {
+    "name": "Yiddish, Al and Malka Green Program in",
+    "degree": "Honours Bachelor of Arts",
+    "types": [
+      "Minor"
+    ],
+    "campus": "St. George campus",
+    "link": "https://artsci.calendar.utoronto.ca/section/Yiddish-Studies "
+  }
+]
