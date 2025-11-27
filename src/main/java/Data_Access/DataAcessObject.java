@@ -1,10 +1,12 @@
 package Data_Access;
 
-import Entity.Client;
+import Entity.OldClient;
 import Entity.ClientFactory;
 import Use_Case.signup.SignupDataAcessObject;
+import org.json.simple.parser.ParseException;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -15,7 +17,7 @@ public class DataAcessObject implements SignupDataAcessObject {
 
     private final File csvFile;
     private final Map<String, Integer> headers = new LinkedHashMap<>();
-    private final Map<String, Client> accounts = new HashMap<>();
+    private final Map<String, OldClient> accounts = new HashMap<>();
 
     private String currentUsername;
 
@@ -23,8 +25,8 @@ public class DataAcessObject implements SignupDataAcessObject {
     public DataAcessObject(String csvPath, ClientFactory clientFactory) {
 
     csvFile = new File(csvPath);
-        headers.put("username", 0);
-        headers.put("password", 1);
+        headers.put("username", Integer.valueOf(0));
+        headers.put("password", Integer.valueOf(1));
 
         if (csvFile.length() == 0) {
         save();
@@ -45,7 +47,7 @@ public class DataAcessObject implements SignupDataAcessObject {
                 final String password = String.valueOf(col[headers.get("password")]);
 
                 // modify this method later on
-                final Client user = clientFactory.create(username, password);
+                final OldClient user = clientFactory.create(username, password);
                 accounts.put(username, user);
             }
         }
@@ -62,9 +64,9 @@ private void save() {
         writer.write(String.join(",", headers.keySet()));
         writer.newLine();
 
-        for (Client client : accounts.values()) {
+        for (OldClient oldClient : accounts.values()) {
             final String line = String.format("%s,%s",
-                    client.getUserName(), client.getPassword());
+                    oldClient.getUserName(), oldClient.getPassword());
             writer.write(line);
             writer.newLine();
         }
@@ -78,12 +80,17 @@ private void save() {
 }
 
 @Override
-public void save(Client client) {
-    accounts.put(client.getUserName(), client);
+public void save(OldClient oldClient) {
+    accounts.put(oldClient.getUserName(), oldClient);
     this.save();
 }
 
-@Override
+    @Override
+    public ArrayList<String> getClasses(String name) throws IOException, ParseException {
+        return null;
+    }
+
+    @Override
 public boolean alreadyExists(String identifier) {
     return accounts.containsKey(identifier);
 }
