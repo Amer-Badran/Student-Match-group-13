@@ -7,7 +7,6 @@ public class AnnouncementOutputData {
         this.resultMessage = resultMessage;
     }
 
-    public String getResultMessage() {
-        return resultMessage;
-    }
+    public String getResultMessage() { return resultMessage; }
 }
+

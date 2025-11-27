@@ -9,14 +9,10 @@ public class AnnouncementInputData {
         this.message = message;
     }
 
-    public String getUser() {
-        return user;
-    }
-
-    public String getMessage() {
-        return message;
-    }
+    public String getUser() { return user; }
+    public String getMessage() { return message; }
 }
+
 
 
 

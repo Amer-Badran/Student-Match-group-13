@@ -3,6 +3,7 @@ package Use_Case.announcements;
 import java.io.IOException;
 import java.util.Map;
 
+
 public class AnnouncementInteractor implements AnnouncementInputBoundary {
 
     private final AnnouncementDataAccessObject dao;
@@ -15,30 +16,17 @@ public class AnnouncementInteractor implements AnnouncementInputBoundary {
 
     @Override
     public void execute(AnnouncementInputData input) {
-        try {
-            String user = input.getUser();
-            String message = input.getMessage();
-
-            // 1️⃣ validate
-            if (message == null || message.trim().isEmpty()) {
-                presenter.prepareFailView("Announcement cannot be empty.");
-                return;
-            }
-
-            // load existing announcements
-            Map<String, String> announcements = dao.loadAnnouncements();
-
-            // add or update this user's announcement
-            announcements.put(user, message);
-
-            //  save back
-            dao.saveAnnouncements(announcements);
-
-            // notify presenter
-            presenter.prepareSuccessView(new AnnouncementOutputData("Announcement posted."));
-
-        } catch (IOException e) {
-            presenter.prepareFailView("Error posting announcement: " + e.getMessage());
-        }
+        // nothing implemented yet
+        // later:
+        // 1. create Announcement entity
+        // 2. save via DAO
+        // 3. notify presenter
     }
+
+    public void switchToAnnouncementsView() {
+        // nothing implemented yet
+        // later, will notify presenter/view to switch to announcement tab
+        // presenter.switchToAnnouncementsView();
+    }
+
 }
