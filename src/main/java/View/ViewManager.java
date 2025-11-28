@@ -28,6 +28,23 @@ public class ViewManager implements PropertyChangeListener {
         if (evt.getPropertyName().equals("state")) {
             final String viewModelName = (String) evt.getNewValue();
             cardLayout.show(views, viewModelName);
+            resizeForView(viewModelName);
+        }
+    }
+
+    private void resizeForView(String viewModelName) {
+        final Window window = SwingUtilities.getWindowAncestor(views);
+        if (window instanceof JFrame) {
+            final Dimension targetSize;
+            if ("Login".equals(viewModelName) || "Sign up".equals(viewModelName)) {
+                targetSize = new Dimension(360, 520);
+            } else if ("profile".equals(viewModelName)) {
+                targetSize = new Dimension(420, 640);
+            } else {
+                targetSize = new Dimension(480, 720);
+            }
+            window.setSize(targetSize);
+            window.setLocationRelativeTo(null);
         }
     }
 }
