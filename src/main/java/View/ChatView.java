@@ -1,15 +1,11 @@
 package View;
 
-import Interface_Adapter.Chat.ChatController;
-import Interface_Adapter.Chat.ChatPresenter;
-import Interface_Adapter.Chat.ChatState;
-import Interface_Adapter.Chat.ChatViewModel;
-import Interface_Adapter.Notification.NotificationController;
-import Interface_Adapter.Notification.NotificationState;
+import Interface_Adapter.chat.ChatController;
+import Interface_Adapter.chat.ChatState;
+import Interface_Adapter.chat.ChatViewModel;
 import org.json.simple.parser.ParseException;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
@@ -82,6 +78,7 @@ public class ChatView extends JPanel implements ActionListener, PropertyChangeLi
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         String message = write.getText();
+                        write.setText(null);
                         String other = chatViewModel.getState().getOther();
                         String person = chatViewModel.getState().getSender();
                         try {
@@ -163,14 +160,21 @@ public class ChatView extends JPanel implements ActionListener, PropertyChangeLi
             JOptionPane.showMessageDialog(this, state.getError());
             state.setError(null);
         }
-        else if(!(state.getLog()== null)){
+        else if(!(state.getLog() == null)){
 
 
        textArea.setText("");
 
+
             String senderd = state.getSender();
             String receiverd = state.getOther();
             ArrayList<String> logd = state.getLog();
+            if((logd.isEmpty())){
+                SwingUtilities.invokeLater(() -> {
+                JScrollBar bar = scrollPanes.getVerticalScrollBar();
+                bar.setValue(bar.getMaximum());
+               });}
+            else{
 
                 for(String msg:logd) {
                     if(!(msg.startsWith("*"))){
@@ -190,7 +194,7 @@ public class ChatView extends JPanel implements ActionListener, PropertyChangeLi
             });
 
 
-        }}
+        }}}
 
 
     public void setChatController(ChatController controller) {

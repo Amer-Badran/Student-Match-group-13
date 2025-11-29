@@ -1,8 +1,8 @@
 package Interface_Adapter.login;
 
-import Interface_Adapter.Notification.NotificationState;
-import Interface_Adapter.Notification.NotificationViewModel;
 import Interface_Adapter.ViewManagerModel;
+import Interface_Adapter.dashboard.DashboardState;
+import Interface_Adapter.dashboard.DashboardViewModel;
 import Interface_Adapter.profile.ProfileState;
 import Interface_Adapter.profile.ProfileViewModel;
 import Use_Case.login.LoginOutputBoundary;
@@ -14,16 +14,15 @@ public class LoginPresenter implements LoginOutputBoundary {
     private final ViewManagerModel viewManagerModels;
     private final LoginViewModel loginViewModels;
     private ProfileViewModel profileViewModels;
-    private NotificationViewModel notificationViewModel;
-
+    private final DashboardViewModel dashboardViewModel;
     public LoginPresenter(ViewManagerModel viewManagerModel,
                           LoginViewModel loginViewModel,
                           ProfileViewModel profileViewModel,
-                          NotificationViewModel notificationViewModels){
+                          DashboardViewModel dashboardViewModels){
         this.loginViewModels = loginViewModel;
         this.viewManagerModels = viewManagerModel;
         this.profileViewModels = profileViewModel;
-        this.notificationViewModel = notificationViewModels;
+        this.dashboardViewModel = dashboardViewModels;
 
 
     }
@@ -38,12 +37,12 @@ public class LoginPresenter implements LoginOutputBoundary {
 
     @Override
     public void prepareHomeView(ArrayList<String> notification) {
-        final NotificationState notificationState = notificationViewModel.getState();
+        final DashboardState dashboardState = dashboardViewModel.getState();
 
-        notificationState.setNotification(notification);
-        notificationState.setUsername(loginViewModels.getState().getUsername());
-        notificationViewModel.firePropertyChange();
-        this.viewManagerModels.setState(notificationViewModel.getViewName());
+        dashboardState.setNotification(notification);
+        dashboardState.setUsername(loginViewModels.getState().getUsername());
+//        notificationViewModel.firePropertyChange();
+        this.viewManagerModels.setState(dashboardViewModel.getViewName());
         this.viewManagerModels.firePropertyChange();
 
     }

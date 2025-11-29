@@ -5,16 +5,25 @@ import java.io.IOException;
 
 import Data_Access.JSONDataObject;
 import Entity.ClientFactory;
-import Interface_Adapter.Chat.ChatController;
-import Interface_Adapter.Chat.ChatPresenter;
-import Interface_Adapter.Chat.ChatViewModel;
-import Interface_Adapter.EnterInfo.EnterInfoController;
-import Interface_Adapter.EnterInfo.EnterInfoPresenter;
-import Interface_Adapter.EnterInfo.EnterInfoViewModel;
-import Interface_Adapter.Notification.NotificationController;
-import Interface_Adapter.Notification.NotificationPresenter;
-import Interface_Adapter.Notification.NotificationViewModel;
+import Interface_Adapter.announcement.AnnouncementController;
+import Interface_Adapter.announcement.AnnouncementPresenter;
+import Interface_Adapter.announcement.AnnouncementViewModel;
+import Interface_Adapter.chat.ChatController;
+import Interface_Adapter.chat.ChatPresenter;
+import Interface_Adapter.chat.ChatViewModel;
+import Interface_Adapter.enterInfo.EnterInfoController;
+import Interface_Adapter.enterInfo.EnterInfoPresenter;
+import Interface_Adapter.enterInfo.EnterInfoViewModel;
+import Interface_Adapter.notification.NotificationController;
+import Interface_Adapter.notification.NotificationPresenter;
+import Interface_Adapter.notification.NotificationViewModel;
 import Interface_Adapter.ViewManagerModel;
+import Interface_Adapter.dashboard.DashboardController;
+import Interface_Adapter.dashboard.DashboardPresenter;
+import Interface_Adapter.dashboard.DashboardViewModel;
+import Interface_Adapter.findmatches.FindMatchesController;
+import Interface_Adapter.findmatches.FindMatchesPresenter;
+import Interface_Adapter.findmatches.FindMatchesViewModel;
 import Interface_Adapter.login.LoginController;
 import Interface_Adapter.login.LoginPresenter;
 import Interface_Adapter.login.LoginViewModel;
@@ -26,19 +35,28 @@ import Interface_Adapter.signup.SignupPresenter;
 import Interface_Adapter.signup.SignupViewModel;
 import Interface_Adapter.welcome.WelcomPresenter;
 import Interface_Adapter.welcome.WelcomeController;
-import Use_Case.Chat.ChatInputBoundary;
-import Use_Case.Chat.ChatInteractor;
-import Use_Case.Chat.ChatOutputBoundary;
-import Use_Case.EnterInfo.EnterInfoInputBoundary;
-import Use_Case.EnterInfo.EnterInfoInteractor;
-import Use_Case.EnterInfo.EnterInfoOutputBoundary;
-import Use_Case.Notification.NotificationInputBoundary;
-import Use_Case.Notification.NotificationInteractor;
-import Use_Case.Notification.NotificationOutputBoundary;
-import Use_Case.login.LoginDataAcessObject;
+import Use_Case.announcement.AnnouncementInputBoundary;
+import Use_Case.announcement.AnnouncementInteractor;
+import Use_Case.announcement.AnnouncementOutputBoundary;
+import Use_Case.chat.ChatInputBoundary;
+import Use_Case.chat.ChatInteractor;
+import Use_Case.chat.ChatOutputBoundary;
+import Use_Case.enterInfo.EnterInfoInputBoundary;
+import Use_Case.enterInfo.EnterInfoInteractor;
+import Use_Case.enterInfo.EnterInfoOutputBoundary;
+import Use_Case.notification.NotificationInputBoundary;
+import Use_Case.notification.NotificationInteractor;
+import Use_Case.notification.NotificationOutputBoundary;
+import Use_Case.dashboard.DashboardInputBoundary;
+import Use_Case.dashboard.DashboardInteractor;
+import Use_Case.dashboard.DashboardOutputBoundary;
+import Use_Case.findmatches.FindMatchesInputBoundary;
+import Use_Case.findmatches.FindMatchesInteractor;
+import Use_Case.findmatches.FindMatchesOutputBoundary;
 import Use_Case.login.LoginInputBoundary;
 import Use_Case.login.LoginInteractor;
 import Use_Case.login.LoginOutputBoundary;
+import Use_Case.matchingstrategy.WeightedMatchingAlgorithm;
 import Use_Case.profile.ProfileInputBoundary;
 import Use_Case.profile.ProfileInteractor;
 import Use_Case.profile.ProfileOutputBoundary;
@@ -66,7 +84,9 @@ public class AppBuilder {
     private EnterInfoView enterInfoView;
     private NotificationView notificationView;
     private ChatView chatView;
-
+    private DashboardView dashboardView;
+    private FindMatchesView findMatchesView;
+    private AnnouncementView announcementView;
 
     private SignupViewModel signupViewModel = new SignupViewModel();
     private LoginViewModel loginViewModels = new LoginViewModel();
@@ -74,6 +94,12 @@ public class AppBuilder {
     private EnterInfoViewModel enterInfoViewModel = new EnterInfoViewModel();
     private NotificationViewModel notificationViewModel = new NotificationViewModel();
     private ChatViewModel chatViewModel = new ChatViewModel();
+    private DashboardViewModel dashboardViewModel = new DashboardViewModel();
+    private FindMatchesViewModel findMatchesViewModel = new FindMatchesViewModel();
+    private AnnouncementViewModel announcementViewModel = new AnnouncementViewModel();
+
+
+    private final WeightedMatchingAlgorithm matchingAlgorithm = new WeightedMatchingAlgorithm();
 
 
 
@@ -124,7 +150,7 @@ public AppBuilder addLoginView(){
         return this;
 }
 public AppBuilder addLoginUseCase() throws IOException {
-        final LoginOutputBoundary loginPresenter = new LoginPresenter(viewManagerModel,loginViewModels,profileViewModels,notificationViewModel);
+        final LoginOutputBoundary loginPresenter = new LoginPresenter(viewManagerModel,loginViewModels,profileViewModels,dashboardViewModel);
         final LoginInputBoundary loginInteractor = new LoginInteractor(DAO,loginPresenter);
         loginView.setLoginController(new LoginController(loginInteractor));
         return this;
@@ -146,22 +172,65 @@ public AppBuilder addEnterInfoView(){
         return this;
 }
 public AppBuilder addEnterInfoUseCase(){
-        final EnterInfoOutputBoundary enterInfoPresetner = new EnterInfoPresenter(enterInfoViewModel,viewManagerModel,notificationViewModel);
+        final EnterInfoOutputBoundary enterInfoPresetner = new EnterInfoPresenter(enterInfoViewModel,viewManagerModel,dashboardViewModel);
         final EnterInfoInputBoundary enterinfoInteractor = new EnterInfoInteractor(DAO,enterInfoPresetner);
         enterInfoView.setEnterInfoController(new EnterInfoController(enterinfoInteractor));
         return this;
 }
+
+public AppBuilder addDashboardView(){
+        dashboardView = new DashboardView(dashboardViewModel);
+        cardPanel.add(dashboardView,dashboardViewModel.getViewName());
+        return this;
+}
+
+public AppBuilder addDashboardUseCase(){
+    final DashboardOutputBoundary  DashboardPresetner = new DashboardPresenter(dashboardViewModel,viewManagerModel
+                                                                        ,notificationViewModel,findMatchesViewModel,
+                                                                          announcementViewModel);
+    final DashboardInputBoundary DashboardInteractor = new DashboardInteractor(DAO, DashboardPresetner);
+    dashboardView.setDashboardController(new DashboardController(DashboardInteractor));
+    return this;
+}
+
+
 public AppBuilder addNotificationView() throws IOException, ParseException {
         notificationView = new NotificationView(notificationViewModel);
         cardPanel.add(notificationView,"notification");
         return this;
 }
 public AppBuilder addNotificationUseCase(){
-        final NotificationOutputBoundary notificationPresenter = new NotificationPresenter(notificationViewModel,chatViewModel,viewManagerModel);
+        final NotificationOutputBoundary notificationPresenter = new NotificationPresenter(notificationViewModel,chatViewModel,
+                                                                                viewManagerModel,dashboardViewModel);
         final NotificationInputBoundary notificationInteractor = new NotificationInteractor(DAO,notificationPresenter);
         notificationView.setNotificationController(new NotificationController(notificationInteractor));
         return this;
 }
+
+public AppBuilder addAnnouncementView(){
+        announcementView = new AnnouncementView(announcementViewModel);
+        cardPanel.add(announcementView,announcementViewModel.getViewName());
+        return this;
+}
+
+public AppBuilder addAnnouncementUseCase(){
+        final AnnouncementOutputBoundary AnnouncementPresenter = new AnnouncementPresenter(announcementViewModel,dashboardViewModel,viewManagerModel);
+        final AnnouncementInputBoundary AnnouncementInteractor = new AnnouncementInteractor(DAO,AnnouncementPresenter);
+        announcementView.setAnnouncementController(new AnnouncementController(AnnouncementInteractor));
+        return this;
+}
+
+public AppBuilder addFindMatchesView(){
+        findMatchesView = new FindMatchesView(findMatchesViewModel);
+        cardPanel.add(findMatchesView,findMatchesViewModel.getViewName());
+        return this;
+}
+public AppBuilder addFindMatchesUseCase(){
+        final FindMatchesOutputBoundary FindMatchesPresenter = new FindMatchesPresenter(viewManagerModel,findMatchesViewModel,dashboardViewModel);
+        final FindMatchesInputBoundary findMatchesInteractor = new FindMatchesInteractor(DAO,matchingAlgorithm,FindMatchesPresenter);
+        findMatchesView.setFindMatchesController(new FindMatchesController(findMatchesInteractor));
+        return this;}
+
 
 public AppBuilder addChatView(){
         chatView = new ChatView(chatViewModel);

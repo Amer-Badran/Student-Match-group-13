@@ -1,7 +1,7 @@
 package Interface_Adapter.profile;
 
-import Interface_Adapter.EnterInfo.EnterInfoState;
-import Interface_Adapter.EnterInfo.EnterInfoViewModel;
+import Interface_Adapter.enterInfo.EnterInfoState;
+import Interface_Adapter.enterInfo.EnterInfoViewModel;
 import Interface_Adapter.ViewManagerModel;
 import Use_Case.profile.ProfileOutputBoundary;
 import Use_Case.profile.ProfileOutputData;

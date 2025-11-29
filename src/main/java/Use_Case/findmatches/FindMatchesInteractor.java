@@ -1,8 +1,11 @@
 package Use_Case.findmatches;
 
 import Entity.Client;
+import Entity.Profile;
 import Use_Case.matchingstrategy.WeightedMatchingAlgorithm;
+import org.json.simple.parser.ParseException;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -21,9 +24,22 @@ public class FindMatchesInteractor implements FindMatchesInputBoundary {
         this.matchingAlgorithm = matchingAlgorithm;
         this.presenter = presenter;
     }
+    @Override
+    public void switchToHomeView(){
+        presenter.switchToHomeView();
+    }
 
     @Override
-    public void execute(FindMatchesInputData inputData) {
+    public Profile getProfile(String name) throws IOException, ParseException {
+        if(!userDAO.UserExists(name)){
+            presenter.prepareFailView("this user does not exist");
+        }
+        Profile profile = userDAO.getProfile(name);
+        return profile;
+    }
+
+    @Override
+    public void execute(FindMatchesInputData inputData) throws IOException, ParseException {
 
         // 1. Get current user
         Client currentUser = userDAO.findByUsername(inputData.getCurrentUsername());

@@ -1,10 +1,8 @@
 package View;
 
-import Interface_Adapter.Notification.NotificationController;
-import Interface_Adapter.Notification.NotificationState;
-import Interface_Adapter.Notification.NotificationViewModel;
-import Interface_Adapter.profile.ProfileController;
-import Interface_Adapter.signup.SignupState;
+import Interface_Adapter.notification.NotificationController;
+import Interface_Adapter.notification.NotificationState;
+import Interface_Adapter.notification.NotificationViewModel;
 import org.json.simple.parser.ParseException;
 
 import javax.swing.*;
@@ -18,10 +16,12 @@ import java.util.ArrayList;
 public class NotificationView extends JPanel implements ActionListener, PropertyChangeListener {
     private JTextField textField;
     private JButton search;
+    private JButton back;
     private JLabel infoLabel;
     private NotificationViewModel notificationViewModel;
     private NotificationController controller;
     JPanel notificationPanel = new JPanel();
+    JPanel spacer = new JPanel();
 
 
     public NotificationView(NotificationViewModel notificationViewModels) throws IOException, ParseException {
@@ -29,6 +29,7 @@ public class NotificationView extends JPanel implements ActionListener, Property
         notificationViewModel.addPropertyChangeListener(this);
         JPanel interactions = new JPanel();
         controller = null;
+        notificationPanel.setLayout(new BoxLayout(notificationPanel, BoxLayout.Y_AXIS));
 
         ArrayList<String> peopleNotification =   notificationViewModel.getState().getNotification();
         if(peopleNotification==null || peopleNotification.isEmpty() ){
@@ -40,9 +41,10 @@ public class NotificationView extends JPanel implements ActionListener, Property
             notificationPanel.add(tempLabel);
         }}
         search = new JButton("search");
+        back = new JButton("back");
         textField = new JTextField(15);
         infoLabel = new JLabel("Who do you want to chat with ?");
-
+        interactions.add(back);
         interactions.add(infoLabel);
         interactions.add(textField);
         interactions.add(search);
@@ -51,8 +53,17 @@ public class NotificationView extends JPanel implements ActionListener, Property
 
 //        this.add(title);
         this.add(notificationPanel);
+        this.add(spacer);
         this.add(interactions);
 
+        back.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        controller.switchToHomeView();
+                    }
+                }
+        );
 
         search.addActionListener(
                 new ActionListener() {

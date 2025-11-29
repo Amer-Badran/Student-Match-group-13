@@ -1,31 +1,23 @@
 package View;
 
-import Entity.Profile;
-import Interface_Adapter.EnterInfo.EnterInfoController;
-import Interface_Adapter.EnterInfo.EnterInfoState;
-import Interface_Adapter.EnterInfo.EnterInfoViewModel;
-import Interface_Adapter.login.LoginController;
-import Interface_Adapter.profile.ProfileController;
-import Interface_Adapter.profile.ProfileState;
-import Interface_Adapter.profile.ProfileViewModel;
+import Interface_Adapter.enterInfo.EnterInfoController;
+import Interface_Adapter.enterInfo.EnterInfoState;
+import Interface_Adapter.enterInfo.EnterInfoViewModel;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class EnterInfoView extends JPanel implements ActionListener, PropertyChangeListener {
 
@@ -110,6 +102,38 @@ public class EnterInfoView extends JPanel implements ActionListener, PropertyCha
         // end of program data
 
 
+
+        File HmyObj = new File("hobbies.txt");
+        ArrayList<String> hobby = new ArrayList<>();
+
+        // try-with-resources: Scanner will be closed automatically
+        try (Scanner myReader = new Scanner(HmyObj)) {
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                hobby.add(data);
+
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
+
+//        File LmyObj = new File("languages.txt");
+//        ArrayList<String> language = new ArrayList<>();
+//
+//        // try-with-resources: Scanner will be closed automatically
+//        try (Scanner myReader = new Scanner(LmyObj)) {
+//            while (myReader.hasNextLine()) {
+//                String data = myReader.nextLine();
+//                language.add(data);
+//
+//            }
+//        } catch (FileNotFoundException e) {
+//            System.out.println("An error occurred.");
+//            e.printStackTrace();
+//        }
+
         ArrayList<String> types = new ArrayList<>();
         types.add("Minor");
         types.add("Specialist");
@@ -126,17 +150,16 @@ public class EnterInfoView extends JPanel implements ActionListener, PropertyCha
         program_count = new JComboBox<>(count.toArray(new String[0]));
 
 
-        ArrayList<String> hobby = new ArrayList<>();
-        hobby.add("sports");
-        hobby.add("arts");
-        hobby.add("science");
-        hobby.add("electronics");
-        hobby.add("dancing");
-        hobby.add("video games");
-        hobby.add("reading");
-        hobby.add("fishing");
-        hobby.add("music");
-        hobby.add("fashion");
+//        hobby.add("sports");
+//        hobby.add("arts");
+//        hobby.add("science");
+//        hobby.add("electronics");
+//        hobby.add("dancing");
+//        hobby.add("video games");
+//        hobby.add("reading");
+//        hobby.add("fishing");
+//        hobby.add("music");
+//        hobby.add("fashion");
         hobbies_drop = new JComboBox<>(hobby.toArray(new String[0]));
         final JPanel Haccumulation = new JPanel();
         JLabel Hchoices = new JLabel("");

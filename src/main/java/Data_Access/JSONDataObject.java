@@ -3,9 +3,12 @@ import Entity.Client;
 import Entity.MatchingPreferences;
 import Entity.OldClient;
 import Entity.Profile;
-import Use_Case.Chat.ChatDataAccessObject;
-import Use_Case.EnterInfo.MatchingPreferencesDataAccessObject;
-import Use_Case.Notification.NotificationDataAccessObject;
+import Use_Case.announcement.AnnouncementDataAccessObject;
+import Use_Case.chat.ChatDataAccessObject;
+import Use_Case.enterInfo.MatchingPreferencesDataAccessObject;
+import Use_Case.notification.NotificationDataAccessObject;
+import Use_Case.dashboard.DashboardDataAccessObject;
+import Use_Case.findmatches.FindMatchesDataAccessObject;
 import Use_Case.login.LoginDataAcessObject;
 import Use_Case.profile.ProfileDataAccessObject;
 import Use_Case.signup.SignupDataAcessObject;
@@ -17,12 +20,12 @@ import org.json.simple.parser.ParseException;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class JSONDataObject implements SignupDataAcessObject,
         LoginDataAcessObject, ProfileDataAccessObject , MatchingPreferencesDataAccessObject,
-        NotificationDataAccessObject, ChatDataAccessObject {
+        NotificationDataAccessObject, ChatDataAccessObject, DashboardDataAccessObject, FindMatchesDataAccessObject,
+        AnnouncementDataAccessObject {
     private final File fileJSON;
     private final File PrettyJSON;
     private final File CleanData;
@@ -53,10 +56,7 @@ public class JSONDataObject implements SignupDataAcessObject,
             PrettyJSON.createNewFile();
         }
 
-        OldClient user = new OldClient("User1","123456");
-        save(user);
-        OldClient user2 = new OldClient("User2","abcdef");
-        save(user2);
+
     }
 
     @Override
@@ -105,8 +105,9 @@ public class JSONDataObject implements SignupDataAcessObject,
             notif.put("1",new ArrayList<String>());
             notif.put("0",new ArrayList<String>());
             newUser.put("notification",notif);
+            newUser.put("announcements", new ArrayList<String>());
             newUser.put("programs",new HashMap<String, String>());
-            newUser.put("yearOfStudy", 0);
+            newUser.put("yearsOfStudy",0);
             newUser.put("hobbies", new ArrayList<String>());
             newUser.put("languages", new ArrayList<String>());
             newUser.put("weights", new HashMap<String,Double>());
@@ -238,7 +239,8 @@ public class JSONDataObject implements SignupDataAcessObject,
                 String phone = (String) user.get("phone");
                 String insta = (String) user.get("instagram");
                 Map<String, String> programs = (HashMap<String, String>) user.get("programs");
-                int years = (Integer) user.get("yearOfStudy");
+                long yearsLong = (Long) user.get("yearsOfStudy");
+                int years = (int) yearsLong;
                 ArrayList<String> hobbies2 = (ArrayList<String>) user.get("hobbies");
                 ArrayList<String> languages = (ArrayList<String>) user.get("languages");
                 HashMap<String,Double> weights =(HashMap<String, Double>) user.get("weights");
@@ -254,6 +256,11 @@ public class JSONDataObject implements SignupDataAcessObject,
         }return null;
     }
 
+    @Override
+    public Client findByUsername(String username) throws IOException, ParseException {
+        return getUserByUsername(username);
+    }
+
     public ArrayList<Client> getAllUsers() throws IOException, ParseException {
         ArrayList<Client> theUsers = new ArrayList<Client>();
         JSONArray data = readAll();
@@ -263,6 +270,13 @@ public class JSONDataObject implements SignupDataAcessObject,
             theUsers.add(currentUser);
         }
         return theUsers;
+    }
+
+    @Override
+    public Profile getProfile(String name) throws IOException, ParseException {
+        Client client = getUserByUsername(name);
+        return client.getProfile();
+
     }
 
 
@@ -308,7 +322,7 @@ public class JSONDataObject implements SignupDataAcessObject,
                 if (username.equals(user.get("username"))) {
                     user.put("courses",mp.getCourses());
                     user.put("programs",mp.getPrograms());
-                    user.put("yearOfStudy", mp.getYearOfStudy());
+                    user.put("yearsOfStudy", mp.getYearOfStudy());
                     user.put("hobbies", mp.getHobbies());
                     user.put("languages", mp.getLanguages());
                     user.put("weights", mp.getWeights());
@@ -518,6 +532,39 @@ public class JSONDataObject implements SignupDataAcessObject,
             }
         }
 
+    }
+
+    @Override
+    public void updateAnnouncements(String announcement) throws IOException, ParseException {
+        JSONArray users = readAll();
+        if(!users.isEmpty()){
+            for (Object obj : users) {
+                JSONObject user = (JSONObject) obj;
+                ArrayList<String> temp = (ArrayList<String>) user.get("announcements");
+                temp.add(announcement);
+                user.put("announcements",temp);
+                }
+            } rewrite(users);
+        }
+
+
+    @Override
+    public ArrayList<String> getAnnouncements(String username) throws IOException, ParseException {
+        JSONArray users = readAll();
+        if(!users.isEmpty()){
+            for (Object obj : users) {
+                JSONObject user = (JSONObject) obj;
+                if (username.equals(user.get("username"))) {
+                    ArrayList<String> log = (ArrayList<String>) user.get("announcements");
+                    return log;
+
+                }
+                else{continue;}
+
+            }
+        }
+
+        return new ArrayList<>();
     }
 }
 
