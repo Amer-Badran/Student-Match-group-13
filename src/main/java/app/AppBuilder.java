@@ -6,25 +6,44 @@ import java.io.IOException;
 import Data_Access.JSONDataObject;
 import Entity.ClientFactory;
 
+import Interface_Adapter.enterInfo.EnterInfoController;
+import Interface_Adapter.enterInfo.EnterInfoPresenter;
+import Interface_Adapter.enterInfo.EnterInfoViewModel;
 import Interface_Adapter.ViewManagerModel;
-
-
+import Interface_Adapter.dashboard.DashboardController;
+import Interface_Adapter.dashboard.DashboardPresenter;
+import Interface_Adapter.dashboard.DashboardViewModel;
+import Interface_Adapter.findmatches.FindMatchesController;
+import Interface_Adapter.findmatches.FindMatchesPresenter;
+import Interface_Adapter.findmatches.FindMatchesViewModel;
 import Interface_Adapter.login.LoginController;
 import Interface_Adapter.login.LoginPresenter;
 import Interface_Adapter.login.LoginViewModel;
-
+import Interface_Adapter.profile.ProfileController;
+import Interface_Adapter.profile.ProfilePresenter;
+import Interface_Adapter.profile.ProfileViewModel;
 import Interface_Adapter.signup.SignupController;
 import Interface_Adapter.signup.SignupPresenter;
 import Interface_Adapter.signup.SignupViewModel;
 import Interface_Adapter.welcome.WelcomPresenter;
 import Interface_Adapter.welcome.WelcomeController;
 
-
-
+import Use_Case.enterInfo.EnterInfoInputBoundary;
+import Use_Case.enterInfo.EnterInfoInteractor;
+import Use_Case.enterInfo.EnterInfoOutputBoundary;
+import Use_Case.dashboard.DashboardInputBoundary;
+import Use_Case.dashboard.DashboardInteractor;
+import Use_Case.dashboard.DashboardOutputBoundary;
+import Use_Case.findmatches.FindMatchesInputBoundary;
+import Use_Case.findmatches.FindMatchesInteractor;
+import Use_Case.findmatches.FindMatchesOutputBoundary;
 import Use_Case.login.LoginInputBoundary;
 import Use_Case.login.LoginInteractor;
 import Use_Case.login.LoginOutputBoundary;
-
+import Use_Case.matchingstrategy.WeightedMatchingAlgorithm;
+import Use_Case.profile.ProfileInputBoundary;
+import Use_Case.profile.ProfileInteractor;
+import Use_Case.profile.ProfileOutputBoundary;
 import Use_Case.signup.SignupInputBoundary;
 import Use_Case.signup.SignupInteractor;
 import Use_Case.signup.SignupOutputBoundary;
@@ -45,16 +64,21 @@ public class AppBuilder {
     private SignupView signupView;
     private WelcomeView welcomeView;
     private LoginView loginView;
-
-
+    private ProfileView profileView;
+    private EnterInfoView enterInfoView;
+    private DashboardView dashboardView;
+    private FindMatchesView findMatchesView;
 
 
     private SignupViewModel signupViewModel = new SignupViewModel();
     private LoginViewModel loginViewModels = new LoginViewModel();
+    private ProfileViewModel profileViewModels = new ProfileViewModel();
+    private EnterInfoViewModel enterInfoViewModel = new EnterInfoViewModel();
+    private DashboardViewModel dashboardViewModel = new DashboardViewModel();
+    private FindMatchesViewModel findMatchesViewModel = new FindMatchesViewModel();
 
 
-
-
+    private final WeightedMatchingAlgorithm matchingAlgorithm = new WeightedMatchingAlgorithm();
 
 
 
@@ -105,11 +129,62 @@ public AppBuilder addLoginView(){
         return this;
 }
 public AppBuilder addLoginUseCase() throws IOException {
-        final LoginOutputBoundary loginPresenter = new LoginPresenter(viewManagerModel,loginViewModels);
+        final LoginOutputBoundary loginPresenter = new LoginPresenter(viewManagerModel,loginViewModels,profileViewModels,dashboardViewModel);
         final LoginInputBoundary loginInteractor = new LoginInteractor(DAO,loginPresenter);
         loginView.setLoginController(new LoginController(loginInteractor));
         return this;
 }
+public AppBuilder addProfileView(){
+        profileView = new ProfileView(profileViewModels);
+        cardPanel.add(profileView,profileViewModels.getViewName());
+        return this;
+}
+public AppBuilder addProfileUseCase(){
+        final ProfileOutputBoundary profilePresenter = new ProfilePresenter(viewManagerModel,profileViewModels,enterInfoViewModel);
+        final ProfileInputBoundary profileInteractor = new ProfileInteractor(DAO,profilePresenter);
+        profileView.setProfileController(new ProfileController(profileInteractor));
+        return this;
+}
+public AppBuilder addEnterInfoView(){
+        enterInfoView = new EnterInfoView(enterInfoViewModel);
+        cardPanel.add(enterInfoView,enterInfoViewModel.getViewName());
+        return this;
+}
+public AppBuilder addEnterInfoUseCase(){
+        final EnterInfoOutputBoundary enterInfoPresetner = new EnterInfoPresenter(enterInfoViewModel,viewManagerModel,dashboardViewModel);
+        final EnterInfoInputBoundary enterinfoInteractor = new EnterInfoInteractor(DAO,enterInfoPresetner);
+        enterInfoView.setEnterInfoController(new EnterInfoController(enterinfoInteractor));
+        return this;
+}
+
+public AppBuilder addDashboardView(){
+        dashboardView = new DashboardView(dashboardViewModel);
+        cardPanel.add(dashboardView,dashboardViewModel.getViewName());
+        return this;
+}
+
+public AppBuilder addDashboardUseCase(){
+    final DashboardOutputBoundary  DashboardPresetner = new DashboardPresenter(dashboardViewModel,viewManagerModel
+                                                                        ,findMatchesViewModel
+                                                                          );
+    final DashboardInputBoundary DashboardInteractor = new DashboardInteractor(DAO, DashboardPresetner);
+    dashboardView.setDashboardController(new DashboardController(DashboardInteractor));
+    return this;
+}
+
+
+
+public AppBuilder addFindMatchesView(){
+        findMatchesView = new FindMatchesView(findMatchesViewModel);
+        cardPanel.add(findMatchesView,findMatchesViewModel.getViewName());
+        return this;
+}
+public AppBuilder addFindMatchesUseCase(){
+        final FindMatchesOutputBoundary FindMatchesPresenter = new FindMatchesPresenter(viewManagerModel,findMatchesViewModel,dashboardViewModel);
+        final FindMatchesInputBoundary findMatchesInteractor = new FindMatchesInteractor(DAO,matchingAlgorithm,FindMatchesPresenter);
+        findMatchesView.setFindMatchesController(new FindMatchesController(findMatchesInteractor));
+        return this;}
+
 
 
     public JFrame build() {
