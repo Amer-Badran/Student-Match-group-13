@@ -7,7 +7,7 @@ import Entity.Profile;
 
 
 import Use_Case.login.LoginDataAcessObject;
-
+import Use_Case.profile.ProfileDataAccessObject;
 import Use_Case.signup.SignupDataAcessObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.JSONArray;
@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class JSONDataObject implements SignupDataAcessObject,
-        LoginDataAcessObject
+        LoginDataAcessObject, ProfileDataAccessObject
          {
     private final File fileJSON;
     private final File PrettyJSON;
@@ -215,6 +215,10 @@ public class JSONDataObject implements SignupDataAcessObject,
     }
 
 
+    @Override
+    public Profile getProfileByUsername(String username) throws IOException, ParseException {
+        return null;
+    }
 
     public Client getUserByUsername(String username) throws IOException, ParseException {
         JSONArray data = readAll();
@@ -251,6 +255,32 @@ public class JSONDataObject implements SignupDataAcessObject,
 
 
 
+
+
+    @Override
+    public void save(Profile profile) throws IOException, ParseException {
+        JSONArray users = readAll();
+        if(!users.isEmpty()){
+            for (Object obj : users) {
+                JSONObject user = (JSONObject) obj;
+                if (profile.getUsername().equals(user.get("username"))) {
+                    user.put("name",profile.getName());
+                    user.put("Bio",profile.getBio());
+                    user.put("nationality",profile.getCountryOfOrigin());
+                    user.put("email",profile.getEmail());
+                    user.put("phone",profile.getPhone());
+                    user.put("instagram",profile.getInstagram());
+
+
+             rewrite(users);
+
+
+
+                    }
+                }
+            }
+        }
+//
 
 
 
