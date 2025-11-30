@@ -36,29 +36,9 @@ public class DashboardView extends JPanel {
                 }
         );
 
-        matches.addActionListener(
-                new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        controller.prepareFindMatchesView();
-                    }
-                }
-        );
 
-        announcements.addActionListener(
-                new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        try {
-                            controller.prepareAnnouncementView(dashboardViewModel.getState().getUsername());
-                        } catch (IOException ex) {
-                            throw new RuntimeException(ex);
-                        } catch (ParseException ex) {
-                            throw new RuntimeException(ex);
-                        }
-                    }
-                }
-        );
+
+
 
         JPanel buttons = new JPanel();
         buttons.add(messages);

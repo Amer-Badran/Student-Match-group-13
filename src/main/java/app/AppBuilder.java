@@ -5,9 +5,7 @@ import java.io.IOException;
 
 import Data_Access.JSONDataObject;
 import Entity.ClientFactory;
-import Interface_Adapter.announcement.AnnouncementController;
-import Interface_Adapter.announcement.AnnouncementPresenter;
-import Interface_Adapter.announcement.AnnouncementViewModel;
+
 import Interface_Adapter.enterInfo.EnterInfoController;
 import Interface_Adapter.enterInfo.EnterInfoPresenter;
 import Interface_Adapter.enterInfo.EnterInfoViewModel;
@@ -15,9 +13,7 @@ import Interface_Adapter.ViewManagerModel;
 import Interface_Adapter.dashboard.DashboardController;
 import Interface_Adapter.dashboard.DashboardPresenter;
 import Interface_Adapter.dashboard.DashboardViewModel;
-import Interface_Adapter.findmatches.FindMatchesController;
-import Interface_Adapter.findmatches.FindMatchesPresenter;
-import Interface_Adapter.findmatches.FindMatchesViewModel;
+
 import Interface_Adapter.login.LoginController;
 import Interface_Adapter.login.LoginPresenter;
 import Interface_Adapter.login.LoginViewModel;
@@ -29,22 +25,18 @@ import Interface_Adapter.signup.SignupPresenter;
 import Interface_Adapter.signup.SignupViewModel;
 import Interface_Adapter.welcome.WelcomPresenter;
 import Interface_Adapter.welcome.WelcomeController;
-import Use_Case.announcement.AnnouncementInputBoundary;
-import Use_Case.announcement.AnnouncementInteractor;
-import Use_Case.announcement.AnnouncementOutputBoundary;
+
 import Use_Case.enterInfo.EnterInfoInputBoundary;
 import Use_Case.enterInfo.EnterInfoInteractor;
 import Use_Case.enterInfo.EnterInfoOutputBoundary;
 import Use_Case.dashboard.DashboardInputBoundary;
 import Use_Case.dashboard.DashboardInteractor;
 import Use_Case.dashboard.DashboardOutputBoundary;
-import Use_Case.findmatches.FindMatchesInputBoundary;
-import Use_Case.findmatches.FindMatchesInteractor;
-import Use_Case.findmatches.FindMatchesOutputBoundary;
+
 import Use_Case.login.LoginInputBoundary;
 import Use_Case.login.LoginInteractor;
 import Use_Case.login.LoginOutputBoundary;
-import Use_Case.matchingstrategy.WeightedMatchingAlgorithm;
+
 import Use_Case.profile.ProfileInputBoundary;
 import Use_Case.profile.ProfileInteractor;
 import Use_Case.profile.ProfileOutputBoundary;
@@ -71,19 +63,15 @@ public class AppBuilder {
     private ProfileView profileView;
     private EnterInfoView enterInfoView;
     private DashboardView dashboardView;
-    private FindMatchesView findMatchesView;
-    private AnnouncementView announcementView;
+
 
     private SignupViewModel signupViewModel = new SignupViewModel();
     private LoginViewModel loginViewModels = new LoginViewModel();
     private ProfileViewModel profileViewModels = new ProfileViewModel();
     private EnterInfoViewModel enterInfoViewModel = new EnterInfoViewModel();
     private DashboardViewModel dashboardViewModel = new DashboardViewModel();
-    private FindMatchesViewModel findMatchesViewModel = new FindMatchesViewModel();
-    private AnnouncementViewModel announcementViewModel = new AnnouncementViewModel();
 
 
-    private final WeightedMatchingAlgorithm matchingAlgorithm = new WeightedMatchingAlgorithm();
 
 
 
@@ -170,38 +158,14 @@ public AppBuilder addDashboardView(){
 
 public AppBuilder addDashboardUseCase(){
     final DashboardOutputBoundary  DashboardPresetner = new DashboardPresenter(dashboardViewModel,viewManagerModel
-                                                                        ,findMatchesViewModel,
-                                                                          announcementViewModel);
+
+                                                                          );
     final DashboardInputBoundary DashboardInteractor = new DashboardInteractor(DAO, DashboardPresetner);
     dashboardView.setDashboardController(new DashboardController(DashboardInteractor));
     return this;
 }
 
 
-
-public AppBuilder addAnnouncementView(){
-        announcementView = new AnnouncementView(announcementViewModel);
-        cardPanel.add(announcementView,announcementViewModel.getViewName());
-        return this;
-}
-
-public AppBuilder addAnnouncementUseCase(){
-        final AnnouncementOutputBoundary AnnouncementPresenter = new AnnouncementPresenter(announcementViewModel,dashboardViewModel,viewManagerModel);
-        final AnnouncementInputBoundary AnnouncementInteractor = new AnnouncementInteractor(DAO,AnnouncementPresenter);
-        announcementView.setAnnouncementController(new AnnouncementController(AnnouncementInteractor));
-        return this;
-}
-
-public AppBuilder addFindMatchesView(){
-        findMatchesView = new FindMatchesView(findMatchesViewModel);
-        cardPanel.add(findMatchesView,findMatchesViewModel.getViewName());
-        return this;
-}
-public AppBuilder addFindMatchesUseCase(){
-        final FindMatchesOutputBoundary FindMatchesPresenter = new FindMatchesPresenter(viewManagerModel,findMatchesViewModel,dashboardViewModel);
-        final FindMatchesInputBoundary findMatchesInteractor = new FindMatchesInteractor(DAO,matchingAlgorithm,FindMatchesPresenter);
-        findMatchesView.setFindMatchesController(new FindMatchesController(findMatchesInteractor));
-        return this;}
 
 
 

@@ -19,14 +19,6 @@ public class DashboardInteractor implements DashboardInputBoundary{
     }
 
 
-    @Override
-    public void prepareFindMatchesView() {
-        presenter.prepareFindMatchesView();
-    }
 
-    @Override
-    public void prepareAnnouncementView(DashboardInputData input) throws IOException, ParseException {
-        DashboardOutputData ouptut = new DashboardOutputData(DAO.getAnnouncements(input.getUsername()));
-        presenter.prepareAnnouncementView(ouptut);
-    }
+
 }

@@ -6,6 +6,4 @@ import java.io.IOException;
 
 public interface DashboardInputBoundary {
     void execute(DashboardInputData input);
-    void prepareFindMatchesView();
-    void prepareAnnouncementView(DashboardInputData input) throws IOException, ParseException;
 }
