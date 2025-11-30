@@ -1,7 +1,5 @@
 package Interface_Adapter.profile;
 
-import Interface_Adapter.enterInfo.EnterInfoState;
-import Interface_Adapter.enterInfo.EnterInfoViewModel;
 import Interface_Adapter.ViewManagerModel;
 import Use_Case.profile.ProfileOutputBoundary;
 import Use_Case.profile.ProfileOutputData;
@@ -10,13 +8,12 @@ public class ProfilePresenter implements ProfileOutputBoundary {
 
     private final ProfileViewModel profileViewModel;
     private final ViewManagerModel viewManagerModel;
-    private final EnterInfoViewModel enterInfoViewModel;
+
 
     public ProfilePresenter(ViewManagerModel viewManagerModel,
-                            ProfileViewModel profileViewModel,EnterInfoViewModel enterInfoViewModel) {
+                            ProfileViewModel profileViewModel ) {
         this.viewManagerModel = viewManagerModel;
         this.profileViewModel = profileViewModel;
-        this.enterInfoViewModel = enterInfoViewModel;
     }
 
     @Override
@@ -33,10 +30,6 @@ public class ProfilePresenter implements ProfileOutputBoundary {
         profileViewModel.setState(state);
         profileViewModel.firePropertyChange();
 
-        final EnterInfoState enterInfoState = enterInfoViewModel.getState();
-        enterInfoState.setUsername(state.getUsername());
-        this.viewManagerModel.setState(enterInfoViewModel.getViewName());
-        this.viewManagerModel.firePropertyChange();
     }
 
     @Override

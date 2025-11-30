@@ -3,7 +3,7 @@ import Entity.Client;
 import Entity.MatchingPreferences;
 import Entity.OldClient;
 import Entity.Profile;
-import Use_Case.enterInfo.MatchingPreferencesDataAccessObject;
+
 
 
 import Use_Case.login.LoginDataAcessObject;
@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class JSONDataObject implements SignupDataAcessObject,
-        LoginDataAcessObject, ProfileDataAccessObject , MatchingPreferencesDataAccessObject
+        LoginDataAcessObject, ProfileDataAccessObject
          {
     private final File fileJSON;
     private final File PrettyJSON;
@@ -285,34 +285,8 @@ public class JSONDataObject implements SignupDataAcessObject,
 
 
 
-    @Override
-    public OldClient getClient(String username) throws IOException, ParseException {
-        return null;
-    }
-
-    @Override
-    public void save(String username,MatchingPreferences mp) throws IOException, java.text.ParseException, ParseException {
-        JSONArray users = readAll();
-        if(!users.isEmpty()){
-            for (Object obj : users) {
-                JSONObject user = (JSONObject) obj;
-                if (username.equals(user.get("username"))) {
-                    user.put("courses",mp.getCourses());
-                    user.put("programs",mp.getPrograms());
-                    user.put("yearsOfStudy", mp.getYearOfStudy());
-                    user.put("hobbies", mp.getHobbies());
-                    user.put("languages", mp.getLanguages());
-                    user.put("weights", mp.getWeights());
 
 
-                    // rewrite file
-
-                    rewrite(users);
-                }
-            }
-        }
-//
-    }
 
     private void rewrite(JSONArray users) throws IOException {
         try (FileWriter writer = new FileWriter(fileJSON);

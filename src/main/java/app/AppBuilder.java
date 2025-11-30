@@ -6,9 +6,6 @@ import java.io.IOException;
 import Data_Access.JSONDataObject;
 import Entity.ClientFactory;
 
-import Interface_Adapter.enterInfo.EnterInfoController;
-import Interface_Adapter.enterInfo.EnterInfoPresenter;
-import Interface_Adapter.enterInfo.EnterInfoViewModel;
 import Interface_Adapter.ViewManagerModel;
 
 
@@ -24,9 +21,6 @@ import Interface_Adapter.signup.SignupViewModel;
 import Interface_Adapter.welcome.WelcomPresenter;
 import Interface_Adapter.welcome.WelcomeController;
 
-import Use_Case.enterInfo.EnterInfoInputBoundary;
-import Use_Case.enterInfo.EnterInfoInteractor;
-import Use_Case.enterInfo.EnterInfoOutputBoundary;
 
 
 import Use_Case.login.LoginInputBoundary;
@@ -57,13 +51,13 @@ public class AppBuilder {
     private WelcomeView welcomeView;
     private LoginView loginView;
     private ProfileView profileView;
-    private EnterInfoView enterInfoView;
+
 
 
     private SignupViewModel signupViewModel = new SignupViewModel();
     private LoginViewModel loginViewModels = new LoginViewModel();
     private ProfileViewModel profileViewModels = new ProfileViewModel();
-    private EnterInfoViewModel enterInfoViewModel = new EnterInfoViewModel();
+
 
 
 
@@ -127,24 +121,11 @@ public AppBuilder addProfileView(){
         return this;
 }
 public AppBuilder addProfileUseCase(){
-        final ProfileOutputBoundary profilePresenter = new ProfilePresenter(viewManagerModel,profileViewModels,enterInfoViewModel);
+        final ProfileOutputBoundary profilePresenter = new ProfilePresenter(viewManagerModel,profileViewModels);
         final ProfileInputBoundary profileInteractor = new ProfileInteractor(DAO,profilePresenter);
         profileView.setProfileController(new ProfileController(profileInteractor));
         return this;
 }
-public AppBuilder addEnterInfoView(){
-        enterInfoView = new EnterInfoView(enterInfoViewModel);
-        cardPanel.add(enterInfoView,enterInfoViewModel.getViewName());
-        return this;
-}
-public AppBuilder addEnterInfoUseCase(){
-        final EnterInfoOutputBoundary enterInfoPresetner = new EnterInfoPresenter(enterInfoViewModel,viewManagerModel);
-        final EnterInfoInputBoundary enterinfoInteractor = new EnterInfoInteractor(DAO,enterInfoPresetner);
-        enterInfoView.setEnterInfoController(new EnterInfoController(enterinfoInteractor));
-        return this;
-}
-
-
 
 
 
