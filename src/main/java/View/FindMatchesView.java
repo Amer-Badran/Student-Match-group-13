@@ -1,11 +1,9 @@
 package View;
 
-import Entity.Profile;
-import Interface_Adapter.dashboard.DashboardController;
-import Interface_Adapter.findmatches.FindMatchesController;
-import Interface_Adapter.findmatches.FindMatchesState;
-import Interface_Adapter.findmatches.FindMatchesViewModel;
-import Interface_Adapter.login.LoginState;
+import entity.Profile;
+import interface_adapter.findmatches.FindMatchesController;
+import interface_adapter.findmatches.FindMatchesState;
+import interface_adapter.findmatches.FindMatchesViewModel;
 import org.json.simple.parser.ParseException;
 
 import javax.swing.*;

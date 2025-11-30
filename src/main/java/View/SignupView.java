@@ -1,11 +1,10 @@
 package View;
 
-import Interface_Adapter.signup.SignupController;
-import Interface_Adapter.signup.SignupState;
-import Interface_Adapter.signup.SignupViewModel;
+import interface_adapter.signup.SignupController;
+import interface_adapter.signup.SignupState;
+import interface_adapter.signup.SignupViewModel;
 import org.json.simple.parser.ParseException;
 
-import java.awt.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

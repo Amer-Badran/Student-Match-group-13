@@ -1,10 +1,8 @@
 package View;
 
-import Interface_Adapter.login.LoginController;
-import Interface_Adapter.login.LoginState;
-import Interface_Adapter.login.LoginViewModel;
-import Interface_Adapter.signup.SignupController;
-import Interface_Adapter.signup.SignupState;
+import interface_adapter.login.LoginController;
+import interface_adapter.login.LoginState;
+import interface_adapter.login.LoginViewModel;
 import org.json.simple.parser.ParseException;
 
 import javax.swing.*;

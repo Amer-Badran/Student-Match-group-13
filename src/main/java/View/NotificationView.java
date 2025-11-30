@@ -1,8 +1,8 @@
 package View;
 
-import Interface_Adapter.notification.NotificationController;
-import Interface_Adapter.notification.NotificationState;
-import Interface_Adapter.notification.NotificationViewModel;
+import interface_adapter.notification.NotificationController;
+import interface_adapter.notification.NotificationState;
+import interface_adapter.notification.NotificationViewModel;
 import org.json.simple.parser.ParseException;
 
 import javax.swing.*;

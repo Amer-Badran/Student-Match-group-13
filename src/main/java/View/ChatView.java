@@ -1,8 +1,8 @@
 package View;
 
-import Interface_Adapter.chat.ChatController;
-import Interface_Adapter.chat.ChatState;
-import Interface_Adapter.chat.ChatViewModel;
+import interface_adapter.chat.ChatController;
+import interface_adapter.chat.ChatState;
+import interface_adapter.chat.ChatViewModel;
 import org.json.simple.parser.ParseException;
 
 import javax.swing.*;

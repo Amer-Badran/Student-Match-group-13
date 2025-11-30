@@ -1,10 +1,8 @@
 package View;
 
-import Entity.Profile;
-import Interface_Adapter.login.LoginController;
-import Interface_Adapter.profile.ProfileController;
-import Interface_Adapter.profile.ProfileState;
-import Interface_Adapter.profile.ProfileViewModel;
+import interface_adapter.profile.ProfileController;
+import interface_adapter.profile.ProfileState;
+import interface_adapter.profile.ProfileViewModel;
 
 import javax.swing.*;
 import java.awt.*;

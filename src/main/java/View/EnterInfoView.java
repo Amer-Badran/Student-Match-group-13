@@ -1,8 +1,8 @@
 package View;
 
-import Interface_Adapter.enterInfo.EnterInfoController;
-import Interface_Adapter.enterInfo.EnterInfoState;
-import Interface_Adapter.enterInfo.EnterInfoViewModel;
+import interface_adapter.enterInfo.EnterInfoController;
+import interface_adapter.enterInfo.EnterInfoState;
+import interface_adapter.enterInfo.EnterInfoViewModel;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
