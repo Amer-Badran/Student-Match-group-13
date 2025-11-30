@@ -1,8 +1,7 @@
 package Interface_Adapter.login;
 
 import Interface_Adapter.ViewManagerModel;
-import Interface_Adapter.profile.ProfileState;
-import Interface_Adapter.profile.ProfileViewModel;
+
 import Use_Case.login.LoginOutputBoundary;
 import Use_Case.login.LoginOutputData;
 
@@ -11,13 +10,12 @@ import java.util.ArrayList;
 public class LoginPresenter implements LoginOutputBoundary {
     private final ViewManagerModel viewManagerModels;
     private final LoginViewModel loginViewModels;
-    private ProfileViewModel profileViewModels;
+
     public LoginPresenter(ViewManagerModel viewManagerModel,
-                          LoginViewModel loginViewModel,
-                          ProfileViewModel profileViewModel){
+                          LoginViewModel loginViewModel){
         this.loginViewModels = loginViewModel;
         this.viewManagerModels = viewManagerModel;
-        this.profileViewModels = profileViewModel;
+
 
 
 
@@ -25,10 +23,7 @@ public class LoginPresenter implements LoginOutputBoundary {
 
     @Override
     public void prepareProfileView(LoginOutputData outputData) {
-        final ProfileState profileState = profileViewModels.getState();
-        profileState.setUsername(outputData.getUsername());
-        this.viewManagerModels.setState(profileViewModels.getViewName());
-        this.viewManagerModels.firePropertyChange();
+
     }
 
 
