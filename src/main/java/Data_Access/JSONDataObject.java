@@ -3,11 +3,11 @@ import Entity.Client;
 import Entity.MatchingPreferences;
 import Entity.OldClient;
 import Entity.Profile;
-
+import Use_Case.enterInfo.MatchingPreferencesDataAccessObject;
 
 
 import Use_Case.login.LoginDataAcessObject;
-
+import Use_Case.profile.ProfileDataAccessObject;
 import Use_Case.signup.SignupDataAcessObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.JSONArray;
@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class JSONDataObject implements SignupDataAcessObject,
-        LoginDataAcessObject
+        LoginDataAcessObject, ProfileDataAccessObject , MatchingPreferencesDataAccessObject
          {
     private final File fileJSON;
     private final File PrettyJSON;
@@ -215,6 +215,10 @@ public class JSONDataObject implements SignupDataAcessObject,
     }
 
 
+    @Override
+    public Profile getProfileByUsername(String username) throws IOException, ParseException {
+        return null;
+    }
 
     public Client getUserByUsername(String username) throws IOException, ParseException {
         JSONArray data = readAll();
@@ -253,10 +257,62 @@ public class JSONDataObject implements SignupDataAcessObject,
 
 
 
+    @Override
+    public void save(Profile profile) throws IOException, ParseException {
+        JSONArray users = readAll();
+        if(!users.isEmpty()){
+            for (Object obj : users) {
+                JSONObject user = (JSONObject) obj;
+                if (profile.getUsername().equals(user.get("username"))) {
+                    user.put("name",profile.getName());
+                    user.put("Bio",profile.getBio());
+                    user.put("nationality",profile.getCountryOfOrigin());
+                    user.put("email",profile.getEmail());
+                    user.put("phone",profile.getPhone());
+                    user.put("instagram",profile.getInstagram());
+
+
+             rewrite(users);
+
+
+
+                    }
+                }
+            }
+        }
+//
 
 
 
 
+    @Override
+    public OldClient getClient(String username) throws IOException, ParseException {
+        return null;
+    }
+
+    @Override
+    public void save(String username,MatchingPreferences mp) throws IOException, java.text.ParseException, ParseException {
+        JSONArray users = readAll();
+        if(!users.isEmpty()){
+            for (Object obj : users) {
+                JSONObject user = (JSONObject) obj;
+                if (username.equals(user.get("username"))) {
+                    user.put("courses",mp.getCourses());
+                    user.put("programs",mp.getPrograms());
+                    user.put("yearsOfStudy", mp.getYearOfStudy());
+                    user.put("hobbies", mp.getHobbies());
+                    user.put("languages", mp.getLanguages());
+                    user.put("weights", mp.getWeights());
+
+
+                    // rewrite file
+
+                    rewrite(users);
+                }
+            }
+        }
+//
+    }
 
     private void rewrite(JSONArray users) throws IOException {
         try (FileWriter writer = new FileWriter(fileJSON);
