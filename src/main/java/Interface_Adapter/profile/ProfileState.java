@@ -11,9 +11,9 @@ public class ProfileState {
     public String errorMessage = "";
     public String infoMessage = "";
 
-public void setUsername(String name){
-    username = name;
-}
+    public void setUsername(String name){
+        username = name;
+    }
 
     public String getUsername() {
         return username;
