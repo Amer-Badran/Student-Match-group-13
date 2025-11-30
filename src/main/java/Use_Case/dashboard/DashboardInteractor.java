@@ -18,11 +18,6 @@ public class DashboardInteractor implements DashboardInputBoundary{
 
     }
 
-    @Override
-    public void prepareNotificationView(DashboardInputData input) {
-        DashboardOutputData ouptut = new DashboardOutputData(new ArrayList<>());
-        presenter.prepareNotificationView(ouptut);
-    }
 
     @Override
     public void prepareFindMatchesView() {

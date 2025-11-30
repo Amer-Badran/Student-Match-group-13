@@ -3,9 +3,6 @@ package View;
 import Interface_Adapter.announcement.AnnouncementController;
 import Interface_Adapter.announcement.AnnouncementState;
 import Interface_Adapter.announcement.AnnouncementViewModel;
-import Interface_Adapter.chat.ChatController;
-import Interface_Adapter.chat.ChatState;
-import Interface_Adapter.chat.ChatViewModel;
 import org.json.simple.parser.ParseException;
 
 import javax.swing.*;

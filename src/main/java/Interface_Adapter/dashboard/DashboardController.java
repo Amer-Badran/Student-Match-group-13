@@ -11,11 +11,6 @@ public class DashboardController {
     public DashboardController(DashboardInputBoundary bound){
         this.interactor = bound;
     }
-    public void prepareNotificationView(){
-        DashboardInputData inputData = new DashboardInputData("");
-        interactor.prepareNotificationView(inputData);
-
-    }
     public void prepareFindMatchesView(){
         interactor.prepareFindMatchesView();
     }

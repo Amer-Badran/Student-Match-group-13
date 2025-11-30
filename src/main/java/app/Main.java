@@ -26,10 +26,6 @@ public class Main {
                 .addFindMatchesUseCase()
                 .addAnnouncementView()
                 .addAnnouncementUseCase()
-                .addNotificationView()
-                .addNotificationUseCase()
-                .addChatView()
-                .addChatUseCase()
                 .build();
         application.pack();
         application.setLocationRelativeTo(null);

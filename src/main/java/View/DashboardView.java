@@ -31,7 +31,7 @@ public class DashboardView extends JPanel {
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        controller.prepareNotificationView();
+
                     }
                 }
         );

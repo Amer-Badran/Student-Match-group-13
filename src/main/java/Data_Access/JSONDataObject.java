@@ -4,9 +4,7 @@ import Entity.MatchingPreferences;
 import Entity.OldClient;
 import Entity.Profile;
 import Use_Case.announcement.AnnouncementDataAccessObject;
-import Use_Case.chat.ChatDataAccessObject;
 import Use_Case.enterInfo.MatchingPreferencesDataAccessObject;
-import Use_Case.notification.NotificationDataAccessObject;
 import Use_Case.dashboard.DashboardDataAccessObject;
 import Use_Case.findmatches.FindMatchesDataAccessObject;
 import Use_Case.login.LoginDataAcessObject;
@@ -24,7 +22,7 @@ import java.util.Map;
 
 public class JSONDataObject implements SignupDataAcessObject,
         LoginDataAcessObject, ProfileDataAccessObject , MatchingPreferencesDataAccessObject,
-        NotificationDataAccessObject, ChatDataAccessObject, DashboardDataAccessObject, FindMatchesDataAccessObject,
+        DashboardDataAccessObject, FindMatchesDataAccessObject,
         AnnouncementDataAccessObject {
     private final File fileJSON;
     private final File PrettyJSON;
@@ -391,148 +389,8 @@ public class JSONDataObject implements SignupDataAcessObject,
         return alreadyExists(username);
     }
 
-    @Override
-    public void removeUserFromNotificatoin(String current, String other) throws IOException, ParseException {
-        JSONArray users = readAll();
-        if(!users.isEmpty()){
-            for (Object obj : users) {
-                JSONObject user = (JSONObject) obj;
-                if (current.equals(user.get("username"))) {
-                    JSONObject notf = (JSONObject) user.get("notification");
-                    ArrayList<String> first = (ArrayList<String>) notf.get("1");
-                    if(first.contains(other)){
-                    first.remove(other);}
-                    else{
-                        continue;
-                    }
-                    rewrite(users);
-
-                }
-            }
-        }
-    }
-
-    @Override
-    public void CheckNewChat(String Sender, String Receiver) throws IOException, ParseException {
-        JSONArray users = readAll();
-        // step 1 : add the chat to the sender
-        if(!users.isEmpty()){
-            for (Object obj : users) {
-                JSONObject user = (JSONObject) obj;
-                if (Sender.equals(user.get("username"))) {
-                    JSONObject log = (JSONObject) user.get("messages");
-                    if (log.keySet().contains(Receiver)){
-                        break;
-                    }
-                    else{
-                    log.put(Receiver,new ArrayList<String>());}
-                    rewrite(users);
-
-                    }
-
-                }
-            }
-        // step 2 : add the chat to the receiver
-        if(!users.isEmpty()){
-            for (Object obj : users) {
-                JSONObject user = (JSONObject) obj;
-                if (Receiver.equals(user.get("username"))) {
-                    JSONObject log = (JSONObject) user.get("messages");
-                    if (log.keySet().contains(Sender)){
-                        break;
-                    }
-                    else{
-                        log.put(Sender,new ArrayList<String>());}
-                    rewrite(users);
-
-                }
-
-            }
-        }
-        }
 
 
-
-    @Override
-    public ArrayList<String> getMessages(String username,String receiver) throws IOException, ParseException {
-        JSONArray users = readAll();
-        if(!users.isEmpty()){
-            for (Object obj : users) {
-                JSONObject user = (JSONObject) obj;
-                if (username.equals(user.get("username"))) {
-                    JSONObject log = (JSONObject) user.get("messages");
-                    return (ArrayList<String>) log.get(receiver);
-
-                }
-                else{continue;}
-
-            }
-        }
-
-        return new ArrayList<>();
-    }
-
-    @Override
-    public void updatePeopleMessages(String Sender, String Receiver, String message) throws IOException, ParseException {
-        // step 1 : add the message to the Sender list
-        JSONArray users = readAll();
-        if(!users.isEmpty()){
-            for (Object obj : users) {
-                JSONObject user = (JSONObject) obj;
-                if (Sender.equals(user.get("username"))) {
-                    JSONObject log = (JSONObject) user.get("messages");
-                    ArrayList<String> history = (ArrayList<String>) log.get(Receiver);
-                    history.add(message);
-                    log.put(Receiver,history);
-                    user.put("messages",log);
-
-                }
-                else{continue;}
-            }
-        }
-        // step 2 : add the message to the Receiver List
-        if(!users.isEmpty()){
-            for (Object obj : users) {
-                JSONObject user = (JSONObject) obj;
-                if (Receiver.equals(user.get("username"))) {
-                    JSONObject log = (JSONObject) user.get("messages");
-                    ArrayList<String> history2 =  (ArrayList<String>) log.get(Sender);;
-                    String newMessage = "*"+ message;
-                    history2.add(newMessage);
-                    log.put(Sender,history2);
-                    user.put("messages",log);
-
-                }
-                else{continue;}
-            }
-        }
-        rewrite(users);
-
-
-
-    }
-
-    @Override
-    public void addSenderToNotification(String Sender, String Receiver) throws IOException, ParseException {
-        JSONArray users = readAll();
-        if(!users.isEmpty()){
-            for (Object obj : users) {
-                JSONObject user = (JSONObject) obj;
-                if (Receiver.equals(user.get("username"))) {
-                    JSONObject notf = (JSONObject) user.get("notification");
-                    ArrayList<String> first = (ArrayList<String>) notf.get("1");
-                    if(first.contains(Sender)){
-                        continue;}
-                    else{
-                        first.add(Sender);
-                    }
-                    rewrite(users);
-
-                }
-            }
-        }
-
-    }
 
     @Override
     public void updateAnnouncements(String announcement) throws IOException, ParseException {

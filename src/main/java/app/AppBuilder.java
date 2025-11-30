@@ -8,15 +8,9 @@ import Entity.ClientFactory;
 import Interface_Adapter.announcement.AnnouncementController;
 import Interface_Adapter.announcement.AnnouncementPresenter;
 import Interface_Adapter.announcement.AnnouncementViewModel;
-import Interface_Adapter.chat.ChatController;
-import Interface_Adapter.chat.ChatPresenter;
-import Interface_Adapter.chat.ChatViewModel;
 import Interface_Adapter.enterInfo.EnterInfoController;
 import Interface_Adapter.enterInfo.EnterInfoPresenter;
 import Interface_Adapter.enterInfo.EnterInfoViewModel;
-import Interface_Adapter.notification.NotificationController;
-import Interface_Adapter.notification.NotificationPresenter;
-import Interface_Adapter.notification.NotificationViewModel;
 import Interface_Adapter.ViewManagerModel;
 import Interface_Adapter.dashboard.DashboardController;
 import Interface_Adapter.dashboard.DashboardPresenter;
@@ -38,15 +32,9 @@ import Interface_Adapter.welcome.WelcomeController;
 import Use_Case.announcement.AnnouncementInputBoundary;
 import Use_Case.announcement.AnnouncementInteractor;
 import Use_Case.announcement.AnnouncementOutputBoundary;
-import Use_Case.chat.ChatInputBoundary;
-import Use_Case.chat.ChatInteractor;
-import Use_Case.chat.ChatOutputBoundary;
 import Use_Case.enterInfo.EnterInfoInputBoundary;
 import Use_Case.enterInfo.EnterInfoInteractor;
 import Use_Case.enterInfo.EnterInfoOutputBoundary;
-import Use_Case.notification.NotificationInputBoundary;
-import Use_Case.notification.NotificationInteractor;
-import Use_Case.notification.NotificationOutputBoundary;
 import Use_Case.dashboard.DashboardInputBoundary;
 import Use_Case.dashboard.DashboardInteractor;
 import Use_Case.dashboard.DashboardOutputBoundary;
@@ -82,8 +70,6 @@ public class AppBuilder {
     private LoginView loginView;
     private ProfileView profileView;
     private EnterInfoView enterInfoView;
-    private NotificationView notificationView;
-    private ChatView chatView;
     private DashboardView dashboardView;
     private FindMatchesView findMatchesView;
     private AnnouncementView announcementView;
@@ -92,8 +78,6 @@ public class AppBuilder {
     private LoginViewModel loginViewModels = new LoginViewModel();
     private ProfileViewModel profileViewModels = new ProfileViewModel();
     private EnterInfoViewModel enterInfoViewModel = new EnterInfoViewModel();
-    private NotificationViewModel notificationViewModel = new NotificationViewModel();
-    private ChatViewModel chatViewModel = new ChatViewModel();
     private DashboardViewModel dashboardViewModel = new DashboardViewModel();
     private FindMatchesViewModel findMatchesViewModel = new FindMatchesViewModel();
     private AnnouncementViewModel announcementViewModel = new AnnouncementViewModel();
@@ -186,7 +170,7 @@ public AppBuilder addDashboardView(){
 
 public AppBuilder addDashboardUseCase(){
     final DashboardOutputBoundary  DashboardPresetner = new DashboardPresenter(dashboardViewModel,viewManagerModel
-                                                                        ,notificationViewModel,findMatchesViewModel,
+                                                                        ,findMatchesViewModel,
                                                                           announcementViewModel);
     final DashboardInputBoundary DashboardInteractor = new DashboardInteractor(DAO, DashboardPresetner);
     dashboardView.setDashboardController(new DashboardController(DashboardInteractor));
@@ -194,18 +178,6 @@ public AppBuilder addDashboardUseCase(){
 }
 
 
-public AppBuilder addNotificationView() throws IOException, ParseException {
-        notificationView = new NotificationView(notificationViewModel);
-        cardPanel.add(notificationView,"notification");
-        return this;
-}
-public AppBuilder addNotificationUseCase(){
-        final NotificationOutputBoundary notificationPresenter = new NotificationPresenter(notificationViewModel,chatViewModel,
-                                                                                viewManagerModel,dashboardViewModel);
-        final NotificationInputBoundary notificationInteractor = new NotificationInteractor(DAO,notificationPresenter);
-        notificationView.setNotificationController(new NotificationController(notificationInteractor));
-        return this;
-}
 
 public AppBuilder addAnnouncementView(){
         announcementView = new AnnouncementView(announcementViewModel);
@@ -232,19 +204,7 @@ public AppBuilder addFindMatchesUseCase(){
         return this;}
 
 
-public AppBuilder addChatView(){
-        chatView = new ChatView(chatViewModel);
-        cardPanel.add(chatView,chatViewModel.getViewName());
-        return this;
-}
-public AppBuilder addChatUseCase(){
-        final ChatOutputBoundary chatPresenter = new ChatPresenter(chatViewModel,viewManagerModel,notificationViewModel);
-        final ChatInputBoundary chatInteractor = new ChatInteractor(DAO,chatPresenter);
-        chatView.setChatController(new ChatController(chatInteractor));
-        return this;
 
-
-}
     public JFrame build() {
         final JFrame application = new JFrame("Team 13 prototype");
         application.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
