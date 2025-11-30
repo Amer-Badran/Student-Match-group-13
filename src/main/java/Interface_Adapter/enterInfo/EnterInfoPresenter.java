@@ -1,8 +1,6 @@
 package Interface_Adapter.enterInfo;
 
 import Interface_Adapter.ViewManagerModel;
-import Interface_Adapter.dashboard.DashboardState;
-import Interface_Adapter.dashboard.DashboardViewModel;
 import Use_Case.enterInfo.EnterInfoOutputBoundary;
 import Use_Case.enterInfo.EnterInfoOutputData;
 
@@ -14,14 +12,12 @@ public class EnterInfoPresenter implements EnterInfoOutputBoundary {
 
     private final EnterInfoViewModel viewModel;
     private final ViewManagerModel viewManagerModel;
-    private final DashboardViewModel dashboardViewModel;
+
 
     public EnterInfoPresenter(EnterInfoViewModel viewModel,
-                              ViewManagerModel viewManagerModel,
-                              DashboardViewModel dashboardViewModels) {
+                              ViewManagerModel viewManagerModel) {
         this.viewModel = viewModel;
         this.viewManagerModel = viewManagerModel;
-        this.dashboardViewModel = dashboardViewModels;
     }
 
     @Override
@@ -59,13 +55,6 @@ public class EnterInfoPresenter implements EnterInfoOutputBoundary {
         currentState.setSaveMessage(message);
         viewModel.setState(currentState);
         viewModel.firePropertyChange();
-
-        final DashboardState dashboardState = dashboardViewModel.getState();
-        dashboardState.setUsername(currentState.getUsername());
-        dashboardState.setNotification(notification);
-//        notificationViewModel.firePropertyChange();
-        this.viewManagerModel.setState(dashboardViewModel.getViewName());
-        this.viewManagerModel.firePropertyChange();
 
 
 

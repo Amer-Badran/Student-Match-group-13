@@ -27,14 +27,10 @@ public class LoginInteractor implements LoginInputBoundary{
         else if(!DAO.correctPassword(name,pass)){
             loginPresenter.prepareFailView("Wrong Password ! try again");
         }
-        else if(DAO.checkNewUser(name)){
-            outputData = new LoginOutputData(name);
-            loginPresenter.prepareProfileView(outputData);
-        }
-        else{
-            ArrayList<String> notification = DAO.getNotification(name);
-            loginPresenter.prepareHomeView(notification);
-        }
+        else {
+            LoginOutputData outputData = new LoginOutputData(input.getName());
+            loginPresenter.prepareProfileView(outputData);}
+
     }
 
     @Override

@@ -20,8 +20,6 @@ public class Main {
                 .addProfileUseCase()
                 .addEnterInfoView()
                 .addEnterInfoUseCase()
-                .addDashboardView()
-                .addDashboardUseCase()
                 .build();
         application.pack();
         application.setLocationRelativeTo(null);
