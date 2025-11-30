@@ -3,7 +3,7 @@ import Entity.Client;
 import Entity.MatchingPreferences;
 import Entity.OldClient;
 import Entity.Profile;
-import Use_Case.announcement.AnnouncementDataAccessObject;
+
 import Use_Case.enterInfo.MatchingPreferencesDataAccessObject;
 import Use_Case.dashboard.DashboardDataAccessObject;
 import Use_Case.findmatches.FindMatchesDataAccessObject;
@@ -22,8 +22,8 @@ import java.util.Map;
 
 public class JSONDataObject implements SignupDataAcessObject,
         LoginDataAcessObject, ProfileDataAccessObject , MatchingPreferencesDataAccessObject,
-        DashboardDataAccessObject, FindMatchesDataAccessObject,
-        AnnouncementDataAccessObject {
+        DashboardDataAccessObject, FindMatchesDataAccessObject
+         {
     private final File fileJSON;
     private final File PrettyJSON;
     private final File CleanData;
@@ -391,19 +391,6 @@ public class JSONDataObject implements SignupDataAcessObject,
 
 
 
-
-    @Override
-    public void updateAnnouncements(String announcement) throws IOException, ParseException {
-        JSONArray users = readAll();
-        if(!users.isEmpty()){
-            for (Object obj : users) {
-                JSONObject user = (JSONObject) obj;
-                ArrayList<String> temp = (ArrayList<String>) user.get("announcements");
-                temp.add(announcement);
-                user.put("announcements",temp);
-                }
-            } rewrite(users);
-        }
 
 
     @Override

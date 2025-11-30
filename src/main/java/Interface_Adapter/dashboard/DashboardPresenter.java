@@ -1,7 +1,6 @@
 package Interface_Adapter.dashboard;
 
-import Interface_Adapter.announcement.AnnouncementState;
-import Interface_Adapter.announcement.AnnouncementViewModel;
+
 import Interface_Adapter.ViewManagerModel;
 import Interface_Adapter.findmatches.FindMatchesState;
 import Interface_Adapter.findmatches.FindMatchesViewModel;
@@ -12,17 +11,16 @@ public class DashboardPresenter implements DashboardOutputBoundary {
     private final DashboardViewModel dashboardViewModel;
     private final ViewManagerModel viewManagerModel;
     private final FindMatchesViewModel findMatchesViewModel;
-    private final AnnouncementViewModel announcementViewModel;
+
 
 
     public DashboardPresenter( DashboardViewModel dashboardViewModel,
     ViewManagerModel viewManagerModel,
-    FindMatchesViewModel findMatchesViewModel,
-                               AnnouncementViewModel announcementViewModel){
+    FindMatchesViewModel findMatchesViewModel){
         this.dashboardViewModel = dashboardViewModel;
         this.viewManagerModel = viewManagerModel;
         this.findMatchesViewModel = findMatchesViewModel;
-        this.announcementViewModel = announcementViewModel;
+
     }
 
     @Override
@@ -36,14 +34,6 @@ public class DashboardPresenter implements DashboardOutputBoundary {
         this.viewManagerModel.firePropertyChange();
     }
 
-    @Override
-    public void prepareAnnouncementView(DashboardOutputData output) {
-        AnnouncementState state = announcementViewModel.getState();
-        state.setUsername(dashboardViewModel.getState().getUsername());
-        state.setAnnouncementList(output.getAnnouncemnts());
-        announcementViewModel.firePropertyChange();
-        this.viewManagerModel.setState(announcementViewModel.getViewName());
-        this.viewManagerModel.firePropertyChange();
-    }
+
     }
 

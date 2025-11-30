@@ -24,8 +24,6 @@ public class Main {
                 .addDashboardUseCase()
                 .addFindMatchesView()
                 .addFindMatchesUseCase()
-                .addAnnouncementView()
-                .addAnnouncementUseCase()
                 .build();
         application.pack();
         application.setLocationRelativeTo(null);
