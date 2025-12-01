@@ -4,7 +4,7 @@ import Entity.MatchingPreferences;
 import Entity.OldClient;
 import Entity.Profile;
 import Use_Case.enterInfo.MatchingPreferencesDataAccessObject;
-
+import Use_Case.dashboard.DashboardDataAccessObject;
 
 import Use_Case.login.LoginDataAcessObject;
 import Use_Case.profile.ProfileDataAccessObject;
@@ -20,7 +20,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class JSONDataObject implements SignupDataAcessObject,
-        LoginDataAcessObject, ProfileDataAccessObject , MatchingPreferencesDataAccessObject
+        LoginDataAcessObject, ProfileDataAccessObject , MatchingPreferencesDataAccessObject,
+        DashboardDataAccessObject
          {
     private final File fileJSON;
     private final File PrettyJSON;
@@ -368,6 +369,25 @@ public class JSONDataObject implements SignupDataAcessObject,
 
 
 
+
+    @Override
+    public ArrayList<String> getAnnouncements(String username) throws IOException, ParseException {
+        JSONArray users = readAll();
+        if(!users.isEmpty()){
+            for (Object obj : users) {
+                JSONObject user = (JSONObject) obj;
+                if (username.equals(user.get("username"))) {
+                    ArrayList<String> log = (ArrayList<String>) user.get("announcements");
+                    return log;
+
+                }
+                else{continue;}
+
+            }
+        }
+
+        return new ArrayList<>();
+    }
 }
 
 
