@@ -34,6 +34,8 @@ public class FindMatchesView extends JPanel implements PropertyChangeListener {
         searchProfile = new JButton("search");
         searchBar = new JTextField(15);
         back = new JButton("back");
+        JLabel searchInstructions = new JLabel("Enter Username to see their Profile : ");
+        JLabel findInstructions = new JLabel("click to find matches : ");
 
 
         textArea = new JTextArea(10, 40);
@@ -111,11 +113,12 @@ public class FindMatchesView extends JPanel implements PropertyChangeListener {
                 }
         );
 
-
+        topPanel.add(findInstructions);
         topPanel.add(findMatches);
         middlePanel.add(scrollPanes);
         middlePanel.add(scrollPanesProfile);
         bottomePanel.add(back);
+        bottomePanel.add(searchInstructions);
         bottomePanel.add(searchBar);
         bottomePanel.add(searchProfile);
 
@@ -138,8 +141,11 @@ public class FindMatchesView extends JPanel implements PropertyChangeListener {
             state.setErrorMessage(null);}
         if (state.getMatches() != null) {
             textArea.setText("");
+            textArea.append("User Name" + "                     " + "Score " + "\n");
+            textArea.append("\n");
             for (String person:state.getMatches().keySet()){
-            textArea.append(person + "           " + state.getMatches().get(person).toString() +"\n");}
+                String result = String.format("%.2f", state.getMatches().get(person));
+            textArea.append(person + "                              " + result +"\n");}
             SwingUtilities.invokeLater(() -> {
                 JScrollBar bar = scrollPanes.getVerticalScrollBar();
                 bar.setValue(bar.getMaximum());

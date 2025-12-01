@@ -18,4 +18,10 @@ public class DashboardController {
         DashboardInputData inputData = new DashboardInputData(name);
         interactor.prepareAnnouncementView(inputData);
     }
+    public void prepareNotificationView(){
+        DashboardInputData inputData = new DashboardInputData("");
+        interactor.prepareNotificationView(inputData);
+
+    }
+
 }

@@ -22,6 +22,9 @@ public class ChatInteractor implements ChatInputBoundary{
         if(message.isEmpty()){
             presenter.prepareFailView("the message can not be empty !");
         }
+        else if (message.startsWith("*")){
+            presenter.prepareFailView("The message can not start with an * symbol !");
+        }
         else{
             DAO.updatePeopleMessages(sender,receiver,message);
             DAO.addSenderToNotification(sender,receiver);

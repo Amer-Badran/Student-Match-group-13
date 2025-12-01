@@ -29,4 +29,12 @@ public class DashboardInteractor implements DashboardInputBoundary{
         DashboardOutputData ouptut = new DashboardOutputData(DAO.getAnnouncements(input.getUsername()));
         presenter.prepareAnnouncementView(ouptut);
     }
+
+    @Override
+    public void prepareNotificationView(DashboardInputData input) {
+        DashboardOutputData ouptut = new DashboardOutputData(new ArrayList<>());
+        presenter.prepareNotificationView(ouptut);
+
+    }
+
 }

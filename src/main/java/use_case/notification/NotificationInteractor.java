@@ -19,6 +19,9 @@ public class NotificationInteractor implements NotificationInputBoundary{
         if(!DAO.UserExists(input.getOther())){
             presenter.prepareFailView("this user does not exist");
         }
+        else if (input.getOther().equals(input.getUsername())){
+            presenter.prepareFailView("you can not choose your own name !");
+        }
         else{
             ArrayList<String> chatLog = DAO.getMessages(input.getUsername(), input.getOther());
             NotificationOutputData output = new NotificationOutputData(input.getUsername(), input.getOther(),chatLog);
