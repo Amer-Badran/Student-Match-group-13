@@ -5,7 +5,9 @@ import java.io.IOException;
 
 import Data_Access.JSONDataObject;
 import Entity.ClientFactory;
-
+import Interface_Adapter.announcement.AnnouncementController;
+import Interface_Adapter.announcement.AnnouncementPresenter;
+import Interface_Adapter.announcement.AnnouncementViewModel;
 import Interface_Adapter.enterInfo.EnterInfoController;
 import Interface_Adapter.enterInfo.EnterInfoPresenter;
 import Interface_Adapter.enterInfo.EnterInfoViewModel;
@@ -27,7 +29,9 @@ import Interface_Adapter.signup.SignupPresenter;
 import Interface_Adapter.signup.SignupViewModel;
 import Interface_Adapter.welcome.WelcomPresenter;
 import Interface_Adapter.welcome.WelcomeController;
-
+import Use_Case.announcement.AnnouncementInputBoundary;
+import Use_Case.announcement.AnnouncementInteractor;
+import Use_Case.announcement.AnnouncementOutputBoundary;
 import Use_Case.enterInfo.EnterInfoInputBoundary;
 import Use_Case.enterInfo.EnterInfoInteractor;
 import Use_Case.enterInfo.EnterInfoOutputBoundary;
@@ -68,7 +72,7 @@ public class AppBuilder {
     private EnterInfoView enterInfoView;
     private DashboardView dashboardView;
     private FindMatchesView findMatchesView;
-
+    private AnnouncementView announcementView;
 
     private SignupViewModel signupViewModel = new SignupViewModel();
     private LoginViewModel loginViewModels = new LoginViewModel();
@@ -76,6 +80,7 @@ public class AppBuilder {
     private EnterInfoViewModel enterInfoViewModel = new EnterInfoViewModel();
     private DashboardViewModel dashboardViewModel = new DashboardViewModel();
     private FindMatchesViewModel findMatchesViewModel = new FindMatchesViewModel();
+    private AnnouncementViewModel announcementViewModel = new AnnouncementViewModel();
 
 
     private final WeightedMatchingAlgorithm matchingAlgorithm = new WeightedMatchingAlgorithm();
@@ -165,14 +170,27 @@ public AppBuilder addDashboardView(){
 
 public AppBuilder addDashboardUseCase(){
     final DashboardOutputBoundary  DashboardPresetner = new DashboardPresenter(dashboardViewModel,viewManagerModel
-                                                                        ,findMatchesViewModel
-                                                                          );
+                                                                        ,findMatchesViewModel,
+                                                                          announcementViewModel);
     final DashboardInputBoundary DashboardInteractor = new DashboardInteractor(DAO, DashboardPresetner);
     dashboardView.setDashboardController(new DashboardController(DashboardInteractor));
     return this;
 }
 
 
+
+public AppBuilder addAnnouncementView(){
+        announcementView = new AnnouncementView(announcementViewModel);
+        cardPanel.add(announcementView,announcementViewModel.getViewName());
+        return this;
+}
+
+public AppBuilder addAnnouncementUseCase(){
+        final AnnouncementOutputBoundary AnnouncementPresenter = new AnnouncementPresenter(announcementViewModel,dashboardViewModel,viewManagerModel);
+        final AnnouncementInputBoundary AnnouncementInteractor = new AnnouncementInteractor(DAO,AnnouncementPresenter);
+        announcementView.setAnnouncementController(new AnnouncementController(AnnouncementInteractor));
+        return this;
+}
 
 public AppBuilder addFindMatchesView(){
         findMatchesView = new FindMatchesView(findMatchesViewModel);

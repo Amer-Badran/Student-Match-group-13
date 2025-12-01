@@ -14,5 +14,8 @@ public class DashboardController {
     public void prepareFindMatchesView(){
         interactor.prepareFindMatchesView();
     }
-
+    public void prepareAnnouncementView(String name) throws IOException, ParseException {
+        DashboardInputData inputData = new DashboardInputData(name);
+        interactor.prepareAnnouncementView(inputData);
+    }
 }
