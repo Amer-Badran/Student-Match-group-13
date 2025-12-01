@@ -1,6 +1,6 @@
 package View;
 
-import Interface_Adapter.welcome.WelcomeController;
+import interface_adapter.welcome.WelcomeController;
 
 import javax.swing.*;
 import java.awt.*;

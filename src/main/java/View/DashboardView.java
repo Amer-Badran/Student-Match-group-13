@@ -1,8 +1,7 @@
 package View;
 
-import Interface_Adapter.dashboard.DashboardController;
-import Interface_Adapter.dashboard.DashboardViewModel;
-import Interface_Adapter.welcome.WelcomeController;
+import interface_adapter.dashboard.DashboardController;
+import interface_adapter.dashboard.DashboardViewModel;
 import org.json.simple.parser.ParseException;
 
 import javax.swing.*;
@@ -31,10 +30,11 @@ public class DashboardView extends JPanel {
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-
+                        controller.prepareNotificationView();
                     }
                 }
         );
+
 
         matches.addActionListener(
                 new ActionListener() {
