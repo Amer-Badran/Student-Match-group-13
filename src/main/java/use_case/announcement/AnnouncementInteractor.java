@@ -10,7 +10,7 @@ public class AnnouncementInteractor implements AnnouncementInputBoundary{
     private AnnouncementOutputBoundary presenter;
 
     public AnnouncementInteractor(AnnouncementDataAccessObject DAO,
-    AnnouncementOutputBoundary presenter){
+                                  AnnouncementOutputBoundary presenter){
         this.DAO = DAO;
         this.presenter = presenter;
     }
@@ -20,10 +20,10 @@ public class AnnouncementInteractor implements AnnouncementInputBoundary{
             presenter.prepareFailView("announcement can not be empty");
         }
         else{
-        DAO.updateAnnouncements(input.getUsername() + ":  " + input.getMessage());
-        ArrayList<String> log = DAO.getAnnouncements(input.getUsername());
-        AnnouncementOutputData output = new AnnouncementOutputData(log);
-        presenter.prepareSuccessView(output);
+            DAO.updateAnnouncements(input.getUsername() + ":  " + input.getMessage());
+            ArrayList<String> log = DAO.getAnnouncements(input.getUsername());
+            AnnouncementOutputData output = new AnnouncementOutputData(log);
+            presenter.prepareSuccessView(output);
         }}
     public void update(String name) throws IOException, ParseException {
         ArrayList<String> log = DAO.getAnnouncements(name);

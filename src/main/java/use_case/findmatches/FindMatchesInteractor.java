@@ -24,6 +24,7 @@ public class FindMatchesInteractor implements FindMatchesInputBoundary {
         this.matchingAlgorithm = matchingAlgorithm;
         this.presenter = presenter;
     }
+
     @Override
     public void switchToHomeView(){
         presenter.switchToHomeView();
