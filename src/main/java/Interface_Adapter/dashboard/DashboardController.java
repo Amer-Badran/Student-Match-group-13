@@ -11,4 +11,8 @@ public class DashboardController {
     public DashboardController(DashboardInputBoundary bound){
         this.interactor = bound;
     }
+    public void prepareFindMatchesView(){
+        interactor.prepareFindMatchesView();
+    }
+
 }

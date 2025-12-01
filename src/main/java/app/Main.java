@@ -22,6 +22,8 @@ public class Main {
                 .addEnterInfoUseCase()
                 .addDashboardView()
                 .addDashboardUseCase()
+                .addFindMatchesView()
+                .addFindMatchesUseCase()
                 .build();
         application.pack();
         application.setLocationRelativeTo(null);

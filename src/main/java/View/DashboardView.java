@@ -36,8 +36,14 @@ public class DashboardView extends JPanel {
                 }
         );
 
-
-
+        matches.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        controller.prepareFindMatchesView();
+                    }
+                }
+        );
 
 
         JPanel buttons = new JPanel();

@@ -13,7 +13,9 @@ import Interface_Adapter.ViewManagerModel;
 import Interface_Adapter.dashboard.DashboardController;
 import Interface_Adapter.dashboard.DashboardPresenter;
 import Interface_Adapter.dashboard.DashboardViewModel;
-
+import Interface_Adapter.findmatches.FindMatchesController;
+import Interface_Adapter.findmatches.FindMatchesPresenter;
+import Interface_Adapter.findmatches.FindMatchesViewModel;
 import Interface_Adapter.login.LoginController;
 import Interface_Adapter.login.LoginPresenter;
 import Interface_Adapter.login.LoginViewModel;
@@ -32,11 +34,13 @@ import Use_Case.enterInfo.EnterInfoOutputBoundary;
 import Use_Case.dashboard.DashboardInputBoundary;
 import Use_Case.dashboard.DashboardInteractor;
 import Use_Case.dashboard.DashboardOutputBoundary;
-
+import Use_Case.findmatches.FindMatchesInputBoundary;
+import Use_Case.findmatches.FindMatchesInteractor;
+import Use_Case.findmatches.FindMatchesOutputBoundary;
 import Use_Case.login.LoginInputBoundary;
 import Use_Case.login.LoginInteractor;
 import Use_Case.login.LoginOutputBoundary;
-
+import Use_Case.matchingstrategy.WeightedMatchingAlgorithm;
 import Use_Case.profile.ProfileInputBoundary;
 import Use_Case.profile.ProfileInteractor;
 import Use_Case.profile.ProfileOutputBoundary;
@@ -63,6 +67,7 @@ public class AppBuilder {
     private ProfileView profileView;
     private EnterInfoView enterInfoView;
     private DashboardView dashboardView;
+    private FindMatchesView findMatchesView;
 
 
     private SignupViewModel signupViewModel = new SignupViewModel();
@@ -70,8 +75,10 @@ public class AppBuilder {
     private ProfileViewModel profileViewModels = new ProfileViewModel();
     private EnterInfoViewModel enterInfoViewModel = new EnterInfoViewModel();
     private DashboardViewModel dashboardViewModel = new DashboardViewModel();
+    private FindMatchesViewModel findMatchesViewModel = new FindMatchesViewModel();
 
 
+    private final WeightedMatchingAlgorithm matchingAlgorithm = new WeightedMatchingAlgorithm();
 
 
 
@@ -158,7 +165,7 @@ public AppBuilder addDashboardView(){
 
 public AppBuilder addDashboardUseCase(){
     final DashboardOutputBoundary  DashboardPresetner = new DashboardPresenter(dashboardViewModel,viewManagerModel
-
+                                                                        ,findMatchesViewModel
                                                                           );
     final DashboardInputBoundary DashboardInteractor = new DashboardInteractor(DAO, DashboardPresetner);
     dashboardView.setDashboardController(new DashboardController(DashboardInteractor));
@@ -166,6 +173,17 @@ public AppBuilder addDashboardUseCase(){
 }
 
 
+
+public AppBuilder addFindMatchesView(){
+        findMatchesView = new FindMatchesView(findMatchesViewModel);
+        cardPanel.add(findMatchesView,findMatchesViewModel.getViewName());
+        return this;
+}
+public AppBuilder addFindMatchesUseCase(){
+        final FindMatchesOutputBoundary FindMatchesPresenter = new FindMatchesPresenter(viewManagerModel,findMatchesViewModel,dashboardViewModel);
+        final FindMatchesInputBoundary findMatchesInteractor = new FindMatchesInteractor(DAO,matchingAlgorithm,FindMatchesPresenter);
+        findMatchesView.setFindMatchesController(new FindMatchesController(findMatchesInteractor));
+        return this;}
 
 
 

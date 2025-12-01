@@ -3,9 +3,10 @@ import Entity.Client;
 import Entity.MatchingPreferences;
 import Entity.OldClient;
 import Entity.Profile;
+
 import Use_Case.enterInfo.MatchingPreferencesDataAccessObject;
 import Use_Case.dashboard.DashboardDataAccessObject;
-
+import Use_Case.findmatches.FindMatchesDataAccessObject;
 import Use_Case.login.LoginDataAcessObject;
 import Use_Case.profile.ProfileDataAccessObject;
 import Use_Case.signup.SignupDataAcessObject;
@@ -21,7 +22,7 @@ import java.util.Map;
 
 public class JSONDataObject implements SignupDataAcessObject,
         LoginDataAcessObject, ProfileDataAccessObject , MatchingPreferencesDataAccessObject,
-        DashboardDataAccessObject
+        DashboardDataAccessObject, FindMatchesDataAccessObject
          {
     private final File fileJSON;
     private final File PrettyJSON;
@@ -253,9 +254,28 @@ public class JSONDataObject implements SignupDataAcessObject,
         }return null;
     }
 
+    @Override
+    public Client findByUsername(String username) throws IOException, ParseException {
+        return getUserByUsername(username);
+    }
 
+    public ArrayList<Client> getAllUsers() throws IOException, ParseException {
+        ArrayList<Client> theUsers = new ArrayList<Client>();
+        JSONArray data = readAll();
+        for (Object obj : data) {
+            JSONObject JSONuser = (JSONObject) obj;
+            Client currentUser = getUserByUsername((String) JSONuser.get("username"));
+            theUsers.add(currentUser);
+        }
+        return theUsers;
+    }
 
+    @Override
+    public Profile getProfile(String name) throws IOException, ParseException {
+        Client client = getUserByUsername(name);
+        return client.getProfile();
 
+    }
 
 
     @Override
@@ -364,7 +384,10 @@ public class JSONDataObject implements SignupDataAcessObject,
         return new ArrayList<>();
     }
 
-
+    @Override
+    public boolean UserExists(String username) throws IOException, ParseException {
+        return alreadyExists(username);
+    }
 
 
 

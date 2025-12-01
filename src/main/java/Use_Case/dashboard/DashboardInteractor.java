@@ -19,6 +19,10 @@ public class DashboardInteractor implements DashboardInputBoundary{
     }
 
 
+    @Override
+    public void prepareFindMatchesView() {
+        presenter.prepareFindMatchesView();
+    }
 
 
 }
