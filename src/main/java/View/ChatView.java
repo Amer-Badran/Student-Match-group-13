@@ -160,11 +160,11 @@ public class ChatView extends JPanel implements ActionListener, PropertyChangeLi
             JOptionPane.showMessageDialog(this, state.getError());
             state.setError(null);
         }
+        else if((state.getLog() == null)){
+
+
+       textArea.setText("");}
         else if(!(state.getLog() == null)){
-
-
-       textArea.setText("");
-
 
             String senderd = state.getSender();
             String receiverd = state.getOther();
