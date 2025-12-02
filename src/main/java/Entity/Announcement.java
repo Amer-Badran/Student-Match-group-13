@@ -1,0 +1,16 @@
+package Entity;
+
+public class Announcement {
+
+    private final String user;
+    private final String message;
+
+    public Announcement(String user, String message) {
+        this.user = user;
+        this.message = message;
+    }
+
+    public String getUser() { return user; }
+    public String getMessage() { return message; }
+}
+
