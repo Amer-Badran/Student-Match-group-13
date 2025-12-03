@@ -10,6 +10,7 @@ import use_case.notification.NotificationDataAccessObject;
 import use_case.dashboard.DashboardDataAccessObject;
 import use_case.findmatches.FindMatchesDataAccessObject;
 import use_case.login.LoginDataAcessObject;
+import use_case.logout.LogoutDataAccessObject;
 import use_case.profile.ProfileDataAccessObject;
 import use_case.signup.SignupDataAcessObject;
 import org.json.simple.parser.JSONParser;
@@ -25,7 +26,7 @@ import java.util.Map;
 public class JSONDataObject implements SignupDataAcessObject,
         LoginDataAcessObject, ProfileDataAccessObject , MatchingPreferencesDataAccessObject,
         NotificationDataAccessObject, ChatDataAccessObject, DashboardDataAccessObject, FindMatchesDataAccessObject,
-        AnnouncementDataAccessObject {
+        AnnouncementDataAccessObject, LogoutDataAccessObject {
     private final File fileJSON;
     private final File PrettyJSON;
     private final File CleanData;
@@ -181,6 +182,15 @@ public class JSONDataObject implements SignupDataAcessObject,
     @Override
     public boolean userExists(String userName) throws IOException, ParseException {
         return this.alreadyExists(userName);
+    }
+
+    @Override
+    public void logout(String username) throws IOException, ParseException {
+        // Currently no session-specific data is persisted, but this ensures the user exists
+        // and allows future audit hooks if needed.
+        if (!userExists(username)) {
+            throw new IOException("User not found: " + username);
+        }
     }
 
     @Override

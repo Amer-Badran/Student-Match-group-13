@@ -22,6 +22,7 @@ public class Main {
                 .addEnterInfoUseCase()
                 .addDashboardView()
                 .addDashboardUseCase()
+                .addLogoutUseCase()
                 .addFindMatchesView()
                 .addFindMatchesUseCase()
                 .addAnnouncementView()
