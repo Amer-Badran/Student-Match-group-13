@@ -28,6 +28,9 @@ import interface_adapter.login.LoginController;
 import interface_adapter.login.LoginPresenter;
 import interface_adapter.login.LoginViewModel;
 import interface_adapter.profile.ProfileController;
+import interface_adapter.logout.LogoutController;
+import interface_adapter.logout.LogoutPresenter;
+import interface_adapter.logout.LogoutViewModel;
 import interface_adapter.profile.ProfilePresenter;
 import interface_adapter.profile.ProfileViewModel;
 import interface_adapter.signup.SignupController;
@@ -60,6 +63,9 @@ import use_case.matchingstrategy.WeightedMatchingAlgorithm;
 import use_case.profile.ProfileInputBoundary;
 import use_case.profile.ProfileInteractor;
 import use_case.profile.ProfileOutputBoundary;
+import use_case.logout.LogoutInputBoundary;
+import use_case.logout.LogoutInteractor;
+import use_case.logout.LogoutOutputBoundary;
 import use_case.signup.SignupInputBoundary;
 import use_case.signup.SignupInteractor;
 import use_case.signup.SignupOutputBoundary;
@@ -95,6 +101,7 @@ public class AppBuilder {
     private NotificationViewModel notificationViewModel = new NotificationViewModel();
     private ChatViewModel chatViewModel = new ChatViewModel();
     private DashboardViewModel dashboardViewModel = new DashboardViewModel();
+    private LogoutViewModel logoutViewModel = new LogoutViewModel();
     private FindMatchesViewModel findMatchesViewModel = new FindMatchesViewModel();
     private AnnouncementViewModel announcementViewModel = new AnnouncementViewModel();
 
@@ -179,7 +186,7 @@ public AppBuilder addEnterInfoUseCase(){
 }
 
 public AppBuilder addDashboardView(){
-        dashboardView = new DashboardView(dashboardViewModel);
+        dashboardView = new DashboardView(dashboardViewModel, logoutViewModel);
         cardPanel.add(dashboardView,dashboardViewModel.getViewName());
         return this;
 }
@@ -191,6 +198,13 @@ public AppBuilder addDashboardUseCase(){
     final DashboardInputBoundary DashboardInteractor = new DashboardInteractor(DAO, DashboardPresetner);
     dashboardView.setDashboardController(new DashboardController(DashboardInteractor));
     return this;
+}
+
+public AppBuilder addLogoutUseCase(){
+        final LogoutOutputBoundary logoutPresenter = new LogoutPresenter(logoutViewModel, viewManagerModel);
+        final LogoutInputBoundary logoutInteractor = new LogoutInteractor(DAO, logoutPresenter);
+        dashboardView.setLogoutController(new LogoutController(logoutInteractor));
+        return this;
 }
 
 
